@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://daaq1qwstt708"]
+
+[ext_resource type="PackedScene" uid="uid://ceej76jlkvnaw" path="res://Assets/3D Models/Audax/Audax.glb" id="1_4kfxu"]
+[ext_resource type="Script" path="res://Scenes/Actors/Audax/Audax.gd" id="1_rdyrc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vtq18"]
+radius = 0.2
+height = 1.35
+
+[node name="Audax" type="CharacterBody3D"]
+script = ExtResource("1_rdyrc")
+
+[node name="Model" parent="." instance=ExtResource("1_4kfxu")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00979302, 0.705912, -0.355108)
+shape = SubResource("CapsuleShape3D_vtq18")
+
+[node name="Pivot" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0634023, 1.85979, -0.232832)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Light" type="Node3D" parent="."]
+visible = false
+
+[node name="Flashlight" type="SpotLight3D" parent="Light"]
+transform = Transform3D(1, 0, 0, 0, -0.948146, 0.317834, 0, -0.317834, -0.948146, -0.0325012, 1.87067, -0.141672)
+light_color = Color(0.345098, 0.678431, 0.360784, 1)
+light_energy = 20.0
+light_indirect_energy = 10.0
+light_volumetric_fog_energy = 10.0
+spot_range = 10.0
+spot_angle = 25.0
+
+[node name="ScreenLight" type="OmniLight3D" parent="Light"]
+transform = Transform3D(1, 0, 0, 0, 0.997147, -0.0754835, 0, 0.0754835, 0.997147, -0.0585329, 1.76427, 0.0979035)
+light_color = Color(0.345098, 0.678431, 0.360784, 1)
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="VisibleOnScreenNotifier3D"]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

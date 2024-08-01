@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5m6ohe5umt0s"]
+
+[ext_resource type="PackedScene" uid="uid://bp8m2bb83u650" path="res://Maps/Temple/TempleParts/Wall_1.tscn" id="1_pacmf"]
+[ext_resource type="PackedScene" uid="uid://dqpqj1to1co5f" path="res://Maps/Temple/TempleParts/Wall_2.tscn" id="2_gmlkw"]
+[ext_resource type="PackedScene" uid="uid://di6ra155j5ugw" path="res://Maps/Temple/TempleParts/Pillar.tscn" id="3_fmkik"]
+
+[node name="Temple" type="Node3D"]
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="wall_without_crack" parent="Walls" instance=ExtResource("1_pacmf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.3166)
+
+[node name="wall_with_crack" parent="Walls" instance=ExtResource("2_gmlkw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.46341, 0, 12.1253)
+
+[node name="Pillars" type="Node3D" parent="."]
+
+[node name="pillar_with_crack" parent="Pillars" instance=ExtResource("3_fmkik")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.15972, 0, 11.4183)
+
+[node name="pillar_with_crack2" parent="Pillars" instance=ExtResource("3_fmkik")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 2.94883, 2.19698, 11.4183)
+
+[node name="pillar_with_crack3" parent="Pillars" instance=ExtResource("3_fmkik")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.159719, 0, 11.4183)

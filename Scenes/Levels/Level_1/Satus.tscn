@@ -1,0 +1,93 @@
+[gd_scene load_steps=9 format=3 uid="uid://c2akku8du1xku"]
+
+[ext_resource type="PackedScene" uid="uid://daaq1qwstt708" path="res://Scenes/Actors/Audax/Audax.tscn" id="1_6apj6"]
+[ext_resource type="Script" path="res://Scenes/Levels/Level_1/Satus.gd" id="1_t6rts"]
+[ext_resource type="PackedScene" uid="uid://c5m6ohe5umt0s" path="res://Maps/Temple/Temple.tscn" id="2_h2leq"]
+[ext_resource type="PackedScene" uid="uid://cb6drqmap1d5c" path="res://Assets/3D Models/Forest/TreatedAssets/BananaPlant.tscn" id="4_w7ut5"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_cg7qn"]
+rayleigh_color = Color(0.8, 0.321569, 0.996078, 1)
+ground_color = Color(0.294118, 0.196078, 0.0980392, 1)
+
+[sub_resource type="Sky" id="Sky_khvr2"]
+sky_material = SubResource("PhysicalSkyMaterial_cg7qn")
+
+[sub_resource type="Environment" id="Environment_rdui3"]
+background_mode = 2
+sky = SubResource("Sky_khvr2")
+tonemap_mode = 2
+tonemap_exposure = 0.7
+tonemap_white = 1.04
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+volumetric_fog_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t7guw"]
+albedo_color = Color(0.34902, 0.196078, 0.121569, 1)
+
+[node name="Satus" type="Node3D" node_paths=PackedStringArray("player")]
+script = ExtResource("1_t6rts")
+player = NodePath("Audax")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rdui3")
+
+[node name="Audax" parent="." instance=ExtResource("1_6apj6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.810739, 0)
+
+[node name="Landscape" type="Node3D" parent="."]
+
+[node name="Floor" type="CSGBox3D" parent="Landscape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.98541, 0.319273, 0.496464)
+use_collision = true
+size = Vector3(56.3788, 1, 51.0756)
+material = SubResource("StandardMaterial3D_t7guw")
+
+[node name="CraterWall" type="CSGPolygon3D" parent="Landscape"]
+transform = Transform3D(1, 0, 0, 0, 0.0111873, -0.999937, 0, 0.999937, 0.0111873, -3.73779, -6.36537, 4.86794)
+use_collision = true
+polygon = PackedVector2Array(22.2853, 14.5233, 15.9075, 15.4296, 7.23585, 9.87643, -4.27094, 11.6633, -9.42071, 3.55369, -4.23681, -14.4885, 8.93139, -17.496, 25.8629, -3.394, 24.2511, 8.73958, 39.8532, 23.2384, 48.7652, 20.1622, 30.3703, -33.6947, -21.2873, -30.6506, -24.9746, 27.1881, 34.5825, 26.7409)
+depth = 11.65
+material = SubResource("StandardMaterial3D_t7guw")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-1, 8.74228e-08, 9.49206e-15, 2.61532e-08, 0.299157, 0.954204, 8.34191e-08, 0.954204, -0.299157, 0, 66.8725, -11.6694)
+light_energy = 5.0
+shadow_enabled = true
+
+[node name="Temple" parent="." instance=ExtResource("2_h2leq")]
+transform = Transform3D(0.687759, 0, 0.725939, 0, 1, 0, -0.725939, 0, 0.687759, 15.0357, 1.01637, 14.9495)
+
+[node name="Plants" type="Node3D" parent="."]
+
+[node name="BananaPlant2" parent="Plants" instance=ExtResource("4_w7ut5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.3134, 5.26906, 5.33585)
+
+[node name="BananaPlant3" parent="Plants" instance=ExtResource("4_w7ut5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5295, 5.1816, 7.28984)
+
+[node name="BananaPlant" parent="Plants" instance=ExtResource("4_w7ut5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.87167, 5.09413, -11.3019)
+
+[node name="Cameras" type="Node3D" parent="."]
+
+[node name="Camera_1" type="Camera3D" parent="Cameras"]
+transform = Transform3D(-0.41265, 0.649701, -0.638442, 0.180102, 0.745257, 0.641993, 0.892907, 0.149934, -0.424543, 6.59142, 3.24242, -6.9102)
+
+[node name="Camera_2" type="Camera3D" parent="Cameras"]
+transform = Transform3D(0.234417, 0.579385, -0.780617, 0.0578136, 0.793261, 0.606131, 0.970415, -0.187218, 0.152458, -1.77396, 4.14736, 5.05328)
+
+[node name="Camera_3" type="Camera3D" parent="Cameras"]
+transform = Transform3D(-0.550802, -0.481031, 0.682075, 0.0578136, 0.793261, 0.606131, -0.832631, 0.373291, -0.40912, -3.24165, 3.22212, -10.3756)
+
+[node name="Camera_4" type="Camera3D" parent="Cameras"]
+transform = Transform3D(-0.986422, -0.0480973, 0.157033, 0.0578136, 0.793261, 0.606131, -0.153721, 0.606979, -0.779709, 18.774, 3.22212, -0.187388)
+
+[node name="Camera_5" type="Camera3D" parent="Cameras"]
+transform = Transform3D(0.48014, 0.503711, -0.718151, 0.0525813, 0.800694, 0.596761, 0.875615, -0.32429, 0.357959, 9.68202, 3.92464, -15.9115)
+
+[node name="Camera_6" type="Camera3D" parent="Cameras"]
+transform = Transform3D(0.699649, -0.500919, 0.509482, 0.503324, 0.85165, 0.146143, -0.507106, 0.154186, 0.84798, 2.32874, 15.4664, -12.1842)
+
+[node name="Camera_7" type="Camera3D" parent="Cameras"]
+transform = Transform3D(-0.992152, -0.0714104, 0.102636, 0.0797891, 0.270406, 0.959434, -0.096267, 0.960094, -0.262586, 20.3417, 15.5816, -9.74992)

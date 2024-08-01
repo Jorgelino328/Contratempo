@@ -1,0 +1,27 @@
+[
+	{
+		"Name": "Audax",
+		"Emotion": "Happy",
+		"Text": "Olá, Meu nome é Audax e esse é um teste da caixa de diálogo"
+	},
+	{
+		"Name": "Audax",
+		"Emotion": "Angry",
+		"Text": "Eu estou zangado! GRRRR!"
+	},
+	{
+		"Name": "Audax",
+		"Emotion": "Sad",
+		"Text": "Agora eu estou triste... (╥_╥)"
+	},
+	{
+		"Name": "Audax",
+		"Emotion": "Surprised",
+		"Text": "AHH! Agora eu estou surpreso!"
+	},
+	{
+		"Name": "Audax",
+		"Emotion": "Suspicious",
+		"Text": "...Ou será que estou?"
+	}
+]
