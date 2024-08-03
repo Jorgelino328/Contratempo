@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://dm0epwcnjr1c3"]
 
 [ext_resource type="Script" path="res://Scenes/UIs/Menus/Main_Menu/main_menu.gd" id="1_16siy"]
-[ext_resource type="FontFile" uid="uid://1smp3j53cv0l" path="res://Assets/Fonts/Typodermic Fonts/vinque rg.otf" id="2_bec30"]
 [ext_resource type="Texture2D" uid="uid://xcn6i0j8gdcw" path="res://Assets/Sprites/background.png" id="2_byyrk"]
 [ext_resource type="Theme" uid="uid://c3u7pkv4gva6m" path="res://Scenes/UIs/UI_Settings/PurpleMana.tres" id="3_duxap"]
+[ext_resource type="FontFile" uid="uid://duayoy8x436d1" path="res://Assets/Fonts/Typodermic Fonts/angerpoise lampshade.otf" id="4_nh2qf"]
 
 [node name="Main_Menu" type="Control"]
 layout_mode = 3
@@ -18,13 +18,14 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
+theme = ExtResource("3_duxap")
 script = ExtResource("1_16siy")
 metadata/_edit_horizontal_guides_ = []
 metadata/_edit_vertical_guides_ = [95.0]
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(0.698039, 0.313726, 0.45098, 1)
+modulate = Color(0.521569, 0.45098, 0.32549, 1)
 show_behind_parent = true
 texture_filter = 1
 layout_mode = 0
@@ -34,33 +35,34 @@ offset_right = 1202.0
 offset_bottom = 687.0
 scale = Vector2(1.08, 1.04337)
 texture = ExtResource("2_byyrk")
-flip_h = true
-flip_v = true
+expand_mode = 3
 
 [node name="Title" type="Control" parent="."]
 anchors_preset = 0
-offset_left = 7.0
-offset_top = 78.0
-offset_right = 47.0
-offset_bottom = 118.0
+offset_left = -210.0
+offset_top = 139.0
+offset_right = -170.0
+offset_bottom = 179.0
+rotation = -0.164002
 metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="Title"]
 layout_mode = 0
-offset_left = 63.0
-offset_top = -57.0
-offset_right = 1138.0
-offset_bottom = 383.0
+offset_left = 215.196
+offset_top = -1.89078
+offset_right = 1290.2
+offset_bottom = 438.109
+rotation = -0.0100648
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.0980392, 0, 0.266667, 1)
+theme_override_colors/font_shadow_color = Color(0.419608, 0.329412, 0.0666667, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = -2
 theme_override_constants/shadow_offset_y = 9
 theme_override_constants/outline_size = 1
 theme_override_constants/shadow_outline_size = 22
-theme_override_fonts/font = ExtResource("2_bec30")
-theme_override_font_sizes/font_size = 189
-text = "Contratempo"
+theme_override_fonts/font = ExtResource("4_nh2qf")
+theme_override_font_sizes/font_size = 150
+text = "CONTRATEMP"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3

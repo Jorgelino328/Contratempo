@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://c3u7pkv4gva6m" path="res://Scenes/UIs/UI_Settings/PurpleMana.tres" id="1_dxysw"]
 [ext_resource type="Script" path="res://Scenes/UIs/Dialogue_UI/Dialogue_UI.gd" id="2_r3yui"]
-[ext_resource type="FontFile" uid="uid://dnd5cxvsy02wk" path="res://Assets/Fonts/Typodermic Fonts/shouldve known.otf" id="3_qv6mv"]
+[ext_resource type="FontFile" uid="uid://duayoy8x436d1" path="res://Assets/Fonts/Typodermic Fonts/angerpoise lampshade.otf" id="3_ycipa"]
 [ext_resource type="AudioStream" uid="uid://bhlno0v7v505j" path="res://Assets/Audio/dialogue.wav" id="5_rb1fu"]
 
 [node name="Dialogue_UI" type="Control"]
@@ -38,10 +38,11 @@ layout_mode = 2
 
 [node name="Continue" type="Label" parent="VBoxContainer/Panel"]
 layout_mode = 0
-offset_left = 726.0
+offset_left = 623.0
 offset_top = 176.0
-offset_right = 1092.0
+offset_right = 1064.0
 offset_bottom = 216.0
+theme_override_colors/font_shadow_color = Color(0.419608, 0.329412, 0.0666667, 1)
 text = "Aperte ESPAÇO to continuar"
 
 [node name="Name" type="RichTextLabel" parent="VBoxContainer/Panel"]
@@ -51,25 +52,27 @@ offset_top = 15.0
 offset_right = 655.0
 offset_bottom = 67.0
 theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.0980392, 0, 0.266667, 1)
+theme_override_colors/font_shadow_color = Color(0.419608, 0.329412, 0.0666667, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = -2
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/shadow_outline_size = 8
 theme_override_constants/outline_size = 1
-theme_override_fonts/normal_font = ExtResource("3_qv6mv")
-theme_override_font_sizes/normal_font_size = 28
+theme_override_fonts/normal_font = ExtResource("3_ycipa")
+theme_override_font_sizes/normal_font_size = 35
 text = "TEST"
 scroll_active = false
 metadata/_edit_lock_ = true
 
 [node name="Text" type="RichTextLabel" parent="VBoxContainer/Panel"]
 layout_mode = 2
-offset_left = 228.0
-offset_top = 52.0
-offset_right = 1091.0
-offset_bottom = 180.0
+offset_left = 229.0
+offset_top = 61.0
+offset_right = 1092.0
+offset_bottom = 189.0
+theme = ExtResource("1_dxysw")
 theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/normal_font = ExtResource("3_ycipa")
 bbcode_enabled = true
 text = "The Quick Brown Fox Jumps Over the Lazy Dog
 But i don't care"

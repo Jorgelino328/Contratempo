@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://c2akku8du1xku"]
 
-[ext_resource type="PackedScene" uid="uid://daaq1qwstt708" path="res://Scenes/Actors/Audax/Audax.tscn" id="1_6apj6"]
+[ext_resource type="PackedScene" uid="uid://0adle82x7bu3" path="res://Scenes/Actors/Audax/Audax.tscn" id="1_6apj6"]
 [ext_resource type="Script" path="res://Scenes/Levels/Level_1/Satus.gd" id="1_t6rts"]
 [ext_resource type="PackedScene" uid="uid://c5m6ohe5umt0s" path="res://Maps/Temple/Temple.tscn" id="2_h2leq"]
 [ext_resource type="PackedScene" uid="uid://cb6drqmap1d5c" path="res://Assets/3D Models/Forest/TreatedAssets/BananaPlant.tscn" id="4_w7ut5"]
@@ -33,9 +33,9 @@ player = NodePath("Audax")
 environment = SubResource("Environment_rdui3")
 
 [node name="Audax" parent="." instance=ExtResource("1_6apj6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.810739, 0)
 
 [node name="Landscape" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.05799, 0)
 
 [node name="Floor" type="CSGBox3D" parent="Landscape"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.98541, 0.319273, 0.496464)
@@ -73,6 +73,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.87167, 5.09413, -11.3019)
 
 [node name="Camera_1" type="Camera3D" parent="Cameras"]
 transform = Transform3D(-0.41265, 0.649701, -0.638442, 0.180102, 0.745257, 0.641993, 0.892907, 0.149934, -0.424543, 6.59142, 3.24242, -6.9102)
+current = true
 
 [node name="Camera_2" type="Camera3D" parent="Cameras"]
 transform = Transform3D(0.234417, 0.579385, -0.780617, 0.0578136, 0.793261, 0.606131, 0.970415, -0.187218, 0.152458, -1.77396, 4.14736, 5.05328)

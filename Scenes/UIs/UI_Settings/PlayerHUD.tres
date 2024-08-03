@@ -1,9 +1,9 @@
 [gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bdytyd82v3l1q"]
 
-[ext_resource type="FontFile" uid="uid://b8a71jaiiqmo1" path="res://Assets/Fonts/Typodermic Fonts/vanilla whale.otf" id="1_3euk7"]
+[ext_resource type="FontFile" uid="uid://ban168bj1ois8" path="res://Assets/Fonts/Typodermic Fonts/wheaton capitals.otf" id="1_l3c3x"]
 
 [resource]
-font = ExtResource("1_3euk7")
+font = ExtResource("1_l3c3x")
 font_size = 40
 shadow_size = 3
 shadow_color = Color(0.282353, 0, 0, 1)

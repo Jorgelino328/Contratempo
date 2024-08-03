@@ -26,12 +26,12 @@ func connect_signals():
 		#$Audio/BackgroundMusic.stream = music2
 		#$Audio/BackgroundMusic.play()
 		current_level.next_level.connect(_on_next_level)
-		#current_level.change_song.connect(_on_change_song)
+		current_level.change_song.connect(_on_change_song)
 
 
-#func _on_change_song(new_song):
-	#$Audio/BackgroundMusic.stream = new_song
-	#$Audio/BackgroundMusic.play()
+func _on_change_song(new_song):
+	$Audio/BackgroundMusic.stream = new_song
+	$Audio/BackgroundMusic.play()
 
 
 func _on_next_level(level):
