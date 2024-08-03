@@ -4,28 +4,45 @@ class_name Player extends CharacterBody3D
 @export var running_speed = 6
 @export var fall_acceleration = 30
 @export var jump_impulse = 10
-@export var rotation_speed = 10
+@export var rotation_speed: float = 5.0
+var max_rotation : float = deg_to_rad(90)
+var min_rotation : float = deg_to_rad(-90)
+var current_rotation : float = 0.0
  
 var current_speed = walk_speed
 @onready var animTree : AnimationTree = $AnimationTree
 @onready var press_timer : Timer  = $Timer
 
 var target_velocity = Vector3.ZERO
-var last_action : String
 var can_run = false
 
 func _physics_process(delta):
-	var input_dir = Input.get_vector("down", "up", "left", "right")
-	var direction = Vector3(input_dir.x, 0, input_dir.y).normalized()
-
-	for action in ["up", "down", "left", "right"]:
-		if Input.is_action_just_pressed(action):
-			if(action == last_action && !press_timer.is_stopped()):
-				can_run = true
-			else:
-				last_action = action
-				press_timer.start()
-
+	handle_movement(delta)
+	move_and_slide()
+	update_animation()
+	
+func handle_movement(delta):
+	var move_direction: Vector3 = Vector3.ZERO
+	var rotation_direction: float = 0.0
+	if Input.is_action_pressed("forward"):
+		move_direction = transform.basis.z
+	if Input.is_action_pressed("right"):
+		rotation_direction -= 1.0
+	if Input.is_action_pressed("left"):
+		rotation_direction += 1.0
+	if rotation_direction != 0.0:
+		rotate_y(rotation_direction * rotation_speed * delta)
+	
+	if Input.is_action_just_pressed("backwards"):
+		rotate_y(deg_to_rad(180))
+		current_rotation += deg_to_rad(180)
+		current_rotation = wrapf(current_rotation, -PI, PI)
+	elif Input.is_action_just_pressed("forward"):
+		if(!press_timer.is_stopped()):
+			can_run = true
+		else:
+			press_timer.start()
+			
 	if not is_on_floor():
 		target_velocity.y -= fall_acceleration * delta
 	else:
@@ -37,16 +54,9 @@ func _physics_process(delta):
 			target_velocity.y = jump_impulse
 		elif (long_jump_time != null && long_jump_time > 0 && long_jump_time < 0.1):
 			target_velocity.y = jump_impulse
-			target_velocity.z = walk_speed * direction.z 
-	
-
-	velocity = direction * current_speed + target_velocity
-	
-	if(velocity != Vector3.ZERO):
-		rotation.y = lerp_angle(rotation.y, atan2(velocity.x, velocity.z), rotation_speed * delta)
+			target_velocity.z = walk_speed * move_direction.z	
 		
-	move_and_slide()
-	update_animation()
+	velocity = move_direction * current_speed + target_velocity
 
 func update_animation():
 	if(velocity == Vector3.ZERO):
