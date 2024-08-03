@@ -4,6 +4,7 @@ extends CharacterBody3D
 @export var running_speed = 6
 @export var fall_acceleration = 30
 @export var jump_impulse = 10
+@export var rotation_speed = 10
  
 var current_speed = walk_speed
 @onready var animTree : AnimationTree = $AnimationTree
@@ -29,19 +30,20 @@ func _physics_process(delta):
 		target_velocity.y -= fall_acceleration * delta
 	else:
 		target_velocity.y = 0
+		target_velocity.z = 0
 		var jump_time = animTree["parameters/Jump_Still/time"]
 		var long_jump_time = animTree["parameters/Long_Jump/time"]
 		if (jump_time != null && jump_time > 0.8 && jump_time < 0.9):
 			target_velocity.y = jump_impulse
 		elif (long_jump_time != null && long_jump_time > 0 && long_jump_time < 0.1):
 			target_velocity.y = jump_impulse
-			target_velocity.z = walk_speed
+			target_velocity.z = walk_speed * direction.z 
 	
 
 	velocity = direction * current_speed + target_velocity
 	
 	if(velocity != Vector3.ZERO):
-		rotation.y = atan2(velocity.x, velocity.z)
+		rotation.y = lerp_angle(rotation.y, atan2(velocity.x, velocity.z), rotation_speed * delta)
 		
 	move_and_slide()
 	update_animation(direction)
