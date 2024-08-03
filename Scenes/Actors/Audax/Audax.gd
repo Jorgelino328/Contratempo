@@ -1,4 +1,4 @@
-extends CharacterBody3D
+class_name Player extends CharacterBody3D
 
 @export var walk_speed = 4
 @export var running_speed = 6
@@ -46,9 +46,9 @@ func _physics_process(delta):
 		rotation.y = lerp_angle(rotation.y, atan2(velocity.x, velocity.z), rotation_speed * delta)
 		
 	move_and_slide()
-	update_animation(direction)
+	update_animation()
 
-func update_animation(direction):
+func update_animation():
 	if(velocity == Vector3.ZERO):
 		can_run = false
 		animTree["parameters/conditions/idle"] = true
@@ -72,3 +72,6 @@ func update_animation(direction):
 			current_speed = walk_speed
 			animTree["parameters/conditions/walking"] = true
 			animTree["parameters/conditions/running"] = false
+
+func screen_exited():
+	get_parent().update_camera()

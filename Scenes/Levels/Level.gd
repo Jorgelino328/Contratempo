@@ -1,9 +1,9 @@
 class_name Level extends Node3D
-@export var player: Node3D
+@export var player: Player
+@export var current_camera: Camera3D
 
 @onready var cameras = $Cameras.get_children()
 
-var current_camera: Camera3D = null
 var game_over = load("res://Scenes/UIs/Game_Over/Game_Over.tscn")
 var settings = load("res://Scenes/UIs/Menus/Settings/Settings.tscn")
 var dialogueUI = preload("res://Scenes/UIs/Dialogue_UI/Dialogue_UI.tscn")
@@ -12,11 +12,6 @@ var paused = false
 signal next_level(level)
 signal change_song(new_song)
 
-func _ready():
-	if player == null or cameras.is_empty():
-		print("Player or cameras not set.")
-	update_closest_camera()
-
 func pause():
 	var settings_instance = settings.instantiate()
 	$CanvasLayer.add_child(settings_instance)
@@ -24,7 +19,9 @@ func pause():
 	get_tree().paused = true
 	
 func _process(delta):
-	update_closest_camera()
+	#print(current_camera.global_transform.origin.distance_to(player.global_transform.origin))
+	if(current_camera.global_transform.origin.distance_to(player.global_transform.origin) > 10):
+		update_camera()
 	#if Input.is_action_just_released("esc"):
 		#if(!paused):
 			#pause()
@@ -36,21 +33,19 @@ func _process(delta):
 	#if($Player.hp <= 0 && $Player.dead):
 		#emit_signal("next_level",game_over)
 		
-func update_closest_camera():
-	var closest_camera = null
-	var closest_distance = INF
-
+func update_camera():
+	var valid_cameras = []
+	var best_camera = current_camera
+	
 	for camera in cameras:
-		if camera is Camera3D:
-			var distance = player.global_transform.origin.distance_to(camera.global_transform.origin)
+		if camera.on_screen:
+			valid_cameras.push_back(camera)
 			
-			if distance < closest_distance:
-				closest_distance = distance
-				closest_camera = camera
-
-	if closest_camera != current_camera:
-		if current_camera:
-			current_camera.current = false  
-		if closest_camera:
-			closest_camera.current = true  
-		current_camera = closest_camera
+	for camera in valid_cameras:
+		var distance = camera.global_transform.origin.distance_to(player.global_transform.origin)
+		var closest_distance = best_camera.global_transform.origin.distance_to(player.global_transform.origin)
+		if distance < closest_distance:
+			best_camera = camera
+			
+	current_camera = best_camera
+	current_camera.make_current()

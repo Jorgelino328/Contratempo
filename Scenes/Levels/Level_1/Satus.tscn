@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c2akku8du1xku"]
+[gd_scene load_steps=10 format=3 uid="uid://c2akku8du1xku"]
 
 [ext_resource type="PackedScene" uid="uid://0adle82x7bu3" path="res://Scenes/Actors/Audax/Audax.tscn" id="1_6apj6"]
 [ext_resource type="Script" path="res://Scenes/Levels/Level_1/Satus.gd" id="1_t6rts"]
 [ext_resource type="PackedScene" uid="uid://c5m6ohe5umt0s" path="res://Maps/Temple/Temple.tscn" id="2_h2leq"]
 [ext_resource type="PackedScene" uid="uid://cb6drqmap1d5c" path="res://Assets/3D Models/Forest/TreatedAssets/BananaPlant.tscn" id="4_w7ut5"]
+[ext_resource type="PackedScene" uid="uid://60wre4vbyso3" path="res://Scenes/Elements/Camera.tscn" id="5_16sda"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_cg7qn"]
 rayleigh_color = Color(0.8, 0.321569, 0.996078, 1)
@@ -25,20 +26,23 @@ volumetric_fog_enabled = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t7guw"]
 albedo_color = Color(0.34902, 0.196078, 0.121569, 1)
 
-[node name="Satus" type="Node3D" node_paths=PackedStringArray("player")]
+[node name="Satus" type="Node3D" node_paths=PackedStringArray("player", "current_camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22072, -4.76837e-07, 0.0928936)
 script = ExtResource("1_t6rts")
 player = NodePath("Audax")
+current_camera = NodePath("Cameras/Camera")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rdui3")
 
 [node name="Audax" parent="." instance=ExtResource("1_6apj6")]
+transform = Transform3D(0.999917, 0, 0.0128626, 0, 1, 0, -0.0128626, 0, 0.999917, 1.44549, 1.26135, 6.79319)
 
 [node name="Landscape" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.05799, 0)
 
 [node name="Floor" type="CSGBox3D" parent="Landscape"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.98541, 0.319273, 0.496464)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.98541, 2.04148, 0.496464)
 use_collision = true
 size = Vector3(56.3788, 1, 51.0756)
 material = SubResource("StandardMaterial3D_t7guw")
@@ -71,24 +75,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.87167, 5.09413, -11.3019)
 
 [node name="Cameras" type="Node3D" parent="."]
 
-[node name="Camera_1" type="Camera3D" parent="Cameras"]
-transform = Transform3D(-0.41265, 0.649701, -0.638442, 0.180102, 0.745257, 0.641993, 0.892907, 0.149934, -0.424543, 6.59142, 3.24242, -6.9102)
-current = true
+[node name="Camera" parent="Cameras" instance=ExtResource("5_16sda")]
+transform = Transform3D(1, 0, 0, 0, 0.979399, 0.201933, 0, -0.201933, 0.979399, 0, 2.4993, 15.2204)
 
-[node name="Camera_2" type="Camera3D" parent="Cameras"]
-transform = Transform3D(0.234417, 0.579385, -0.780617, 0.0578136, 0.793261, 0.606131, 0.970415, -0.187218, 0.152458, -1.77396, 4.14736, 5.05328)
+[node name="Camera2" parent="Cameras" instance=ExtResource("5_16sda")]
+transform = Transform3D(-0.999699, 0, 0.024537, 0, 1, 0, -0.024537, 0, -0.999699, 0, 2.4993, -11.6812)
 
-[node name="Camera_3" type="Camera3D" parent="Cameras"]
-transform = Transform3D(-0.550802, -0.481031, 0.682075, 0.0578136, 0.793261, 0.606131, -0.832631, 0.373291, -0.40912, -3.24165, 3.22212, -10.3756)
+[node name="Camera3" parent="Cameras" instance=ExtResource("5_16sda")]
+transform = Transform3D(0.118681, -0.200506, 0.972477, 0, 0.979399, 0.201933, -0.992932, -0.0239656, 0.116236, 21.2829, 2.4993, 8.04268)
 
-[node name="Camera_4" type="Camera3D" parent="Cameras"]
-transform = Transform3D(-0.986422, -0.0480973, 0.157033, 0.0578136, 0.793261, 0.606131, -0.153721, 0.606979, -0.779709, 18.774, 3.22212, -0.187388)
+[node name="Camera4" parent="Cameras" instance=ExtResource("5_16sda")]
+transform = Transform3D(0.915747, -0.0811277, 0.39348, 0, 0.979399, 0.201933, -0.401756, -0.184919, 0.896882, 13.7741, 2.4993, 20.9582)
 
-[node name="Camera_5" type="Camera3D" parent="Cameras"]
-transform = Transform3D(0.48014, 0.503711, -0.718151, 0.0525813, 0.800694, 0.596761, 0.875615, -0.32429, 0.357959, 9.68202, 3.92464, -15.9115)
+[node name="Camera5" parent="Cameras" instance=ExtResource("5_16sda")]
+transform = Transform3D(0.64472, -0.507528, 0.571622, 0.052383, 0.775362, 0.629341, -0.762622, -0.375805, 0.526477, 26.6642, 6.77304, 23.3661)
 
-[node name="Camera_6" type="Camera3D" parent="Cameras"]
-transform = Transform3D(0.699649, -0.500919, 0.509482, 0.503324, 0.85165, 0.146143, -0.507106, 0.154186, 0.84798, 2.32874, 15.4664, -12.1842)
+[node name="Camera6" parent="Cameras" instance=ExtResource("5_16sda")]
+transform = Transform3D(-0.638887, 0.528087, -0.559417, 0.0231463, 0.740042, 0.672162, 0.768952, 0.416488, -0.485027, 14.3703, 5.44858, 12.5616)
+keep_aspect = 1
 
-[node name="Camera_7" type="Camera3D" parent="Cameras"]
-transform = Transform3D(-0.992152, -0.0714104, 0.102636, 0.0797891, 0.270406, 0.959434, -0.096267, 0.960094, -0.262586, 20.3417, 15.5816, -9.74992)
+[node name="Camera7" parent="Cameras" instance=ExtResource("5_16sda")]
+transform = Transform3D(-0.638887, 0.528087, -0.559417, 0.0231463, 0.740042, 0.672162, 0.768952, 0.416488, -0.485027, -6.20366, 5.44858, 1.21113)
+keep_aspect = 1

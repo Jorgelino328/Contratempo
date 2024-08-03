@@ -1,4 +1,5 @@
 extends Level
+
 @onready var new_song = load("res://Assets/Audio/Satus.ogg")
 var playing = false
 

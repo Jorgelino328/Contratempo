@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://60wre4vbyso3"]
+
+[ext_resource type="Script" path="res://Scenes/Elements/Camera.gd" id="1_k2flo"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0lg2w"]
+points = PackedVector3Array(0, 0, 0, -14, 8, -20, 14, 8, -20, 14, -8, -20, -14, -8, -20)
+
+[node name="Camera" type="Camera3D"]
+keep_aspect = 0
+script = ExtResource("1_k2flo")
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_0lg2w")
+target_position = Vector3(0, 0, 0)
