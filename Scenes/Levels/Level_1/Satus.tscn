@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://c2akku8du1xku"]
+[gd_scene load_steps=12 format=3 uid="uid://c2akku8du1xku"]
 
 [ext_resource type="PackedScene" uid="uid://0adle82x7bu3" path="res://Scenes/Actors/Audax/Audax.tscn" id="1_6apj6"]
 [ext_resource type="Script" path="res://Scenes/Levels/Level_1/Satus.gd" id="1_t6rts"]
 [ext_resource type="PackedScene" uid="uid://c5m6ohe5umt0s" path="res://Maps/Temple/Temple.tscn" id="2_h2leq"]
 [ext_resource type="PackedScene" uid="uid://cb6drqmap1d5c" path="res://Assets/3D Models/Forest/TreatedAssets/BananaPlant.tscn" id="4_w7ut5"]
-[ext_resource type="PackedScene" uid="uid://60wre4vbyso3" path="res://Scenes/Elements/Camera.tscn" id="5_16sda"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_cg7qn"]
 rayleigh_color = Color(0.8, 0.321569, 0.996078, 1)
@@ -26,11 +25,19 @@ volumetric_fog_enabled = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t7guw"]
 albedo_color = Color(0.34902, 0.196078, 0.121569, 1)
 
-[node name="Satus" type="Node3D" node_paths=PackedStringArray("player", "current_camera")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_u4yd3"]
+size = Vector3(19.2123, 1, 6.83459)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q32hj"]
+size = Vector3(19.481, 3.56006, 7.06909)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sgr3d"]
+size = Vector3(4.53992, 3.74023, 4.58228)
+
+[node name="Satus" type="Node3D" node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22072, -4.76837e-07, 0.0928936)
 script = ExtResource("1_t6rts")
 player = NodePath("Audax")
-current_camera = NodePath("Cameras/Camera")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rdui3")
@@ -42,15 +49,15 @@ transform = Transform3D(0.999917, 0, 0.0128626, 0, 1, 0, -0.0128626, 0, 0.999917
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.05799, 0)
 
 [node name="Floor" type="CSGBox3D" parent="Landscape"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.98541, 2.04148, 0.496464)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.32024, 2.04148, 5.1903)
 use_collision = true
-size = Vector3(56.3788, 1, 51.0756)
+size = Vector3(41.9265, 1, 34.2695)
 material = SubResource("StandardMaterial3D_t7guw")
 
 [node name="CraterWall" type="CSGPolygon3D" parent="Landscape"]
-transform = Transform3D(1, 0, 0, 0, 0.0111873, -0.999937, 0, 0.999937, 0.0111873, -3.73779, -6.36537, 4.86794)
+transform = Transform3D(1, 0, 0, 0, 0.0111873, -0.999937, 0, 0.999937, 0.0111873, -6.48442, -6.60449, 5.4257)
 use_collision = true
-polygon = PackedVector2Array(22.2853, 14.5233, 15.9075, 15.4296, 7.23585, 9.87643, -4.27094, 11.6633, -9.42071, 3.55369, -4.23681, -14.4885, 8.93139, -17.496, 25.8629, -3.394, 24.2511, 8.73958, 39.8532, 23.2384, 48.7652, 20.1622, 30.3703, -33.6947, -21.2873, -30.6506, -24.9746, 27.1881, 34.5825, 26.7409)
+polygon = PackedVector2Array(18.2123, 6.72555, 15.9064, 4.93185, 7.23585, 9.87643, 3.42132, 3.74507, -1.43862, -0.568696, 2.52003, -9.45999, 13.1176, -7.92366, 15.2026, -0.283801, 22.9269, 6.79967, 30.8679, 10.7446, 24.4355, -13.0924, -4.53842, -14.7007, -6.4795, 7.53402, 23.2591, 20.3829)
 depth = 11.65
 material = SubResource("StandardMaterial3D_t7guw")
 
@@ -60,7 +67,7 @@ light_energy = 5.0
 shadow_enabled = true
 
 [node name="Temple" parent="." instance=ExtResource("2_h2leq")]
-transform = Transform3D(0.687759, 0, 0.725939, 0, 1, 0, -0.725939, 0, 0.687759, 15.0357, 1.01637, 14.9495)
+transform = Transform3D(0.687759, 0, 0.725939, 0, 1, 0, -0.725939, 0, 0.687759, 7.69689, 0.580248, 9.52268)
 
 [node name="Plants" type="Node3D" parent="."]
 
@@ -75,25 +82,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.87167, 5.09413, -11.3019)
 
 [node name="Cameras" type="Node3D" parent="."]
 
-[node name="Camera" parent="Cameras" instance=ExtResource("5_16sda")]
-transform = Transform3D(1, 0, 0, 0, 0.979399, 0.201933, 0, -0.201933, 0.979399, 0, 2.4993, 15.2204)
+[node name="Camera1" type="Camera3D" parent="Cameras"]
+transform = Transform3D(0.358698, 0.658761, -0.661339, 0.0232638, 0.701957, 0.711839, 0.933164, -0.27072, 0.236465, -8.08664, 8.02647, 6.81715)
 
-[node name="Camera2" parent="Cameras" instance=ExtResource("5_16sda")]
-transform = Transform3D(-0.999699, 0, 0.024537, 0, 1, 0, -0.024537, 0, -0.999699, 0, 2.4993, -11.6812)
+[node name="Camera1Trigger" type="Area3D" parent="Cameras/Camera1"]
+transform = Transform3D(0.358698, 0.0232638, 0.933164, 0.658761, 0.701957, -0.27072, -0.661339, 0.711839, 0.236465, 9.90712, 0.368791, -9.25201)
 
-[node name="Camera3" parent="Cameras" instance=ExtResource("5_16sda")]
-transform = Transform3D(0.118681, -0.200506, 0.972477, 0, 0.979399, 0.201933, -0.992932, -0.0239656, 0.116236, 21.2829, 2.4993, 8.04268)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/Camera1/Camera1Trigger"]
+transform = Transform3D(0.919993, 1.51365e-08, -0.391936, -1.99053e-08, 1, -8.10449e-09, 0.391936, 1.52552e-08, 0.919993, -2.56256, -5.96046e-07, -3.17064)
+shape = SubResource("BoxShape3D_u4yd3")
 
-[node name="Camera4" parent="Cameras" instance=ExtResource("5_16sda")]
-transform = Transform3D(0.915747, -0.0811277, 0.39348, 0, 0.979399, 0.201933, -0.401756, -0.184919, 0.896882, 13.7741, 2.4993, 20.9582)
+[node name="Camera2" type="Camera3D" parent="Cameras"]
+transform = Transform3D(-0.882767, -0.319776, 0.344187, 0.1545, 0.494267, 0.855471, -0.443679, 0.808359, -0.386917, 6.4325, 8.02647, -2.88973)
 
-[node name="Camera5" parent="Cameras" instance=ExtResource("5_16sda")]
-transform = Transform3D(0.64472, -0.507528, 0.571622, 0.052383, 0.775362, 0.629341, -0.762622, -0.375805, 0.526477, 26.6642, 6.77304, 23.3661)
+[node name="Camera2Trigger" type="Area3D" parent="Cameras/Camera2"]
+transform = Transform3D(-0.882767, 0.0232638, -0.469233, -0.319776, 0.701957, 0.636395, 0.344187, 0.711839, -0.612225, -2.6377, -1.22512, -7.36395)
 
-[node name="Camera6" parent="Cameras" instance=ExtResource("5_16sda")]
-transform = Transform3D(-0.638887, 0.528087, -0.559417, 0.0231463, 0.740042, 0.672162, 0.768952, 0.416488, -0.485027, 14.3703, 5.44858, 12.5616)
-keep_aspect = 1
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/Camera2/Camera2Trigger"]
+transform = Transform3D(1, -1.05789e-07, -1.19599e-08, 1.04354e-07, 0.951845, 0.306576, -2.10718e-08, -0.306575, 0.951846, -4.91859, -0.169865, -1.49243)
+shape = SubResource("BoxShape3D_q32hj")
 
-[node name="Camera7" parent="Cameras" instance=ExtResource("5_16sda")]
-transform = Transform3D(-0.638887, 0.528087, -0.559417, 0.0231463, 0.740042, 0.672162, 0.768952, 0.416488, -0.485027, -6.20366, 5.44858, 1.21113)
-keep_aspect = 1
+[node name="Camera3" type="Camera3D" parent="Cameras"]
+transform = Transform3D(-0.735387, 0.44701, -0.509302, -0.000345964, 0.751326, 0.659931, 0.677647, 0.485481, -0.552361, 9.97301, 7.34764, 7.15615)
+
+[node name="Camera3Trigger" type="Area3D" parent="Cameras/Camera3"]
+transform = Transform3D(-0.987586, -0.0427396, -0.151148, -0.131429, 0.751796, 0.646164, 0.0860162, 0.658008, -0.74808, -0.0911245, 0.323933, -6.88277)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/Camera3/Camera3Trigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.300517, -2.48203, -1.85997)
+shape = SubResource("BoxShape3D_sgr3d")
+
+[connection signal="body_entered" from="Cameras/Camera1/Camera1Trigger" to="." method="_on_camera_1_trigger_body_entered"]
+[connection signal="body_entered" from="Cameras/Camera2/Camera2Trigger" to="." method="_on_camera_2_trigger_body_entered"]
+[connection signal="body_entered" from="Cameras/Camera3/Camera3Trigger" to="." method="_on_camera_3_trigger_body_entered"]

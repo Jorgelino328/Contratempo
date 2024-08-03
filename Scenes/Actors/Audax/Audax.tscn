@@ -904,10 +904,5 @@ parameters/conditions/walking = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0515961, 0, -0.064141)
 shape = SubResource("CapsuleShape3D_wqhe6")
 
-[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0515961, 0, -0.064141)
-
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
-
-[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="screen_exited"]

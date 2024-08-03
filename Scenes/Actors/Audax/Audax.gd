@@ -82,6 +82,3 @@ func update_animation():
 			current_speed = walk_speed
 			animTree["parameters/conditions/walking"] = true
 			animTree["parameters/conditions/running"] = false
-
-func screen_exited():
-	get_parent().update_camera()
