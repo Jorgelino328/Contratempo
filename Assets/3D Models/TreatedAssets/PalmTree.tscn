@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://o31pksef27ik"]
+
+[ext_resource type="PackedScene" uid="uid://bbb728riynmaw" path="res://Assets/3D Models/RawAssets/Forest/tropical_pack/coconut palm 01_lod1.fbx" id="1_a0heh"]
+[ext_resource type="Texture2D" uid="uid://k6bkj5lyqfx" path="res://Assets/3D Models/RawAssets/Forest/textures/stylizedtropical01.png" id="2_futi4"]
+[ext_resource type="Texture2D" uid="uid://bj38rpggfrdsm" path="res://Assets/3D Models/RawAssets/Forest/textures/stylizedtropical01_Normal.png" id="3_unett"]
+[ext_resource type="Texture2D" uid="uid://bpb1mp2micwio" path="res://Assets/3D Models/RawAssets/Forest/textures/stylizedtropical01_Roughness.png" id="4_txj3g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_feuse"]
+albedo_color = Color(0, 0.690196, 0.843137, 1)
+albedo_texture = ExtResource("2_futi4")
+roughness_texture = ExtResource("4_txj3g")
+normal_enabled = true
+normal_texture = ExtResource("3_unett")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eo2i0"]
+albedo_color = Color(1, 0, 1, 1)
+albedo_texture = ExtResource("2_futi4")
+albedo_texture_force_srgb = true
+roughness_texture = ExtResource("4_txj3g")
+normal_enabled = true
+normal_texture = ExtResource("3_unett")
+
+[node name="Root Scene" instance=ExtResource("1_a0heh")]
+
+[node name="Tree_0" parent="RootNode" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_feuse")
+
+[node name="Tree_1" parent="RootNode/Tree_0" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_eo2i0")

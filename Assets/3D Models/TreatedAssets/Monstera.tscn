@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://bxg5jkokoumkq"]
+
+[ext_resource type="PackedScene" uid="uid://dlkt51ehkidju" path="res://Assets/3D Models/RawAssets/Forest/tropical_pack/monstera 01.fbx" id="1_2547e"]
+[ext_resource type="Texture2D" uid="uid://k6bkj5lyqfx" path="res://Assets/3D Models/RawAssets/Forest/textures/stylizedtropical01.png" id="2_se412"]
+[ext_resource type="Texture2D" uid="uid://bj38rpggfrdsm" path="res://Assets/3D Models/RawAssets/Forest/textures/stylizedtropical01_Normal.png" id="3_jagnq"]
+[ext_resource type="Texture2D" uid="uid://bpb1mp2micwio" path="res://Assets/3D Models/RawAssets/Forest/textures/stylizedtropical01_Roughness.png" id="4_e0q21"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6jpm1"]
+albedo_color = Color(0, 0, 0, 1)
+albedo_texture = ExtResource("2_se412")
+albedo_texture_force_srgb = true
+roughness_texture = ExtResource("4_e0q21")
+normal_enabled = true
+normal_texture = ExtResource("3_jagnq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ea8ei"]
+albedo_color = Color(0.984314, 0, 0.168627, 1)
+albedo_texture = ExtResource("2_se412")
+albedo_texture_force_srgb = true
+roughness_texture = ExtResource("4_e0q21")
+normal_enabled = true
+normal_texture = ExtResource("3_jagnq")
+
+[node name="Root Scene" instance=ExtResource("1_2547e")]
+
+[node name="Tree_0" parent="RootNode" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6jpm1")
+
+[node name="Tree_1" parent="RootNode/Tree_0" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ea8ei")

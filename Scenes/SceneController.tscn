@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://elctpthgt6i5"]
+[gd_scene load_steps=4 format=3 uid="uid://elctpthgt6i5"]
 
 [ext_resource type="Script" path="res://Scenes/SceneController.gd" id="1_ste0x"]
 [ext_resource type="PackedScene" uid="uid://dm0epwcnjr1c3" path="res://Scenes/UIs/Menus/Main_Menu/main_menu.tscn" id="2_m0op5"]
+[ext_resource type="AudioStream" uid="uid://0iel5xttwdmc" path="res://Assets/Audio/Run.ogg" id="3_dgaip"]
 
 [node name="SceneController" type="Node"]
 process_mode = 1
@@ -13,4 +14,5 @@ script = ExtResource("1_ste0x")
 process_mode = 3
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("3_dgaip")
 autoplay = true

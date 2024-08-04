@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bp8m2bb83u650"]
 
-[ext_resource type="Texture2D" uid="uid://danflimd43u0" path="res://Assets/3D Models/Temple/Wall/Black Oily Stone.png" id="1_kl4aa"]
-[ext_resource type="Texture2D" uid="uid://blhomhhghwodh" path="res://Assets/3D Models/Temple/Wall/Black Oily Stone-1.png" id="2_pup2p"]
+[ext_resource type="Texture2D" uid="uid://danflimd43u0" path="res://Assets/3D Models/RawAssets/Temple/Wall/Black Oily Stone.png" id="1_kl4aa"]
+[ext_resource type="Texture2D" uid="uid://blhomhhghwodh" path="res://Assets/3D Models/RawAssets/Temple/Wall/Black Oily Stone-1.png" id="2_pup2p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qsvr3"]
 resource_name = "Material"

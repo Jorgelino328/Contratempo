@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnuhen58egjhl"]
+
+[ext_resource type="PackedScene" uid="uid://bonxb3wxf80al" path="res://Assets/3D Models/RawAssets/Mushrooms/simple_cartoon_mushrooms_1.glb" id="1_pnbao"]
+[ext_resource type="Texture2D" uid="uid://cdnrwomnjg6mx" path="res://Assets/3D Models/RawAssets/Mushrooms/simple_cartoon_mushrooms_1_0.jpg" id="2_2vc1p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_crwoj"]
+albedo_color = Color(0, 0.74902, 0.780392, 1)
+albedo_texture = ExtResource("2_2vc1p")
+
+[node name="LightShroom" instance=ExtResource("1_pnbao")]
+
+[node name="Hygrocybe_punicea_0" parent="Sketchfab_model/Root/Hygrocybe_punicea" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_crwoj")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15405, 0)
+light_color = Color(0, 1, 1, 1)
+light_energy = 5.0
+light_indirect_energy = 5.0
+light_volumetric_fog_energy = 5.0
+omni_range = 20.0

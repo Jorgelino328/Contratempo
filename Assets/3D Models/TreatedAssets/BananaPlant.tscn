@@ -1,0 +1,28 @@
+[gd_scene load_steps=8 format=3 uid="uid://cb6drqmap1d5c"]
+
+[ext_resource type="PackedScene" uid="uid://b8lt7n4dwh2rr" path="res://Assets/3D Models/RawAssets/Forest/tropical_pack/banana plant 01.fbx" id="1_11soe"]
+[ext_resource type="Texture2D" uid="uid://cddvwwosl27nm" path="res://Assets/3D Models/RawAssets/Forest/textures/stylizedtropical02_Normal.png" id="2_bieum"]
+[ext_resource type="Texture2D" uid="uid://bj38rpggfrdsm" path="res://Assets/3D Models/RawAssets/Forest/textures/stylizedtropical01_Normal.png" id="3_f54qo"]
+[ext_resource type="Texture2D" uid="uid://cbqraqcj5sv4c" path="res://Assets/3D Models/RawAssets/Forest/textures/stylizedtropical02_Roughness.png" id="4_frqxh"]
+[ext_resource type="Texture2D" uid="uid://bpb1mp2micwio" path="res://Assets/3D Models/RawAssets/Forest/textures/stylizedtropical01_Roughness.png" id="4_hcwbs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ftfsg"]
+albedo_texture = ExtResource("2_bieum")
+roughness_texture = ExtResource("4_frqxh")
+normal_enabled = true
+normal_texture = ExtResource("3_f54qo")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4i7sn"]
+albedo_color = Color(1, 0, 1, 1)
+albedo_texture = ExtResource("3_f54qo")
+roughness_texture = ExtResource("4_hcwbs")
+normal_enabled = true
+normal_texture = ExtResource("3_f54qo")
+
+[node name="BananaPlant" instance=ExtResource("1_11soe")]
+
+[node name="Tree_0" parent="RootNode" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ftfsg")
+
+[node name="Tree_1" parent="RootNode/Tree_0" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_4i7sn")

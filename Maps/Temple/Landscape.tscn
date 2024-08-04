@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://b8cki0dpiti4u"]
+
+[ext_resource type="PackedScene" uid="uid://blyxhowagmt5j" path="res://Assets/3D Models/TreatedAssets/BigCliff.tscn" id="1_j6031"]
+[ext_resource type="Texture2D" uid="uid://de43y8b3pne1f" path="res://Assets/3D Models/RawAssets/Rocks/Stylized Rocks/Textures/Boulder/Boulder_Base_BaseColor.png" id="1_p232h"]
+[ext_resource type="Texture2D" uid="uid://cmt14ggq87t4l" path="res://Assets/3D Models/RawAssets/Rocks/Stylized Rocks/Textures/Boulder/Boulder_Base_OcclusionRoughnessMetallic.png" id="2_24k13"]
+[ext_resource type="PackedScene" uid="uid://dsyq6ygiyvgic" path="res://Assets/3D Models/TreatedAssets/Cliff_1.tscn" id="2_gj6ud"]
+[ext_resource type="PackedScene" uid="uid://cgpwtfgya15wb" path="res://Assets/3D Models/TreatedAssets/Cliff_2.tscn" id="3_0msoa"]
+[ext_resource type="Texture2D" uid="uid://c3t2cemejws62" path="res://Assets/3D Models/RawAssets/Rocks/Stylized Rocks/Textures/Boulder/Boulder_Base_Normal.png" id="3_2pmhk"]
+[ext_resource type="PackedScene" uid="uid://ullu4fvwt3ef" path="res://Assets/3D Models/TreatedAssets/Boulder.tscn" id="4_vg0h5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t7guw"]
+diffuse_mode = 2
+albedo_color = Color(1, 0.678431, 0.407843, 1)
+albedo_texture = ExtResource("1_p232h")
+normal_enabled = true
+normal_texture = ExtResource("3_2pmhk")
+ao_enabled = true
+ao_texture = ExtResource("2_24k13")
+ao_on_uv2 = true
+ao_texture_channel = 1
+
+[node name="Landscape" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.05799, 0)
+
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.32024, 2.04148, 5.1903)
+use_collision = true
+size = Vector3(41.9265, 1, 34.2695)
+material = SubResource("StandardMaterial3D_t7guw")
+
+[node name="CraterWall" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0111873, -0.999937, 0, 0.999937, 0.0111873, -6.48442, -6.60449, 5.4257)
+use_collision = true
+polygon = PackedVector2Array(18.2123, 6.72555, 15.9064, 4.93185, 7.23585, 9.87643, 3.42132, 3.74507, -1.43862, -0.568696, 2.52003, -9.45999, 13.1176, -7.92366, 15.2026, -0.283801, 22.9269, 6.79967, 30.8679, 10.7446, 24.4355, -13.0924, -4.53842, -14.7007, -6.4795, 7.53402, 23.2591, 20.3829)
+depth = 11.65
+material = SubResource("StandardMaterial3D_t7guw")
+
+[node name="Cliff1" parent="." instance=ExtResource("1_j6031")]
+transform = Transform3D(0.787215, 0, -0.616679, 0, 1, 0, 0.616679, 0, 0.787215, 14.1821, 3.83852, -5.16279)
+
+[node name="SmallCliff1" parent="." instance=ExtResource("2_gj6ud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.42229, 3.16596, -4.57371)
+
+[node name="SmallCliff2" parent="." instance=ExtResource("3_0msoa")]
+transform = Transform3D(0.999991, 0, -0.0042935, 0, 1, 0, 0.0042935, 0, 0.999991, 3.68138, 3.24958, -4.56952)
+
+[node name="Rock1" parent="." instance=ExtResource("4_vg0h5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9373, 5.06599, 7.19165)
+
+[node name="Rock2" parent="." instance=ExtResource("4_vg0h5")]
+transform = Transform3D(1.58737, 0, 1.34004, 0, 5.21945, 0, -0.57788, 0, 3.68093, 7.59405, 2.17659, 2.27272)
+
+[node name="Cliff3" parent="." instance=ExtResource("1_j6031")]
+transform = Transform3D(0.117072, 0, -1.02719, 0, 1, 0, 1.35365, 0, 0.0888377, -12.6881, 1.44445, 1.48159)
+
+[node name="Cliff2" parent="." instance=ExtResource("1_j6031")]
+transform = Transform3D(0.889241, 0, -0.457439, 0, 1, 0, 0.457439, 0, 0.889241, -2.95802, 0.675863, 23.969)
+
+[node name="Rock3" parent="." instance=ExtResource("4_vg0h5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.26339, 8.26831, -4.01716)
+
+[node name="Cliff4" parent="." instance=ExtResource("2_gj6ud")]
+transform = Transform3D(1.8802, 0, 0, 0, 2.54309, 0, 0, 0, 1.77183, -1.96152, 2.877, -10.636)
