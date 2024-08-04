@@ -12,13 +12,14 @@ func _process(delta):
 func _on_camera_1_trigger_body_entered(body):
 	if(body is Player):
 		$Cameras/Camera1.make_current()
-
+		update_camera()
 
 func _on_camera_2_trigger_body_entered(body):
 	if(body is Player):
 		$Cameras/Camera2.make_current()
-
+		update_camera()
 
 func _on_camera_3_trigger_body_entered(body):
 	if(body is Player):
 		$Cameras/Camera3.make_current()
+		update_camera()
