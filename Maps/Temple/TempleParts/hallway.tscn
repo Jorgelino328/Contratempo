@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://comc00sjlexk8"]
+
+[ext_resource type="PackedScene" uid="uid://dqpqj1to1co5f" path="res://Maps/Temple/TempleParts/Wall_2.tscn" id="1_m47ij"]
+[ext_resource type="PackedScene" uid="uid://bp8m2bb83u650" path="res://Maps/Temple/TempleParts/Wall_1.tscn" id="2_460tg"]
+
+[node name="Hallway" type="Node3D"]
+
+[node name="wall_with_crack" parent="." instance=ExtResource("1_m47ij")]
+transform = Transform3D(-6.12325e-08, 0, 0.987508, 0, 1, 0, -1.40084, 0, -4.31653e-08, 3.71711, 0, 37.2717)
+
+[node name="wall_with_crack2" parent="." instance=ExtResource("1_m47ij")]
+transform = Transform3D(-6.4907e-08, 0, 1, 0, 1, 0, -1.4849, 0, -4.37114e-08, 0.0905621, 0, 37.1162)
+
+[node name="wall_without_crack" parent="." instance=ExtResource("2_460tg")]
+transform = Transform3D(-1, -1.3113e-07, -2.14581e-08, 2.14581e-08, 8.37803e-08, -1, 5.96046e-08, -2.2, -3.8082e-08, 0.582216, -0.632738, 41.9113)

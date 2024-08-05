@@ -1,0 +1,85 @@
+[gd_scene load_steps=4 format=3 uid="uid://v53kuf55i0dl"]
+
+[ext_resource type="PackedScene" uid="uid://bp8m2bb83u650" path="res://Maps/Temple/TempleParts/Wall_1.tscn" id="1_nb2b6"]
+[ext_resource type="PackedScene" uid="uid://dqpqj1to1co5f" path="res://Maps/Temple/TempleParts/Wall_2.tscn" id="2_ad58o"]
+[ext_resource type="PackedScene" uid="uid://di6ra155j5ugw" path="res://Maps/Temple/TempleParts/Pillar.tscn" id="3_0ggqr"]
+
+[node name="TempleRoom1" type="Node3D"]
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="wall_without_crack8" parent="Walls" instance=ExtResource("1_nb2b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.137657, 0, 36.6288)
+
+[node name="wall_without_crack" parent="Walls" instance=ExtResource("1_nb2b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.3166)
+
+[node name="wall_without_crack13" parent="Walls" instance=ExtResource("1_nb2b6")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.50694, 0, 36.7413)
+
+[node name="wall_without_crack12" parent="Walls" instance=ExtResource("1_nb2b6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.51069, 0, 30.262)
+
+[node name="wall_without_crack2" parent="Walls" instance=ExtResource("1_nb2b6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.50113, 0, 12.112)
+
+[node name="wall_without_crack4" parent="Walls" instance=ExtResource("1_nb2b6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.50938, 0, 15.748)
+
+[node name="wall_without_crack7" parent="Walls" instance=ExtResource("1_nb2b6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.51754, 0, 19.3421)
+
+[node name="wall_without_crack10" parent="Walls" instance=ExtResource("1_nb2b6")]
+transform = Transform3D(-3.49154e-08, 0, 1, 0, 1, 0, -0.798772, 0, -4.37114e-08, 6.53405, 0, 27.2631)
+
+[node name="wall_without_crack3" parent="Walls" instance=ExtResource("1_nb2b6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.87604, 0, 12.1346)
+
+[node name="wall_without_crack5" parent="Walls" instance=ExtResource("1_nb2b6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.86803, 0, 15.6624)
+
+[node name="wall_without_crack6" parent="Walls" instance=ExtResource("1_nb2b6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.86001, 0, 19.1951)
+
+[node name="wall_without_crack14" parent="Walls" instance=ExtResource("1_nb2b6")]
+transform = Transform3D(-5.35524e-08, 0, 1, 0, 2.1032, 0, -1.22513, 0, -4.37115e-08, 6.53079, -2.99833, 23.0219)
+
+[node name="wall_without_crack9" parent="Walls" instance=ExtResource("1_nb2b6")]
+transform = Transform3D(-5.35523e-08, 0, 1, 0, 2.1032, 0, -1.22513, 0, -4.37114e-08, -2.85178, -3.05921, 22.8242)
+
+[node name="wall_without_crack11" parent="Walls" instance=ExtResource("1_nb2b6")]
+transform = Transform3D(-3.4441e-08, 0, 1, 0, 1, 0, -0.787918, 0, -4.37114e-08, -2.84371, 0, 27.1362)
+
+[node name="wall_with_crack4" parent="Walls" instance=ExtResource("2_ad58o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.51796, 0, 36.7313)
+
+[node name="wall_with_crack" parent="Walls" instance=ExtResource("2_ad58o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.46341, 0, 12.1253)
+
+[node name="wall_with_crack3" parent="Walls" instance=ExtResource("2_ad58o")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.859, 0, 33.737)
+
+[node name="wall_with_crack2" parent="Walls" instance=ExtResource("2_ad58o")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.85852, 0, 32.7755)
+
+[node name="Pillars" type="Node3D" parent="."]
+
+[node name="pillar_with_crack" parent="Pillars" instance=ExtResource("3_0ggqr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.15972, 0, 11.4183)
+
+[node name="pillar_with_crack2" parent="Pillars" instance=ExtResource("3_0ggqr")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 2.94883, 2.19698, 11.4183)
+
+[node name="pillar_with_crack3" parent="Pillars" instance=ExtResource("3_0ggqr")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.159719, 0, 11.4183)
+
+[node name="Ground" type="Node3D" parent="."]
+
+[node name="wall_with_crack" parent="Ground" instance=ExtResource("2_ad58o")]
+transform = Transform3D(-1.22054e-07, 3.48165, -1.74863e-07, 0, -1.52188e-07, -4.0004, -2.79228, -1.52188e-07, 7.64351e-15, -2.55242, -2.13179, 13.1868)
+
+[node name="wall_without_crack2" parent="Ground" instance=ExtResource("1_nb2b6")]
+transform = Transform3D(2.84617, 0, 0, 0, 0.0370554, 1.20974, 0, -3.08483, 0.00660511, 6.00015, -3.92566, 28.3612)
+
+[node name="wall_without_crack" parent="Ground" instance=ExtResource("1_nb2b6")]
+transform = Transform3D(2.71292, 0, 0, 0, -1.36723e-07, -4.63942, 0, 3.12785, -2.02796e-07, 5.74883, -2.47603, 27.736)

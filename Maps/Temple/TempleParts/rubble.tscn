@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://ir5xnvkp35h5"]
+
+[ext_resource type="PackedScene" uid="uid://ullu4fvwt3ef" path="res://Assets/3D Models/TreatedAssets/Boulder.tscn" id="1_fywh3"]
+
+[node name="Rubble" type="Node3D"]
+
+[node name="Boulder" parent="." instance=ExtResource("1_fywh3")]
+transform = Transform3D(0.796877, -0.0114758, 0.0696821, 0.0139534, 0.799391, -0.0279196, -0.0692286, 0.029026, 0.79647, 1.36476, -0.0524834, 77.8808)
+
+[node name="Boulder2" parent="." instance=ExtResource("1_fywh3")]
+transform = Transform3D(0.299243, -0.0206504, 0.00522855, 0.0208983, 0.298859, -0.0157008, -0.0041279, 0.0160254, 0.299543, 2.12352, 0, 77.5449)
+
+[node name="Boulder3" parent="." instance=ExtResource("1_fywh3")]
+transform = Transform3D(1.70604, 0.00574051, 1.04374, 0.205881, 1.95883, -0.347296, -1.02325, 0.403694, 1.67033, 1.50569, 1.24441, 79.8516)
+
+[node name="Boulder4" parent="." instance=ExtResource("1_fywh3")]
+transform = Transform3D(-0.226949, -0.33129, -0.297894, -0.297894, -0.135758, 0.377927, -0.33129, 0.349023, -0.135758, 1.01875, 0.927344, 78.2031)
+
+[node name="Boulder5" parent="." instance=ExtResource("1_fywh3")]
+transform = Transform3D(1.3169, 0.506771, 0.508876, 0.0902814, 0.937608, -1.16736, -0.712476, 1.0555, 0.792657, 2.61953, 0.202534, 78.9144)
+
+[node name="Boulder6" parent="." instance=ExtResource("1_fywh3")]
+transform = Transform3D(1.9748, -0.24342, -0.202256, 0.287118, 1.91565, 0.497854, 0.133132, -0.520617, 1.92646, 3.65691, 1.24441, 79.8516)
+
+[node name="Boulder7" parent="." instance=ExtResource("1_fywh3")]
+transform = Transform3D(-0.850461, 1.11954, -1.42244, 1.74721, 0.918582, -0.32166, 0.473258, -1.37943, -1.36865, 2.72046, 2.81313, 79.4847)
+
+[node name="Boulder8" parent="." instance=ExtResource("1_fywh3")]
+transform = Transform3D(0.625241, -0.448802, 0.21829, 0.00622978, 0.356904, 0.715948, -0.499034, -0.55785, 0.282434, 1.2064, 2.46798, 79.0699)

@@ -1,26 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5m6ohe5umt0s"]
+[gd_scene load_steps=7 format=3 uid="uid://c5m6ohe5umt0s"]
 
-[ext_resource type="PackedScene" uid="uid://bp8m2bb83u650" path="res://Maps/Temple/TempleParts/Wall_1.tscn" id="1_pacmf"]
-[ext_resource type="PackedScene" uid="uid://dqpqj1to1co5f" path="res://Maps/Temple/TempleParts/Wall_2.tscn" id="2_gmlkw"]
-[ext_resource type="PackedScene" uid="uid://di6ra155j5ugw" path="res://Maps/Temple/TempleParts/Pillar.tscn" id="3_fmkik"]
+[ext_resource type="PackedScene" uid="uid://v53kuf55i0dl" path="res://Maps/Temple/TempleParts/temple_room_1.tscn" id="1_qx6aq"]
+[ext_resource type="PackedScene" uid="uid://ducwyn8ehu7eo" path="res://Maps/Temple/TempleParts/temple_room_2.tscn" id="2_5ciqx"]
+[ext_resource type="PackedScene" uid="uid://comc00sjlexk8" path="res://Maps/Temple/TempleParts/hallway.tscn" id="3_nyyoi"]
+[ext_resource type="PackedScene" uid="uid://bbiukpicianv6" path="res://Maps/Temple/TempleParts/temple_room_3.tscn" id="4_2h8l6"]
+[ext_resource type="PackedScene" uid="uid://d30naurbxss5" path="res://Assets/3D Models/TreatedAssets/Skeleton.tscn" id="5_bqrvk"]
+[ext_resource type="PackedScene" uid="uid://c0lkj32og1j47" path="res://Assets/3D Models/TreatedAssets/device.tscn" id="6_ygy31"]
 
 [node name="Temple" type="Node3D"]
 
-[node name="Walls" type="Node3D" parent="."]
+[node name="TempleRoom1" parent="." instance=ExtResource("1_qx6aq")]
 
-[node name="wall_without_crack" parent="Walls" instance=ExtResource("1_pacmf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.3166)
+[node name="TempleRoom2" parent="." instance=ExtResource("2_5ciqx")]
 
-[node name="wall_with_crack" parent="Walls" instance=ExtResource("2_gmlkw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.46341, 0, 12.1253)
+[node name="Hallway" parent="." instance=ExtResource("3_nyyoi")]
 
-[node name="Pillars" type="Node3D" parent="."]
+[node name="Hallway2" parent="." instance=ExtResource("3_nyyoi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0267315, 29.7354)
 
-[node name="pillar_with_crack" parent="Pillars" instance=ExtResource("3_fmkik")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.15972, 0, 11.4183)
+[node name="TempleRoom3" parent="." instance=ExtResource("4_2h8l6")]
 
-[node name="pillar_with_crack2" parent="Pillars" instance=ExtResource("3_fmkik")]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 2.94883, 2.19698, 11.4183)
+[node name="DeadAcolyte" parent="." instance=ExtResource("5_bqrvk")]
+transform = Transform3D(-0.478737, -0.151468, -0.864794, 0.0232126, 0.982477, -0.18493, 0.877651, -0.108607, -0.466832, 2.52002, -0.230535, 75.1481)
 
-[node name="pillar_with_crack3" parent="Pillars" instance=ExtResource("3_fmkik")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.159719, 0, 11.4183)
+[node name="Device" parent="." instance=ExtResource("6_ygy31")]
+transform = Transform3D(-0.887823, 0, 0.460184, 0, 1, 0, -0.460184, 0, -0.887823, 2.1067, -0.12199, 76.0933)

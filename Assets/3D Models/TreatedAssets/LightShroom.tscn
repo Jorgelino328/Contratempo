@@ -6,6 +6,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_crwoj"]
 albedo_color = Color(0, 0.74902, 0.780392, 1)
 albedo_texture = ExtResource("2_2vc1p")
+albedo_texture_msdf = true
 
 [node name="LightShroom" instance=ExtResource("1_pnbao")]
 

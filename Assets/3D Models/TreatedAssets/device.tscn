@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0lkj32og1j47"]
+
+[ext_resource type="PackedScene" uid="uid://cnl6uv1ivypok" path="res://Assets/3D Models/RawAssets/Device/Device.glb" id="1_juqiu"]
+[ext_resource type="Texture2D" uid="uid://boj7luignmi8n" path="res://Assets/3D Models/RawAssets/Device/Device_Texture.png" id="2_ujdxu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cjhy7"]
+albedo_color = Color(0.329412, 0.0980392, 1, 1)
+albedo_texture = ExtResource("2_ujdxu")
+albedo_texture_force_srgb = true
+
+[node name="Device" instance=ExtResource("1_juqiu")]
+
+[node name="Cube" parent="." index="0"]
+transform = Transform3D(-0.3, 2.62268e-08, 0, -2.62268e-08, -0.3, 0, 0, 0, 0.3, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_cjhy7")
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0302113, 0.0609321, 0.0610573)
+light_color = Color(0, 0.458824, 0, 1)
+light_size = 1.0
+light_specular = 2.0
+omni_range = 0.5
+omni_attenuation = 0.784585
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.037081, 0.0600651, 0.0607014)
+light_color = Color(0, 0.458824, 0, 1)
+light_size = 1.0
+light_specular = 2.0
+omni_range = 0.5
+omni_attenuation = 0.784585
