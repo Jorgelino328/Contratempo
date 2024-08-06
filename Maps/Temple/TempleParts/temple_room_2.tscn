@@ -1,15 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://ducwyn8ehu7eo"]
+[gd_scene load_steps=4 format=3 uid="uid://ducwyn8ehu7eo"]
 
 [ext_resource type="PackedScene" uid="uid://bp8m2bb83u650" path="res://Maps/Temple/TempleParts/Wall_1.tscn" id="1_gxmxk"]
 [ext_resource type="PackedScene" uid="uid://dqpqj1to1co5f" path="res://Maps/Temple/TempleParts/Wall_2.tscn" id="2_p8lpv"]
+[ext_resource type="PackedScene" uid="uid://dmsdbggih7ypf" path="res://Scenes/Elements/Moving Platform/Moving Platform.tscn" id="3_sx1qi"]
 
 [node name="TempleRoom2" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0391307, 0, 29.6018)
 
 [node name="Walls" type="Node3D" parent="."]
-
-[node name="wall_without_crack" parent="Walls" instance=ExtResource("1_gxmxk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.3166)
 
 [node name="wall_without_crack13" parent="Walls" instance=ExtResource("1_gxmxk")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.50694, 0, 36.7413)
@@ -41,15 +39,6 @@ transform = Transform3D(-1.14925e-07, 0, 0.997393, 0, 2.09772, 0, -2.62917, 0, -
 [node name="wall_without_crack9" parent="Walls" instance=ExtResource("1_gxmxk")]
 transform = Transform3D(-1.05856e-07, 0, 1, 0, 2.1032, 0, -2.42169, 0, -4.37114e-08, -2.84931, -3.05921, 21.8041)
 
-[node name="wall_with_crack" parent="Walls" instance=ExtResource("2_p8lpv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.46341, 0, 12.1253)
-
-[node name="wall_without_crack" parent="Walls/wall_with_crack" instance=ExtResource("1_gxmxk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.46555, 0, 24.9896)
-
-[node name="wall_with_crack" parent="Walls/wall_with_crack" instance=ExtResource("2_p8lpv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00213814, 0, 24.7983)
-
 [node name="wall_with_crack3" parent="Walls" instance=ExtResource("2_p8lpv")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.859, 0, 33.737)
 
@@ -68,3 +57,9 @@ transform = Transform3D(2.84617, 0, 0, 0, 0.0471507, 2.82855, 0, -3.92527, 0.015
 
 [node name="wall_without_crack" parent="Ground" instance=ExtResource("1_gxmxk")]
 transform = Transform3D(2.71292, 0, 0, 0, -1.36723e-07, -4.63942, 0, 3.12785, -2.02796e-07, 5.74883, -2.47603, 30.6988)
+
+[node name="MovingPlatform" parent="." instance=ExtResource("3_sx1qi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 22.0255)
+start_position = Vector3(3, 0, 22)
+end_position = Vector3(3, 0, 27)
+speed = 1.0
