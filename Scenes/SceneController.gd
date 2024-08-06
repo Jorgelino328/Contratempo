@@ -6,7 +6,8 @@ var reload := false
 
 func _ready():
 	connect_signals()
-	#$Audio/BackgroundMusic.play()
+	$Audio/BackgroundMusic.stream.loop = true
+	$Audio/BackgroundMusic.play()
 
 func connect_signals():
 	if(current_level == $Game_Over || current_level == $EndGame):

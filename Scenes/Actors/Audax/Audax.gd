@@ -1,5 +1,6 @@
 class_name Player extends CharacterBody3D
 
+@export var hp = 10
 @export var walk_speed = 4
 @export var running_speed = 6
 @export var fall_acceleration = 30
@@ -17,7 +18,7 @@ var current_rotation : float = 0.0
 var current_speed = walk_speed
 var last_action : String
 var target_velocity = Vector3.ZERO
-var camera_type = TOPDOWN #BACKVIEW
+var camera_type = BACKVIEW
 var can_run = false
 var on_platform : Node3D = null
 

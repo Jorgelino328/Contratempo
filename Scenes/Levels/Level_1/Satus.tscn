@@ -47,7 +47,7 @@ current_camera = NodePath("Cameras/Camera2")
 environment = SubResource("Environment_rdui3")
 
 [node name="Audax" parent="." instance=ExtResource("1_6apj6")]
-transform = Transform3D(-0.938281, 0, -0.345871, 0, 1, 0, 0.345871, 0, -0.938281, 40.48, 2.57305, 36.7529)
+transform = Transform3D(-0.938281, 0, -0.345871, 0, 1, 0, 0.345871, 0, -0.938281, 3.1959, 1.98745, 3.90666)
 
 [node name="Landscape" parent="." instance=ExtResource("3_thq57")]
 
@@ -78,7 +78,7 @@ current = true
 fov = 100.0
 
 [node name="Camera6" type="Camera3D" parent="Cameras"]
-transform = Transform3D(-0.988443, -0.0933176, 0.11947, -0.0214779, 0.866338, 0.498997, -0.150066, 0.490664, -0.858329, 64.2622, 3.32686, 55.0989)
+transform = Transform3D(-0.988443, -0.0933175, 0.119469, -0.0214779, 0.866338, 0.498997, -0.150066, 0.490664, -0.858329, 57.9023, 3.03631, 50.3106)
 
 [node name="CameraTriggers" type="Node3D" parent="."]
 

@@ -19,7 +19,6 @@ func pause():
 	get_tree().paused = true
 	
 func _process(delta):
-	pass
 	#if Input.is_action_just_released("esc"):
 		#if(!paused):
 			#pause()
@@ -27,9 +26,9 @@ func _process(delta):
 			#get_tree().paused = false
 			#paused = false
 			#$CanvasLayer/Settings.queue_free()
-			
-	#if($Player.hp <= 0 && $Player.dead):
-		#emit_signal("next_level",game_over)
+			#
+	if(player.hp <= 0):
+		emit_signal("next_level",game_over)
 	
 func update_camera():
 	for camera in cameras.get_children():
