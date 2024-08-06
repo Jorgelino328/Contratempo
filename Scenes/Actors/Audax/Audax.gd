@@ -1,6 +1,7 @@
 class_name Player extends CharacterBody3D
 
 @export var hp = 10
+@export var has_device = false
 @export var walk_speed = 4
 @export var running_speed = 6
 @export var fall_acceleration = 30

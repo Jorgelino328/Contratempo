@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://c2akku8du1xku"]
+[gd_scene load_steps=16 format=3 uid="uid://c2akku8du1xku"]
 
 [ext_resource type="PackedScene" uid="uid://0adle82x7bu3" path="res://Scenes/Actors/Audax/Audax.tscn" id="1_6apj6"]
 [ext_resource type="Script" path="res://Scenes/Levels/Level_1/Satus.gd" id="1_t6rts"]
 [ext_resource type="PackedScene" uid="uid://c5m6ohe5umt0s" path="res://Maps/Temple/Temple.tscn" id="2_h2leq"]
 [ext_resource type="PackedScene" uid="uid://b8cki0dpiti4u" path="res://Maps/Temple/Basin.tscn" id="3_thq57"]
 [ext_resource type="PackedScene" uid="uid://b5hw6xbx7eqw4" path="res://Scenes/Elements/Flame/Flame.tscn" id="6_hkr5x"]
+[ext_resource type="AudioStream" uid="uid://ssmh8jjo5dft" path="res://Assets/Audio/fire-loop.mp3" id="7_pjut2"]
 [ext_resource type="PackedScene" uid="uid://bp4qfj0wq1jf3" path="res://Assets/3D Models/TreatedAssets/Ship.tscn" id="7_yllq7"]
 [ext_resource type="PackedScene" uid="uid://ullu4fvwt3ef" path="res://Assets/3D Models/TreatedAssets/Boulder.tscn" id="8_sswv1"]
 [ext_resource type="PackedScene" uid="uid://bnuhen58egjhl" path="res://Assets/3D Models/TreatedAssets/LightShroom.tscn" id="9_sck1f"]
@@ -47,7 +48,7 @@ current_camera = NodePath("Cameras/Camera2")
 environment = SubResource("Environment_rdui3")
 
 [node name="Audax" parent="." instance=ExtResource("1_6apj6")]
-transform = Transform3D(-0.938281, 0, -0.345871, 0, 1, 0, 0.345871, 0, -0.938281, 3.1959, 1.98745, 3.90666)
+transform = Transform3D(-0.994844, 0, 0.101404, 0, 1, 0, -0.101404, 0, -0.994844, -1.5636, 1.98745, 3.35788)
 
 [node name="Landscape" parent="." instance=ExtResource("3_thq57")]
 
@@ -165,6 +166,11 @@ transform = Transform3D(0.557658, 0.0762901, 4.95414, -2.82289, 0.82538, 0, -4.0
 
 [node name="Flame6" parent="Fire" instance=ExtResource("6_hkr5x")]
 transform = Transform3D(-0.827217, -0.113167, -4.89852, -2.82289, 0.82538, 0, 4.04314, 0.55312, -1.00223, 0.200915, 0.88176, -1.81786)
+
+[node name="FireSound" type="AudioStreamPlayer3D" parent="Fire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.498367, 3.45046, 0.308323)
+stream = ExtResource("7_pjut2")
+autoplay = true
 
 [node name="Rocket" parent="." instance=ExtResource("7_yllq7")]
 transform = Transform3D(-0.458988, -0.395029, -0.79579, -0.212921, 0.91852, -0.333145, 0.862551, 0.0165308, -0.5057, -0.379885, 1.20617, -0.488088)

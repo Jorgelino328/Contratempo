@@ -6,7 +6,6 @@ var reload := false
 
 func _ready():
 	connect_signals()
-	$Audio/BackgroundMusic.stream.loop = true
 	$Audio/BackgroundMusic.play()
 
 func connect_signals():
@@ -31,7 +30,6 @@ func connect_signals():
 
 
 func _on_change_song(new_song):
-	new_song.loop = true
 	$Audio/BackgroundMusic.stream = new_song
 	$Audio/BackgroundMusic.play()
 
