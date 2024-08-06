@@ -24,11 +24,13 @@ func _on_camera_3_trigger_body_entered(body):
 	if(body is Player):
 		$Cameras/Camera3.make_current()
 		update_camera()
+		player.set_camera_type(0)
 
 func _on_camera_4_trigger_body_entered(body):
 	if(body is Player):
 		$Cameras/Camera4.make_current()
 		update_camera()
+		player.set_camera_type(1)
 
 func _on_camera_5_trigger_body_entered(body):
 	if(body is Player):

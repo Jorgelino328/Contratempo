@@ -9,12 +9,15 @@ class_name Player extends CharacterBody3D
 @onready var animTree : AnimationTree = $AnimationTree
 @onready var press_timer : Timer  = $Timer
 
+enum {SIDEVIEW, TOPDOWN}
+
 var max_rotation : float = deg_to_rad(90)
 var min_rotation : float = deg_to_rad(-90)
 var current_rotation : float = 0.0
 var current_speed = walk_speed
 var last_action : String
 var target_velocity = Vector3.ZERO
+var camera_type = TOPDOWN #SIDEVIEW
 var can_run = false
 
 
@@ -27,7 +30,7 @@ func _physics_process(delta):
 	
 func handle_movement(delta):
 	var input_dir = Input.get_vector("left", "right","forward","backwards")
-	var direction = Vector3(input_dir.x, 0.0, input_dir.y).rotated(Vector3.UP, get_parent().current_camera.rotation.y).normalized()
+	var direction = get_direction(input_dir)
 	
 	for action in ["forward", "backwards", "left", "right"]:
 		if Input.is_action_just_pressed(action):
@@ -51,7 +54,7 @@ func handle_movement(delta):
 			target_velocity.z = walk_speed * direction.z 
 		elif (jump_time != null && jump_time < 0.8):
 			direction = Vector3.ZERO
-			
+	
 	velocity = direction * current_speed + target_velocity
 	
 	if(velocity != Vector3.ZERO && is_on_floor()):
@@ -82,4 +85,14 @@ func update_animation():
 			animTree["parameters/conditions/walking"] = true
 			animTree["parameters/conditions/running"] = false
 
+func set_camera_type(new_camera):
+	camera_type = new_camera
+	
+func get_direction(input_dir):
+	match camera_type:
+		SIDEVIEW:
+			return Vector3(input_dir.x, 0.0, input_dir.y).rotated(Vector3.UP, get_parent().current_camera.rotation.y).normalized()
+		TOPDOWN:
+			return Vector3(input_dir.y, 0.0, -input_dir.x).rotated(Vector3.UP, get_parent().current_camera.rotation.z).normalized()
+	
 

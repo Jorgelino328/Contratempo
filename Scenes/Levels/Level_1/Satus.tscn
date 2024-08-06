@@ -47,7 +47,7 @@ current_camera = NodePath("Cameras/Camera2")
 environment = SubResource("Environment_rdui3")
 
 [node name="Audax" parent="." instance=ExtResource("1_6apj6")]
-transform = Transform3D(-0.978949, 0, -0.204103, 0, 1, 0, 0.204103, 0, -0.978949, -1.11133, 1.71474, 4.29317)
+transform = Transform3D(0.707859, 0, 0.706353, 0, 1, 0, -0.706353, 0, 0.707859, 43.4258, 1.71474, 40.9085)
 
 [node name="Landscape" parent="." instance=ExtResource("3_thq57")]
 
@@ -70,7 +70,7 @@ current = true
 transform = Transform3D(-0.735387, 0.447009, -0.509302, -0.000345964, 0.751326, 0.659931, 0.677647, 0.485481, -0.552361, 11.2539, 6.2063, 9.61528)
 
 [node name="Camera4" type="Camera3D" parent="Cameras"]
-transform = Transform3D(0.719781, 0.693753, 0.0249493, -0.0172047, -0.0181014, 0.999688, 0.693988, -0.719986, -0.00109327, 26.8578, 9.85039, 24.5733)
+transform = Transform3D(0.719781, 0.693753, 0.0249481, -0.0172039, -0.0181006, 0.999688, 0.693988, -0.719986, -0.00109318, 26.8578, 9.85039, 24.5733)
 
 [node name="Camera5" type="Camera3D" parent="Cameras"]
 transform = Transform3D(0.719781, 0.693753, 0.0249493, -0.0172047, -0.0181014, 0.999688, 0.693988, -0.719986, -0.00109327, 49.5007, 11.0372, 46.6038)
@@ -107,10 +107,24 @@ transform = Transform3D(0.719522, 0, -0.69447, 0, 1, 0, 0.69447, 0, 0.719522, 20
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46358, 0, -0.807501)
 shape = SubResource("BoxShape3D_sgr3d")
 
+[node name="Camera4Trigger2" type="Area3D" parent="CameraTriggers"]
+transform = Transform3D(0.719522, 0, -0.69447, 0, 1, 0, 0.69447, 0, 0.719522, 33.7213, 0, 33.0107)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraTriggers/Camera4Trigger2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46358, 0, -0.807501)
+shape = SubResource("BoxShape3D_sgr3d")
+
 [node name="Camera5Trigger" type="Area3D" parent="CameraTriggers"]
 transform = Transform3D(0.72818, 0, -0.685386, 0, 1, 0, 0.685386, 0, 0.72818, 42.4511, 0, 40.6894)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CameraTriggers/Camera5Trigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46358, 0, -0.807501)
+shape = SubResource("BoxShape3D_sgr3d")
+
+[node name="Camera5Trigger2" type="Area3D" parent="CameraTriggers"]
+transform = Transform3D(0.72818, 0, -0.685386, 0, 1, 0, 0.685386, 0, 0.72818, 55.2256, 0, 53.3942)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraTriggers/Camera5Trigger2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46358, 0, -0.807501)
 shape = SubResource("BoxShape3D_sgr3d")
 
@@ -165,5 +179,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.4207, 0.48349, 14.0523)
 [connection signal="body_entered" from="CameraTriggers/Camera2Trigger" to="." method="_on_camera_2_trigger_body_entered"]
 [connection signal="body_entered" from="CameraTriggers/Camera3Trigger" to="." method="_on_camera_3_trigger_body_entered"]
 [connection signal="body_entered" from="CameraTriggers/Camera4Trigger" to="." method="_on_camera_4_trigger_body_entered"]
+[connection signal="body_entered" from="CameraTriggers/Camera4Trigger2" to="." method="_on_camera_4_trigger_body_entered"]
 [connection signal="body_entered" from="CameraTriggers/Camera5Trigger" to="." method="_on_camera_5_trigger_body_entered"]
+[connection signal="body_entered" from="CameraTriggers/Camera5Trigger2" to="." method="_on_camera_5_trigger_body_entered"]
 [connection signal="body_entered" from="CameraTriggers/Camera6Trigger" to="." method="_on_camera_6_trigger_body_entered"]

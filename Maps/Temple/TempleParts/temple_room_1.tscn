@@ -79,7 +79,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.1597
 transform = Transform3D(-1.22054e-07, 3.48165, -1.74863e-07, 0, -1.52188e-07, -4.0004, -2.79228, -1.52188e-07, 7.64351e-15, -2.55242, -2.13179, 13.1868)
 
 [node name="wall_without_crack2" parent="Ground" instance=ExtResource("1_nb2b6")]
-transform = Transform3D(2.84617, 0, 0, 0, 0.0370554, 1.20974, 0, -3.08483, 0.00660511, 6.00015, -3.92566, 28.3612)
+transform = Transform3D(2.84617, 0, 0, 0, 0.0375637, 2.10358, 0, -3.12714, 0.0114854, 6.00015, -4.48305, 28.3612)
 
 [node name="wall_without_crack" parent="Ground" instance=ExtResource("1_nb2b6")]
 transform = Transform3D(2.71292, 0, 0, 0, -1.36723e-07, -4.63942, 0, 3.12785, -2.02796e-07, 5.74883, -2.47603, 27.736)
