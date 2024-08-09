@@ -2,7 +2,7 @@ extends Node3D
 
 func _on_spikes_body_entered(body):
 	if body is Player:
-		body.hp -= 10
+		body.hp -= 3
 
 
 func _on_hide_right_body_entered(body):

@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://7074nwewwmt2"]
+
+[ext_resource type="PackedScene" uid="uid://b5xgg4ntsp0ip" path="res://Maps/Temple/destroyed_temple_room_1.tscn" id="1_7p1xh"]
+[ext_resource type="PackedScene" uid="uid://bwv7j8fi7g6ou" path="res://Maps/Temple/destroyed_temple_room_2.tscn" id="2_xit7n"]
+[ext_resource type="PackedScene" uid="uid://bbiukpicianv6" path="res://Maps/Temple/TempleParts/temple_room_3.tscn" id="3_uwl4b"]
+[ext_resource type="PackedScene" uid="uid://d30naurbxss5" path="res://Assets/3D Models/TreatedAssets/Skeleton.tscn" id="4_oputj"]
+[ext_resource type="PackedScene" uid="uid://c0lkj32og1j47" path="res://Assets/3D Models/TreatedAssets/device.tscn" id="5_0yapq"]
+
+[node name="DestroyedTemple" type="Node3D"]
+transform = Transform3D(0.687759, 0, 0.725939, 0, 1, 0, -0.725939, 0, 0.687759, 8.2826, 0.695793, 10.9165)
+
+[node name="DestroyedTempleRoom1" parent="." instance=ExtResource("1_7p1xh")]
+
+[node name="DestroyedTempleRoom2" parent="." instance=ExtResource("2_xit7n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.016233, 0.0309987, 24.0665)
+
+[node name="TempleRoom3" parent="." instance=ExtResource("3_uwl4b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -10.086)
+
+[node name="DeadAcolyte" parent="." instance=ExtResource("4_oputj")]
+transform = Transform3D(-0.478737, -0.151468, -0.864794, 0.0232126, 0.982477, -0.18493, 0.877651, -0.108607, -0.466832, 2.5448, -0.12119, 65.1477)
+
+[node name="Device" parent="." instance=ExtResource("5_0yapq")]
+transform = Transform3D(-0.887823, 0, 0.460184, 0, 1, 0, -0.460184, 0, -0.887823, 2.1067, 0.0204755, 66.0929)

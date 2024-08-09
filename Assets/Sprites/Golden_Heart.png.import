@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bceu3xlg0o1tv"
-path="res://.godot/imported/health.png-658c34923ff769f2c4608e40af83561d.ctex"
+uid="uid://bdm5q3kdovut6"
+path="res://.godot/imported/Golden_Heart.png-28d1d6012bf014ac7b65e8e85f0ba0b6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/health.png"
-dest_files=["res://.godot/imported/health.png-658c34923ff769f2c4608e40af83561d.ctex"]
+source_file="res://Assets/Sprites/Golden_Heart.png"
+dest_files=["res://.godot/imported/Golden_Heart.png-28d1d6012bf014ac7b65e8e85f0ba0b6.ctex"]
 
 [params]
 
