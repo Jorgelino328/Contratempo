@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://c2akku8du1xku"]
+[gd_scene load_steps=17 format=3 uid="uid://c2akku8du1xku"]
 
 [ext_resource type="PackedScene" uid="uid://0adle82x7bu3" path="res://Scenes/Actors/Audax/Audax.tscn" id="1_6apj6"]
 [ext_resource type="Script" path="res://Scenes/Levels/Level_1/Satus.gd" id="1_t6rts"]
 [ext_resource type="PackedScene" uid="uid://c5m6ohe5umt0s" path="res://Maps/Temple/Temple.tscn" id="2_h2leq"]
+[ext_resource type="PackedScene" uid="uid://crry3jt1c10hy" path="res://Scenes/Elements/PlayerCamera/player_camera.tscn" id="2_khgoc"]
 [ext_resource type="PackedScene" uid="uid://b8cki0dpiti4u" path="res://Maps/Temple/Basin.tscn" id="3_thq57"]
 [ext_resource type="PackedScene" uid="uid://b5hw6xbx7eqw4" path="res://Scenes/Elements/Flame/Flame.tscn" id="6_hkr5x"]
 [ext_resource type="AudioStream" uid="uid://ssmh8jjo5dft" path="res://Assets/Audio/fire-loop.mp3" id="7_pjut2"]
@@ -47,8 +48,12 @@ current_camera = NodePath("Cameras/Camera2")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rdui3")
 
+[node name="PlayerCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_khgoc")]
+transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -8, 4.793, 5.897)
+player = NodePath("../Audax")
+
 [node name="Audax" parent="." instance=ExtResource("1_6apj6")]
-transform = Transform3D(-0.994844, 0, 0.101404, 0, 1, 0, -0.101404, 0, -0.994844, -1.5636, 1.98745, 3.35788)
+transform = Transform3D(-0.941033, 0, 0.338311, 0, 1, 0, -0.338311, 0, -0.941033, 22.2877, 1.98745, 18.9494)
 
 [node name="Landscape" parent="." instance=ExtResource("3_thq57")]
 

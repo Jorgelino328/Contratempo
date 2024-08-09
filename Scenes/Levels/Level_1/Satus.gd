@@ -12,32 +12,33 @@ func _process(delta):
 func _on_camera_1_trigger_body_entered(body):
 	if(body is Player):
 		$Cameras/Camera1.make_current()
-		update_camera()
+		current_camera = $Cameras/Camera1
 
 func _on_camera_2_trigger_body_entered(body):
-
 	if(body is Player):
 		$Cameras/Camera2.make_current()
-		update_camera()
+		current_camera = $Cameras/Camera2
 
 func _on_camera_3_trigger_body_entered(body):
 	if(body is Player):
 		$Cameras/Camera3.make_current()
-		update_camera()
+		current_camera = $Cameras/Camera3
 		player.set_camera_type(0)
 
 func _on_camera_4_trigger_body_entered(body):
 	if(body is Player):
-		$Cameras/Camera4.make_current()
-		update_camera()
+		$PlayerCamera.make_current()
+		current_camera = $PlayerCamera
 		player.set_camera_type(1)
 
 func _on_camera_5_trigger_body_entered(body):
-	if(body is Player):
-		$Cameras/Camera5.make_current()
-		update_camera()
+	pass
+	#if(body is Player):
+		#$Cameras/Camera5.make_current()
+		#current_camera = $Cameras/Camera5
 
 func _on_camera_6_trigger_body_entered(body):
-	if(body is Player):
-		$Cameras/Camera6.make_current()
-		update_camera()
+	pass
+	#if(body is Player):
+		#$Cameras/Camera6.make_current()
+		#current_camera = $Cameras/Camera6

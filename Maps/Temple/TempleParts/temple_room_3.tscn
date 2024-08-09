@@ -1,35 +1,54 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbiukpicianv6"]
+[gd_scene load_steps=5 format=3 uid="uid://bbiukpicianv6"]
 
 [ext_resource type="PackedScene" uid="uid://bp8m2bb83u650" path="res://Maps/Temple/TempleParts/Wall_1.tscn" id="1_3cfoy"]
+[ext_resource type="Script" path="res://Maps/Temple/TempleParts/temple_room_3.gd" id="1_x4tol"]
 [ext_resource type="PackedScene" uid="uid://ir5xnvkp35h5" path="res://Maps/Temple/TempleParts/rubble.tscn" id="2_ppw8p"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_okote"]
+size = Vector3(1.28735, 2.12555, 5.66099)
+
 [node name="TempleRoom3" type="Node3D"]
+script = ExtResource("1_x4tol")
 
-[node name="wall_without_crack4" parent="." instance=ExtResource("1_3cfoy")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.06824, 0.0972282, 71.5582)
+[node name="Walls" type="Node3D" parent="."]
 
-[node name="wall_without_crack8" parent="." instance=ExtResource("1_3cfoy")]
+[node name="wall_without_crack4" parent="Walls" instance=ExtResource("1_3cfoy")]
 transform = Transform3D(-4.37113e-08, 0, -0.999999, 0, 1, 0, 0.999999, 0, -4.37113e-08, 6.83399, 0.133604, 77.9242)
 
-[node name="wall_without_crack9" parent="." instance=ExtResource("1_3cfoy")]
+[node name="WallMiddle" type="Node3D" parent="Walls"]
+
+[node name="wall_middle_1" parent="Walls/WallMiddle" instance=ExtResource("1_3cfoy")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.06824, 0.0972282, 71.5582)
+
+[node name="wall_middle_2" parent="Walls/WallMiddle" instance=ExtResource("1_3cfoy")]
 transform = Transform3D(0.0110302, 0, -0.999938, 0, 1, 0, 0.999938, 0, 0.0110302, -3.03754, 0.114585, 78.2127)
 
-[node name="wall_without_crack3" parent="." instance=ExtResource("1_3cfoy")]
+[node name="wall_without_crack3" parent="Walls" instance=ExtResource("1_3cfoy")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.80431, 0.115222, 74.3625)
 
-[node name="wall_without_crack2" parent="." instance=ExtResource("1_3cfoy")]
+[node name="wall_without_crack2" parent="Walls" instance=ExtResource("1_3cfoy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.53653, 0.112352, 71.5454)
 
-[node name="wall_without_crack" parent="." instance=ExtResource("1_3cfoy")]
+[node name="wall_without_crack" parent="Walls" instance=ExtResource("1_3cfoy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.109695, 0.0633742, 71.4343)
 
-[node name="wall_without_crack5" parent="." instance=ExtResource("1_3cfoy")]
+[node name="wall_without_crack5" parent="Walls" instance=ExtResource("1_3cfoy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.81142, 0.112352, 78.3293)
 
-[node name="wall_without_crack6" parent="." instance=ExtResource("1_3cfoy")]
+[node name="wall_without_crack6" parent="Walls" instance=ExtResource("1_3cfoy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.384583, 0.0633742, 78.2182)
 
-[node name="wall_without_crack7" parent="." instance=ExtResource("1_3cfoy")]
+[node name="wall_without_crack7" parent="Walls" instance=ExtResource("1_3cfoy")]
 transform = Transform3D(2.95781, 0, 0, 0, -1.28547e-07, -2, 0, 2.94082, -8.74228e-08, 6.62375, -1.12199, 72.285)
 
 [node name="Rubble" parent="." instance=ExtResource("2_ppw8p")]
+
+[node name="HideMiddle" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26754, 0.466577, 75.0374)
+
+[node name="Box" type="CollisionShape3D" parent="HideMiddle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.376373, 0.439056, -0.254715)
+shape = SubResource("BoxShape3D_okote")
+
+[connection signal="body_entered" from="HideMiddle" to="." method="_on_hide_middle_body_entered"]
+[connection signal="body_exited" from="HideMiddle" to="." method="_on_hide_middle_body_exited"]

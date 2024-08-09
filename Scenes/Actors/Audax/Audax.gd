@@ -11,7 +11,7 @@ class_name Player extends CharacterBody3D
 @onready var animTree : AnimationTree = $AnimationTree
 @onready var press_timer : Timer  = $Timer
 
-enum {BACKVIEW, TOPDOWN, SIDEVIEW, }
+enum {BACKVIEW, SIDEVIEW, TOPDOWN }
 
 var max_rotation : float = deg_to_rad(90)
 var min_rotation : float = deg_to_rad(-90)
@@ -22,9 +22,6 @@ var target_velocity = Vector3.ZERO
 var camera_type = BACKVIEW
 var can_run = false
 var on_platform : Node3D = null
-
-
-
 
 func _physics_process(delta):
 	handle_movement(delta)
@@ -99,10 +96,10 @@ func set_camera_type(new_camera):
 func get_direction(input_dir):
 	match camera_type:
 		BACKVIEW:
-			return Vector3(input_dir.x, 0.0, input_dir.y).rotated(Vector3.UP, get_parent().current_camera.rotation.y).normalized()	
+			return Vector3(input_dir.x, 0.0, input_dir.y).rotated(Vector3.UP, get_parent().current_camera.rotation.y).normalized()
+		SIDEVIEW:
+			return Vector3(input_dir.x, 0.0, input_dir.y).rotated(Vector3.UP, get_parent().current_camera.rotation.x).normalized()
 		TOPDOWN:
 			return Vector3(input_dir.y, 0.0, -input_dir.x).rotated(Vector3.UP, get_parent().current_camera.rotation.z).normalized()
-		SIDEVIEW:
-			pass
 	
 

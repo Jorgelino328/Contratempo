@@ -30,8 +30,3 @@ func _process(delta):
 	if(player.hp <= 0):
 		emit_signal("next_level",game_over)
 	
-func update_camera():
-	for camera in cameras.get_children():
-		if camera.current == true:
-			current_camera = camera
-	

@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cta5508tnkvfi"]
+
+[resource]
+albedo_color = Color(0.509804, 0.968627, 0.94902, 1)
+metallic = 0.5
+refraction_enabled = true

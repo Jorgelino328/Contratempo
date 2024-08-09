@@ -7,7 +7,6 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j6i2m"]
 resource_name = "Tree_0Mat"
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 1)
 metallic = 0.4
 roughness = 0.301511
 
@@ -55,7 +54,6 @@ normal_texture = ExtResource("3_mi402")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i3k1k"]
 resource_name = "Tree_1Mat"
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 1)
 metallic = 0.4
 roughness = 0.301511
 

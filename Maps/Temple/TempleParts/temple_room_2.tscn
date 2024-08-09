@@ -1,11 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://ducwyn8ehu7eo"]
+[gd_scene load_steps=8 format=3 uid="uid://ducwyn8ehu7eo"]
 
+[ext_resource type="Script" path="res://Maps/Temple/TempleParts/temple_room_2.gd" id="1_cu6ck"]
 [ext_resource type="PackedScene" uid="uid://bp8m2bb83u650" path="res://Maps/Temple/TempleParts/Wall_1.tscn" id="1_gxmxk"]
 [ext_resource type="PackedScene" uid="uid://dqpqj1to1co5f" path="res://Maps/Temple/TempleParts/Wall_2.tscn" id="2_p8lpv"]
 [ext_resource type="PackedScene" uid="uid://dmsdbggih7ypf" path="res://Scenes/Elements/Moving Platform/Moving Platform.tscn" id="3_sx1qi"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_wjtyp"]
+size = Vector3(1.297, 1.873, 8.45754)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_clnsb"]
+size = Vector3(1.37158, 3.08875, 8.60393)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1nc3b"]
+size = Vector3(1.29694, 1.87317, 7.18626)
+
 [node name="TempleRoom2" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0391307, 0, 29.6018)
+script = ExtResource("1_cu6ck")
 
 [node name="Walls" type="Node3D" parent="."]
 
@@ -24,25 +35,31 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.5093
 [node name="wall_without_crack7" parent="Walls" instance=ExtResource("1_gxmxk")]
 transform = Transform3D(-2.14673e-08, 0, 1, 0, 1, 0, -0.491114, 0, -4.37114e-08, 6.51754, 0, 19.2718)
 
-[node name="wall_without_crack3" parent="Walls" instance=ExtResource("1_gxmxk")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.87604, 0, 12.1346)
-
-[node name="wall_without_crack5" parent="Walls" instance=ExtResource("1_gxmxk")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.86803, 0, 15.6624)
-
-[node name="wall_without_crack6" parent="Walls" instance=ExtResource("1_gxmxk")]
-transform = Transform3D(-2.40816e-08, 0, 1.00202, 0, 1.00202, 0, -0.550924, 0, -4.37998e-08, -2.86001, 0, 19.1951)
-
 [node name="wall_without_crack14" parent="Walls" instance=ExtResource("1_gxmxk")]
 transform = Transform3D(-1.14925e-07, 0, 0.997393, 0, 2.09772, 0, -2.62917, 0, -4.35975e-08, 6.53079, -2.99833, 21.6417)
 
-[node name="wall_without_crack9" parent="Walls" instance=ExtResource("1_gxmxk")]
+[node name="WallLeft" type="Node3D" parent="Walls"]
+
+[node name="wall_left_1" parent="Walls/WallLeft" instance=ExtResource("1_gxmxk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.87604, 0, 12.1346)
+
+[node name="wall_left_2" parent="Walls/WallLeft" instance=ExtResource("1_gxmxk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.86803, 0, 15.6624)
+
+[node name="wall_left_3" parent="Walls/WallLeft" instance=ExtResource("1_gxmxk")]
+transform = Transform3D(-2.40816e-08, 0, 1.00202, 0, 1.00202, 0, -0.550924, 0, -4.37998e-08, -2.86001, 0, 19.1951)
+
+[node name="WallMiddle" type="Node3D" parent="Walls"]
+
+[node name="wall_middle" parent="Walls/WallMiddle" instance=ExtResource("1_gxmxk")]
 transform = Transform3D(-1.05856e-07, 0, 1, 0, 2.1032, 0, -2.42169, 0, -4.37114e-08, -2.84931, -3.05921, 21.8041)
 
-[node name="wall_with_crack3" parent="Walls" instance=ExtResource("2_p8lpv")]
+[node name="WallRight" type="Node3D" parent="Walls"]
+
+[node name="wall_right_1" parent="Walls/WallRight" instance=ExtResource("2_p8lpv")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.859, 0, 33.737)
 
-[node name="wall_with_crack2" parent="Walls" instance=ExtResource("2_p8lpv")]
+[node name="wall_right_2" parent="Walls/WallRight" instance=ExtResource("2_p8lpv")]
 transform = Transform3D(-5.92058e-07, 0, -1, 0, 1, 0, 1, 0, -5.92058e-07, -2.85852, 0, 32.8185)
 
 [node name="Pillars" type="Node3D" parent="."]
@@ -63,3 +80,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 22.0255)
 start_position = Vector3(3, 0, 22)
 end_position = Vector3(3, 0, 27)
 speed = 1.0
+
+[node name="HideLeft" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.48572, 0.466577, 19.4574)
+
+[node name="Box" type="CollisionShape3D" parent="HideLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.148468, 0.436584, -2.58103)
+shape = SubResource("BoxShape3D_wjtyp")
+
+[node name="HideMiddle" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.48572, 0.466577, 25.7666)
+
+[node name="Box" type="CollisionShape3D" parent="HideMiddle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.334259, 0.920654, -0.347557)
+shape = SubResource("BoxShape3D_clnsb")
+
+[node name="HideRight" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.48572, 0.466577, 33.4296)
+
+[node name="Box" type="CollisionShape3D" parent="HideRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.148468, 0.436584, -0.099823)
+shape = SubResource("BoxShape3D_1nc3b")
+
+[connection signal="body_entered" from="HideLeft" to="." method="_on_hide_left_body_entered"]
+[connection signal="body_exited" from="HideLeft" to="." method="_on_hide_left_body_exited"]
+[connection signal="body_entered" from="HideMiddle" to="." method="_on_hide_middle_body_entered"]
+[connection signal="body_exited" from="HideMiddle" to="." method="_on_hide_middle_body_exited"]
+[connection signal="body_entered" from="HideRight" to="." method="_on_hide_right_body_entered"]
+[connection signal="body_exited" from="HideRight" to="." method="_on_hide_right_body_exited"]
