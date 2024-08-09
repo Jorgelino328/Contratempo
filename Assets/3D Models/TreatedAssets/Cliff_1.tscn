@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dsyq6ygiyvgic"]
+[gd_scene load_steps=10 format=3 uid="uid://dsyq6ygiyvgic"]
 
 [ext_resource type="Texture2D" uid="uid://cyyc06suxj33g" path="res://Assets/3D Models/RawAssets/Rocks/Stylized Rocks/Textures/Cliff_1/Cliff_1_DefaultMaterial_BaseColor.png" id="2_1iau4"]
 [ext_resource type="Texture2D" uid="uid://b2q5i82njkqrt" path="res://Assets/3D Models/RawAssets/Rocks/Stylized Rocks/Textures/Cliff_1/Cliff_1_DefaultMaterial_Normal.png" id="3_olsty"]
@@ -50,7 +50,10 @@ normal_enabled = true
 normal_texture = ExtResource("3_olsty")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aj1si"]
-size = Vector3(6.43872, 5.64648, 2.52771)
+size = Vector3(2.47394, 5.64648, 2.15038)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dpw6r"]
+size = Vector3(3.50562, 5.32434, 2.05971)
 
 [node name="Cliff_1" type="StaticBody3D"]
 
@@ -63,5 +66,9 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_5sqwf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0638428, 2.32324, 0.0377808)
+transform = Transform3D(0.98229, 0, -0.187364, 0, 1, 0, 0.187364, 0, 0.98229, -1.17169, 2.32324, -0.0226631)
 shape = SubResource("BoxShape3D_aj1si")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.953685, 0, 0.300806, 0, 1, 0, -0.300806, 0, 0.953685, 1.18299, 2.16217, -0.165863)
+shape = SubResource("BoxShape3D_dpw6r")

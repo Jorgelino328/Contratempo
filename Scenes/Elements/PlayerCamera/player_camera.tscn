@@ -1,7 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://crry3jt1c10hy"]
+[gd_scene load_steps=3 format=3 uid="uid://crry3jt1c10hy"]
 
 [ext_resource type="Script" path="res://Scenes/Elements/PlayerCamera/PlayerCamera.gd" id="1_j0hro"]
+[ext_resource type="AudioStream" uid="uid://cki63f0bbeun4" path="res://Assets/Audio/earthquake.mp3" id="2_nyo5j"]
 
 [node name="PlayerCamera" type="Camera3D"]
 transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, 0, 0, 0)
 script = ExtResource("1_j0hro")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="EarthquakeSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_nyo5j")

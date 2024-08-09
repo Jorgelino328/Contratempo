@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c2akku8du1xku"]
+[gd_scene load_steps=18 format=3 uid="uid://c2akku8du1xku"]
 
 [ext_resource type="PackedScene" uid="uid://0adle82x7bu3" path="res://Scenes/Actors/Audax/Audax.tscn" id="1_6apj6"]
 [ext_resource type="Script" path="res://Scenes/Levels/Level_1/Satus.gd" id="1_t6rts"]
@@ -30,10 +30,13 @@ volumetric_fog_enabled = true
 volumetric_fog_albedo = Color(1, 0.411765, 0.192157, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q32hj"]
-size = Vector3(19.0552, 4.58362, 14.0227)
+size = Vector3(18.7572, 4.58362, 14.0227)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u4yd3"]
 size = Vector3(19.7085, 4.36896, 13.7283)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3jcm3"]
+size = Vector3(6.66125, 3.27686, 11.0995)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sgr3d"]
 size = Vector3(5.41299, 3.74023, 8.198)
@@ -43,17 +46,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22072, -4.76837e-07, 0.0928
 script = ExtResource("1_t6rts")
 player = NodePath("Audax")
 cameras = NodePath("Cameras")
-current_camera = NodePath("Cameras/Camera2")
+current_camera = NodePath("Cameras/PlayerCamera")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rdui3")
 
-[node name="PlayerCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_khgoc")]
-transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -8, 4.793, 5.897)
-player = NodePath("../Audax")
-
 [node name="Audax" parent="." instance=ExtResource("1_6apj6")]
-transform = Transform3D(-0.941033, 0, 0.338311, 0, 1, 0, -0.338311, 0, -0.941033, 22.2877, 1.98745, 18.9494)
+transform = Transform3D(-0.941033, 0, 0.338311, 0, 1, 0, -0.338311, 0, -0.941033, 55.8089, 1.98745, 52.371)
 
 [node name="Landscape" parent="." instance=ExtResource("3_thq57")]
 
@@ -70,21 +69,14 @@ transform = Transform3D(-0.0567608, 0.71181, -0.700074, 0.0232638, 0.701957, 0.7
 
 [node name="Camera2" type="Camera3D" parent="Cameras"]
 transform = Transform3D(-0.552934, 0.664389, -0.502844, 0.0682369, 0.637571, 0.767364, 0.830426, 0.389989, -0.39787, -4.07431, 7.01167, -2.81687)
-current = true
 
 [node name="Camera3" type="Camera3D" parent="Cameras"]
 transform = Transform3D(-0.735387, 0.447009, -0.509302, -0.000345964, 0.751326, 0.659931, 0.677647, 0.485481, -0.552361, 10.4595, 6.2063, 8.63934)
 
-[node name="Camera4" type="Camera3D" parent="Cameras"]
-transform = Transform3D(0.718921, 0.694217, 0.0348663, -0.0240232, -0.0253152, 0.999391, 0.694677, -0.719321, -0.0015223, 29.0632, 11.0733, 27.5359)
-
-[node name="Camera5" type="Camera3D" parent="Cameras"]
-transform = Transform3D(0.719781, 0.693753, 0.0249493, -0.0172047, -0.0181014, 0.999688, 0.693988, -0.719986, -0.00109323, 44.624, 8.27887, 43.2909)
+[node name="PlayerCamera" parent="Cameras" node_paths=PackedStringArray("player") instance=ExtResource("2_khgoc")]
+transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -8, 4.793, 5.897)
 current = true
-fov = 100.0
-
-[node name="Camera6" type="Camera3D" parent="Cameras"]
-transform = Transform3D(-0.988443, -0.0933175, 0.119469, -0.0214779, 0.866338, 0.498997, -0.150066, 0.490664, -0.858329, 57.9023, 3.03631, 50.3106)
+player = NodePath("../../Audax")
 
 [node name="CameraTriggers" type="Node3D" parent="."]
 
@@ -92,7 +84,7 @@ transform = Transform3D(-0.988443, -0.0933175, 0.119469, -0.0214779, 0.866338, 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.7496)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CameraTriggers/Camera1Trigger"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03634, 0.511779, -0.15888)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.887347, 0.511779, -0.15888)
 shape = SubResource("BoxShape3D_q32hj")
 
 [node name="Camera2Trigger" type="Area3D" parent="CameraTriggers"]
@@ -105,41 +97,13 @@ shape = SubResource("BoxShape3D_u4yd3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6836, 0, 10.8192)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CameraTriggers/Camera3Trigger"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02564, 0, -0.807501)
-shape = SubResource("BoxShape3D_sgr3d")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.744573, 1.13843, 0.541056)
+shape = SubResource("BoxShape3D_3jcm3")
 
 [node name="Camera4Trigger" type="Area3D" parent="CameraTriggers"]
 transform = Transform3D(0.719522, 0, -0.69447, 0, 1, 0, 0.69447, 0, 0.719522, 21.451, 0, 21.9299)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CameraTriggers/Camera4Trigger"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46358, 0, -0.807502)
-shape = SubResource("BoxShape3D_sgr3d")
-
-[node name="Camera4Trigger2" type="Area3D" parent="CameraTriggers"]
-transform = Transform3D(0.719522, 0, -0.69447, 0, 1, 0, 0.69447, 0, 0.719522, 33.7213, 0, 33.0107)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraTriggers/Camera4Trigger2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.312523, 0, -0.350172)
-shape = SubResource("BoxShape3D_sgr3d")
-
-[node name="Camera5Trigger" type="Area3D" parent="CameraTriggers"]
-transform = Transform3D(0.72818, 0, -0.685386, 0, 1, 0, 0.685386, 0, 0.72818, 42.4511, 0, 40.6894)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraTriggers/Camera5Trigger"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.94156, 0, 0.135208)
-shape = SubResource("BoxShape3D_sgr3d")
-
-[node name="Camera5Trigger2" type="Area3D" parent="CameraTriggers"]
-transform = Transform3D(0.72818, 0, -0.685386, 0, 1, 0, 0.685386, 0, 0.72818, 55.2256, 0, 53.3942)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraTriggers/Camera5Trigger2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.3194, 0, -0.485931)
-shape = SubResource("BoxShape3D_sgr3d")
-
-[node name="Camera6Trigger" type="Area3D" parent="CameraTriggers"]
-transform = Transform3D(0.725423, 0, -0.688304, 0, 1, 0, 0.688304, 0, 0.725423, 56.4219, 0, 55.1606)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraTriggers/Camera6Trigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46358, 0, -0.807501)
 shape = SubResource("BoxShape3D_sgr3d")
 
@@ -192,7 +156,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.4207, 0.48349, 14.0523)
 [connection signal="body_entered" from="CameraTriggers/Camera2Trigger" to="." method="_on_camera_2_trigger_body_entered"]
 [connection signal="body_entered" from="CameraTriggers/Camera3Trigger" to="." method="_on_camera_3_trigger_body_entered"]
 [connection signal="body_entered" from="CameraTriggers/Camera4Trigger" to="." method="_on_camera_4_trigger_body_entered"]
-[connection signal="body_entered" from="CameraTriggers/Camera4Trigger2" to="." method="_on_camera_4_trigger_body_entered"]
-[connection signal="body_entered" from="CameraTriggers/Camera5Trigger" to="." method="_on_camera_5_trigger_body_entered"]
-[connection signal="body_entered" from="CameraTriggers/Camera5Trigger2" to="." method="_on_camera_5_trigger_body_entered"]
-[connection signal="body_entered" from="CameraTriggers/Camera6Trigger" to="." method="_on_camera_6_trigger_body_entered"]
