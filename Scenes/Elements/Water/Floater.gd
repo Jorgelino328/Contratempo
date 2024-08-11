@@ -3,7 +3,6 @@ class_name floater extends RigidBody3D
 @export var float_force := 1.0
 @export var water_drag := 0.05
 @export var water_angular_drag := 0.05
-@export var max_rotation_angle = 10
 
 @onready var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var water : MeshInstance3D

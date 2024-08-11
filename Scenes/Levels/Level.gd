@@ -5,12 +5,14 @@ class_name Level extends Node3D
 
 var game_over = load("res://Scenes/UIs/Game_Over/Game_Over.tscn")
 var settings = load("res://Scenes/UIs/Menus/Settings/Settings.tscn")
+var rain = load("res://Scenes/Elements/Rain/Rain.tscn")
+var sun = load("res://Scenes/Elements/Sun/sun.tscn")
 var dialogueUI = preload("res://Scenes/UIs/Dialogue_UI/Dialogue_UI.tscn")
 var paused = false
 
 signal next_level(level)
 signal change_song(new_song)
-
+signal change_weather(new_weather)
 
 func pause():
 	var settings_instance = settings.instantiate()
@@ -31,7 +33,10 @@ func _process(delta):
 		emit_signal("next_level",game_over)
 		
 func use_rain():
-	pass
+	emit_signal("change_weather",rain)
 
 func use_sun():
-	pass
+	emit_signal("change_weather",sun)
+
+func use_clear():
+	emit_signal("change_weather",null)

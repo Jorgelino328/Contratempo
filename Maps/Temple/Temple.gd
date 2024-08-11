@@ -1,5 +1,5 @@
 extends Node3D
-@export var state = 2
+@export var state = 1
 @export var room = 0
 
 func _ready():

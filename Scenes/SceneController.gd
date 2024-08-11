@@ -27,13 +27,22 @@ func connect_signals():
 		#$Audio/BackgroundMusic.play()
 		current_level.next_level.connect(_on_next_level)
 		current_level.change_song.connect(_on_change_song)
-
+		current_level.change_weather.connect(_on_change_weather)
 
 func _on_change_song(new_song):
 	$Audio/BackgroundMusic.stream = new_song
 	$Audio/BackgroundMusic.play()
 
-
+func _on_change_weather(new_weather):
+	if(new_weather):
+		var weather_instance = new_weather.instantiate()
+		for i in $Weather.get_children():
+			i.queue_free()
+		$Weather.add_child(weather_instance)
+	else:
+		for i in $Weather.get_children():
+			i.queue_free()
+			
 func _on_next_level(level):
 	var next_level = level.instantiate()
 	change_level(next_level)

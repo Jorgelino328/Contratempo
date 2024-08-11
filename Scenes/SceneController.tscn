@@ -10,6 +10,12 @@ script = ExtResource("1_ste0x")
 
 [node name="Main_Menu" parent="." instance=ExtResource("2_m0op5")]
 
+[node name="Weather" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Audio" type="Node" parent="."]
 process_mode = 3
 

@@ -2,7 +2,7 @@ class_name Player extends CharacterBody3D
 
 @export var hp = 3
 @export var charges = 3
-@export var has_device = true
+@export var has_device = false ad
 @export var walk_speed = 4
 @export var running_speed = 6
 @export var fall_acceleration = 30
@@ -30,6 +30,8 @@ func _process(delta):
 			get_parent().use_rain()
 		elif Input.is_action_just_pressed("sun"):
 			get_parent().use_sun()
+		elif Input.is_action_just_pressed("clear"):
+			get_parent().use_clear()
 			
 func _physics_process(delta):
 	handle_movement(delta)
@@ -37,7 +39,7 @@ func _physics_process(delta):
 	move_and_slide()
 	if on_platform:
 		global_transform.origin += on_platform.global_transform.basis.z * (2*on_platform.speed * on_platform.direction * delta)
-	
+		
 func handle_movement(delta):
 	var input_dir = Input.get_vector("left", "right","forward","backwards")
 	var direction = get_direction(input_dir)

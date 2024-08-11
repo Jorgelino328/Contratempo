@@ -5,6 +5,8 @@ extends Node3D
 @export var speed : float = 5.0
 @export var water : MeshInstance3D
 
+@onready var static_platform = $StaticPlatform
+
 var floating = true 
 var direction : int = 1
 
@@ -13,7 +15,7 @@ func _ready():
 	if(water):
 		$Platform.water = water
 
-func _process(delta):
+func _physics_process(delta):
 	if(floating):
 		transform.origin.z += speed * direction * delta
 
@@ -24,7 +26,11 @@ func _process(delta):
 
 		transform.origin.z = transform.origin.z + (speed * direction * delta)
 	else:
-		$Area3D/CollisionShape3D.disabled = true
+		if static_platform && $Area3D/CollisionShape3D.disabled == false:
+			$Platform.mass = 1
+			$Platform.gravity_scale = 1
+			static_platform.queue_free()
+			$Area3D/CollisionShape3D.disabled = true
 		
 func _on_area_3d_body_entered(body):
 	if body is Player:
@@ -34,23 +40,5 @@ func _on_area_3d_body_exited(body):
 	if body is Player:
 		body.on_platform = null
 
-
-func _on_hide_right_body_entered(body):
-	$Walls/WallRight.visible = false
-
-func _on_hide_right_body_exited(body):
-	$Walls/WallRight.visible = true
-	
-func _on_hide_left_body_entered(body):
-	$Walls/WallLeft.visible = false
-
-func _on_hide_left_body_exited(body):
-	$Walls/WallLeft.visible = true
-
-func _on_hide_middle_body_entered(body):
-	$Walls/WallMiddle.visible = false
-
-func _on_hide_middle_body_exited(body):
-	$Walls/WallMiddle.visible = true
 
 

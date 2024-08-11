@@ -62,7 +62,15 @@ player = NodePath("../Audax")
 environment = SubResource("Environment_rdui3")
 
 [node name="Audax" parent="." instance=ExtResource("1_6apj6")]
-transform = Transform3D(-0.941033, 0, 0.338311, 0, 1, 0, -0.338311, 0, -0.941033, 33.8909, 1.98745, 31.4287)
+transform = Transform3D(-0.941033, 0, 0.338311, 0, 1, 0, -0.338311, 0, -0.941033, -0.772768, 1.98745, 3.98535)
+hp = null
+charges = null
+has_device = null
+walk_speed = null
+running_speed = null
+fall_acceleration = null
+jump_impulse = null
+rotation_speed = null
 
 [node name="Landscape" parent="." instance=ExtResource("3_thq57")]
 
@@ -176,9 +184,12 @@ transform = Transform3D(0.159967, 0, -0.987122, 0, 1, 0, 0.987122, 0, 0.159967, 
 transform = Transform3D(0.607803, 0, -0.794083, 0, 1, 0, 0.794083, 0, 0.607803, 1.89868, -0.0694113, -4.50073)
 shape = SubResource("BoxShape3D_y156b")
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="CameraTriggers/Camera1Trigger" to="." method="_on_camera_1_trigger_body_entered"]
 [connection signal="body_entered" from="CameraTriggers/Camera2Trigger" to="." method="_on_camera_2_trigger_body_entered"]
 [connection signal="body_entered" from="CameraTriggers/Camera3Trigger" to="." method="_on_camera_3_trigger_body_entered"]
 [connection signal="body_entered" from="CameraTriggers/Camera4Trigger" to="." method="_on_camera_4_trigger_body_entered"]
 [connection signal="body_entered" from="Room1" to="." method="_on_room_1_body_entered"]
 [connection signal="body_entered" from="Room2" to="." method="_on_room_2_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

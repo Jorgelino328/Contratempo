@@ -1,9 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://dmsdbggih7ypf"]
+[gd_scene load_steps=12 format=3 uid="uid://dmsdbggih7ypf"]
 
 [ext_resource type="Script" path="res://Scenes/Elements/Moving Platform/Moving Platform.gd" id="1_hamue"]
 [ext_resource type="Script" path="res://Scenes/Elements/Water/Floater.gd" id="2_l2p1i"]
 [ext_resource type="Texture2D" uid="uid://danflimd43u0" path="res://Assets/3D Models/RawAssets/Temple/Wall/Black Oily Stone.png" id="2_oirek"]
 [ext_resource type="Texture2D" uid="uid://blhomhhghwodh" path="res://Assets/3D Models/RawAssets/Temple/Wall/Black Oily Stone-1.png" id="3_gn6j8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kwcer"]
+size = Vector3(3.1438, 0.0351868, 2.38866)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fju4t"]
+rough = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qsvr3"]
 resource_name = "Material"
@@ -52,16 +58,25 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_htyo6")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mf5gn"]
-size = Vector3(3.00192, 2.15225, 1)
+size = Vector3(3.00192, 2.15225, 0.96582)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jh1tx"]
-size = Vector3(2.51831, 1, 1.99095)
+size = Vector3(3.34405, 1, 2.57509)
 
 [node name="MovingPlatform" type="Node3D"]
 script = ExtResource("1_hamue")
 
+[node name="StaticPlatform" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticPlatform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0719, 0.482407, 0.874962)
+shape = SubResource("BoxShape3D_kwcer")
+
 [node name="Platform" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(-0.999993, -0.00381675, 1.66835e-10, 0, -4.37114e-08, -1, 0.00381675, -0.999993, 4.37111e-08, -2.25084, -0.0328358, 1.73976)
+mass = 0.01
+physics_material_override = SubResource("PhysicsMaterial_fju4t")
+gravity_scale = 0.0
 script = ExtResource("2_l2p1i")
 
 [node name="Cube" type="MeshInstance3D" parent="Platform"]
@@ -70,7 +85,7 @@ mesh = SubResource("ArrayMesh_0uj26")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platform"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.18319, 0.852078, -3.87419e-09)
+transform = Transform3D(1, 0, -2.22045e-16, 0, 1, 0, 0, 0, 1, -1.18319, 0.852078, 0.0170898)
 shape = SubResource("BoxShape3D_mf5gn")
 
 [node name="ProbeContainer" type="Node3D" parent="Platform"]
@@ -101,10 +116,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7263, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7263, 0, 1.62582)
 
 [node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125557, 0.656502, 0)
+transform = Transform3D(-0.999993, 0, -0.00381675, 0, 1, 0, 0.00381675, 0, -0.999993, -2.12529, 0.656502, 1.73928)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1.07978, 0, 0, 0, 1.07978, 0, 0, 0, 1.07978, -1.02803, 0, 0.858765)
+transform = Transform3D(1, 0, -3.09665e-08, 0, 1, 0, 3.09665e-08, 0, 1, -1.01728, 0, 0.879002)
 shape = SubResource("BoxShape3D_jh1tx")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

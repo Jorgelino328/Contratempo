@@ -8,11 +8,11 @@ func _process(delta):
 		1:
 			if(!$MovingPlatform.floating):
 				$MovingPlatform.floating = true
-				$MovingPlatform.position = Vector3(3,0,24.5)
+				$MovingPlatform.position = Vector3(2.25,0,24.5)
 		2:
 			if($MovingPlatform.floating):
 				$MovingPlatform.floating = false
-				$MovingPlatform.position = Vector3(3,0,24.5)
+				$MovingPlatform.position = Vector3(2.25,0,24.5)
 
 func raise_water():
 	if(!$Water.rising):
