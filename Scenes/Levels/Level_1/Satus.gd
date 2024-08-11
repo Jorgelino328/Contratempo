@@ -1,18 +1,18 @@
 extends Level
 
 @onready var new_song = load("res://Assets/Audio/Satus.ogg")
+@onready var device = $Temple/Device
 
 var playing = false
 var has_shaked = false
 
 func _process(delta):
 	super._process(delta)
-	
 	if(!playing):
 		emit_signal("change_song",new_song)
 		playing = true
 		
-	if(!$Temple/Device && !has_shaked):
+	if(!device && !has_shaked):
 		has_shaked = true
 		begin_earthquake()
 		
@@ -28,6 +28,10 @@ func stop_earthquake():
 func use_rain():
 	super.use_rain()
 	$Temple.use_rain()
+	
+func use_sun():
+	super.use_sun()
+	$Temple.use_sun()
 	
 func _on_camera_1_trigger_body_entered(body):
 	if(body is Player):
@@ -52,3 +56,11 @@ func _on_camera_4_trigger_body_entered(body):
 		$Cameras/PlayerCamera.make_current()
 		current_camera = $Cameras/PlayerCamera
 		player.set_camera_type(1)
+
+
+func _on_room_1_body_entered(body):
+	$Temple.room = 1
+
+
+func _on_room_2_body_entered(body):
+	$Temple.room = 2

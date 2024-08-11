@@ -11,12 +11,10 @@ func _ready():
 
 func _process(delta):
 	if rising and transform.origin.y < end_position.y:
-		draining = false
 		move(1,delta)
 	elif draining and transform.origin.y > start_position.y:
-		rising = false
 		move(-1,delta)
-
+		
 func move(direction,delta):
 	transform.origin.y += speed * direction * delta
 	transform.origin.y = transform.origin.y + (speed * direction * delta)

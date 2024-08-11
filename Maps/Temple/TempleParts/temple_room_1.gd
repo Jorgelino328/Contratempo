@@ -5,6 +5,20 @@ func _on_spikes_body_entered(body):
 	if body is Player:
 		body.hp -= 3
 
+func raise_water():
+	if(!$Water.rising):
+		$Water.end_position.y = -0.8
+		$Water.rising = true
+		$Water.draining = false
+		
+func lower_water():
+	if(!$Water.draining):
+		$Water.rising = false
+		$Water.draining = true
+		
+func melt_spikes():
+	if(!$Spikes.melting):
+		$Spikes.melting = true
 
 func _on_hide_right_body_entered(body):
 	$Walls/WallRight.visible = false

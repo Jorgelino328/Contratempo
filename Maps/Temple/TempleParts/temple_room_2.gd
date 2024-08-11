@@ -14,11 +14,16 @@ func _process(delta):
 				$MovingPlatform.floating = false
 				$MovingPlatform.position = Vector3(3,0,24.5)
 
-func raise_or_lower_water():
-	if($Water.rising):
-		$Water.draining = true
-	else:
+func raise_water():
+	if(!$Water.rising):
 		$Water.rising = true
+		$Water.draining = false
+		
+func lower_water():
+	if(!$Water.draining):
+		$Water.rising = false
+		$Water.draining = true
+		
 		
 func _on_hide_right_body_entered(body):
 	if(body is Player):

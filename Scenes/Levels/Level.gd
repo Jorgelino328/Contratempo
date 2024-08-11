@@ -32,3 +32,6 @@ func _process(delta):
 		
 func use_rain():
 	pass
+
+func use_sun():
+	pass

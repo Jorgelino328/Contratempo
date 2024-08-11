@@ -24,8 +24,6 @@ func _physics_process(delta):
 func _integrate_forces(state: PhysicsDirectBodyState3D):
 	if submerged:
 		state.linear_velocity *=  1 - water_drag
-		state.angular_velocity = clamp_angle(state.angular_velocity)
+		state.angular_velocity = Vector3(0,0,0)
 		
-func clamp_angle(a_vel):
-	return Vector3(0,clamp(a_vel.y * 1 - water_angular_drag,-0.3,0.3),0)
 	

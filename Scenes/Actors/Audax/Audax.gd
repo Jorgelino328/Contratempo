@@ -2,7 +2,7 @@ class_name Player extends CharacterBody3D
 
 @export var hp = 3
 @export var charges = 3
-@export var has_device = false
+@export var has_device = true
 @export var walk_speed = 4
 @export var running_speed = 6
 @export var fall_acceleration = 30
@@ -28,6 +28,8 @@ func _process(delta):
 	if(has_device):
 		if Input.is_action_just_pressed("water"):
 			get_parent().use_rain()
+		elif Input.is_action_just_pressed("sun"):
+			get_parent().use_sun()
 			
 func _physics_process(delta):
 	handle_movement(delta)

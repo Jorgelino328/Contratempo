@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c2akku8du1xku"]
+[gd_scene load_steps=21 format=3 uid="uid://c2akku8du1xku"]
 
 [ext_resource type="PackedScene" uid="uid://0adle82x7bu3" path="res://Scenes/Actors/Audax/Audax.tscn" id="1_6apj6"]
 [ext_resource type="Script" path="res://Scenes/Levels/Level_1/Satus.gd" id="1_64to1"]
@@ -42,6 +42,12 @@ size = Vector3(6.66125, 3.27686, 11.0995)
 [sub_resource type="BoxShape3D" id="BoxShape3D_sgr3d"]
 size = Vector3(5.41299, 3.74023, 8.198)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_5moq3"]
+size = Vector3(7.73206, 1, 5.49719)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y156b"]
+size = Vector3(8.1499, 1, 5.47461)
+
 [node name="Satus" type="Node3D" node_paths=PackedStringArray("player", "cameras", "current_camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22072, -4.76837e-07, 0.0928936)
 script = ExtResource("1_64to1")
@@ -56,7 +62,7 @@ player = NodePath("../Audax")
 environment = SubResource("Environment_rdui3")
 
 [node name="Audax" parent="." instance=ExtResource("1_6apj6")]
-transform = Transform3D(-0.941033, 0, 0.338311, 0, 1, 0, -0.338311, 0, -0.941033, 55.8089, 1.98745, 52.371)
+transform = Transform3D(-0.941033, 0, 0.338311, 0, 1, 0, -0.338311, 0, -0.941033, 33.8909, 1.98745, 31.4287)
 
 [node name="Landscape" parent="." instance=ExtResource("3_thq57")]
 
@@ -156,7 +162,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.77928, 0.26719, 9.90711)
 [node name="LightShroom2" parent="PathMarkers" instance=ExtResource("9_sck1f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.4207, 0.48349, 14.0523)
 
+[node name="Room1" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.6977, 3.0655, 49.4724)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room1"]
+transform = Transform3D(0.679365, 0, 0.733801, 0, 1, 0, -0.733801, 0, 0.679365, 2.10935, -1.76812, -17.2568)
+shape = SubResource("BoxShape3D_5moq3")
+
+[node name="Room2" type="Area3D" parent="."]
+transform = Transform3D(0.159967, 0, -0.987122, 0, 1, 0, 0.987122, 0, 0.159967, 47.0103, 1.35484, 48.3005)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room2"]
+transform = Transform3D(0.607803, 0, -0.794083, 0, 1, 0, 0.794083, 0, 0.607803, 1.89868, -0.0694113, -4.50073)
+shape = SubResource("BoxShape3D_y156b")
+
 [connection signal="body_entered" from="CameraTriggers/Camera1Trigger" to="." method="_on_camera_1_trigger_body_entered"]
 [connection signal="body_entered" from="CameraTriggers/Camera2Trigger" to="." method="_on_camera_2_trigger_body_entered"]
 [connection signal="body_entered" from="CameraTriggers/Camera3Trigger" to="." method="_on_camera_3_trigger_body_entered"]
 [connection signal="body_entered" from="CameraTriggers/Camera4Trigger" to="." method="_on_camera_4_trigger_body_entered"]
+[connection signal="body_entered" from="Room1" to="." method="_on_room_1_body_entered"]
+[connection signal="body_entered" from="Room2" to="." method="_on_room_2_body_entered"]

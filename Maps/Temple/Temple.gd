@@ -1,5 +1,6 @@
 extends Node3D
-@export var state = 1
+@export var state = 2
+@export var room = 0
 
 func _ready():
 	$TempleRoom1.state = state
@@ -13,5 +14,18 @@ func change_state(new_state):
 
 func use_rain():
 	if state == 2:
-		print("let it rain!")
-		$TempleRoom2.raise_or_lower_water()
+		match room:
+			1:
+				$TempleRoom1.raise_water()
+			2:
+				$TempleRoom2.raise_water()
+		
+func use_sun():
+	if state == 2:
+		match room:
+			1:
+				$TempleRoom1.melt_spikes()
+				$TempleRoom1.lower_water()
+			2:
+				$TempleRoom2.lower_water()
+		
