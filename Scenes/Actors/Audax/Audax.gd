@@ -22,6 +22,7 @@ var last_action : String
 var target_velocity = Vector3.ZERO
 var camera_type = BACKVIEW
 var can_run = false
+var go = false
 var on_platform : Node3D = null
 
 func _process(delta):
@@ -34,7 +35,7 @@ func _process(delta):
 			get_parent().use_clear()
 			
 func _physics_process(delta):
-	update_animation()	
+	update_animation()
 	if(!get_tree().paused):
 		handle_movement(delta)
 		move_and_slide()

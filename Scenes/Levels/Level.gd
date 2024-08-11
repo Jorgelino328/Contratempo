@@ -14,6 +14,16 @@ signal next_level(level)
 signal change_song(new_song)
 signal change_weather(new_weather)
 
+func _ready():
+	connect_signals()
+	
+func connect_signals():
+	var sceneController = get_parent()
+	sceneController.dialogue_stopped_lvl.connect(_on_dialogue_stop)
+
+func _on_dialogue_stop():
+	pass
+	
 func pause():
 	var settings_instance = settings.instantiate()
 	$CanvasLayer.add_child(settings_instance)

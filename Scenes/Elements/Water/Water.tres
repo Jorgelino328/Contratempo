@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=26 format=3 uid="uid://cbknto6uvdaye"]
+[gd_resource type="VisualShader" load_steps=25 format=3 uid="uid://cbknto6uvdaye"]
 
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_legmc"]
 default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
@@ -86,15 +86,6 @@ op_type = 3
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_l7hay"]
 default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(0.2, 0.2, 0.2)]
 operator = 2
-
-[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_m6cqw"]
-size = Vector2(500, 300)
-expression = "func get_height(world_position: Vector3) -> float:
-	var uv_x = wrapf(world_position.x / noise_scale + time * wave_speed, 0, 1)
-	var uv_y = wrapf(world_position.z / noise_scale + time * wave_speed, 0, 1)
-
-	var pixel_pos = Vector2(uv_x * noise.get_width(), uv_y * noise.get_height())
-	return global_position.y + noise.get_pixelv(pixel_pos).r * height_scale;"
 
 [resource]
 code = "shader_type spatial;
@@ -205,7 +196,8 @@ void fragment() {
 
 }
 "
-nodes/vertex/0/position = Vector2(880, 40)
+graph_offset = Vector2(275.145, -29.3373)
+nodes/vertex/0/position = Vector2(860, 120)
 nodes/vertex/2/node = SubResource("VisualShaderNodeInput_4el6n")
 nodes/vertex/2/position = Vector2(-500, 200)
 nodes/vertex/3/node = SubResource("VisualShaderNodeTexture_lopqi")
@@ -220,18 +212,7 @@ nodes/vertex/7/node = SubResource("VisualShaderNodeMultiplyAdd_d0t72")
 nodes/vertex/7/position = Vector2(580, 80)
 nodes/vertex/8/node = SubResource("VisualShaderNodeVectorOp_l7hay")
 nodes/vertex/8/position = Vector2(320, 200)
-nodes/vertex/9/node = SubResource("VisualShaderNodeExpression_m6cqw")
-nodes/vertex/9/position = Vector2(660, 80)
-nodes/vertex/9/size = Vector2(500, 300)
-nodes/vertex/9/input_ports = "0,4,input0;1,4,input1;"
-nodes/vertex/9/output_ports = "0,4,output0;1,4,height;"
-nodes/vertex/9/expression = "func get_height(world_position: Vector3) -> float:
-	var uv_x = wrapf(world_position.x / noise_scale + time * wave_speed, 0, 1)
-	var uv_y = wrapf(world_position.z / noise_scale + time * wave_speed, 0, 1)
-
-	var pixel_pos = Vector2(uv_x * noise.get_width(), uv_y * noise.get_height())
-	return global_position.y + noise.get_pixelv(pixel_pos).r * height_scale;"
-nodes/vertex/connections = PackedInt32Array(2, 0, 4, 2, 4, 0, 3, 0, 6, 0, 8, 0, 8, 0, 7, 1, 5, 0, 7, 2, 3, 0, 7, 0, 7, 0, 0, 0, 7, 0, 9, 0)
+nodes/vertex/connections = PackedInt32Array(2, 0, 4, 2, 4, 0, 3, 0, 6, 0, 8, 0, 8, 0, 7, 1, 5, 0, 7, 2, 3, 0, 7, 0, 7, 0, 0, 0)
 nodes/fragment/0/position = Vector2(1240, 180)
 nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_7q4cf")
 nodes/fragment/2/position = Vector2(-320, 80)

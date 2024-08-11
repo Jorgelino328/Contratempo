@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://barswpi53gy12"]
+[gd_scene load_steps=12 format=3 uid="uid://barswpi53gy12"]
 
 [ext_resource type="Script" path="res://Scenes/Actors/SpaceCat/trickster_alien.gd" id="1_6le8q"]
 [ext_resource type="Texture2D" uid="uid://duth826asrsum" path="res://Assets/3D Models/RawAssets/TrickesterAlien/TricksterAlien_Tex_Cat_Carrot.jpg" id="1_gedtw"]
@@ -757,6 +757,50 @@ _data = {
 "Walking": SubResource("Animation_xcyb4")
 }
 
+[sub_resource type="Animation" id="Animation_scwfn"]
+resource_name = "Dropped"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BoneAttachment3D/Device:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Device:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.0483616, 1.92314, 2.44929), Vector3(-0.0483616, -1.96785, 2.44929)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Device:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dau17"]
+_data = {
+"Dropped": SubResource("Animation_scwfn")
+}
+
 [node name="TricksterAlien" type="Node3D"]
 script = ExtResource("1_6le8q")
 
@@ -817,28 +861,28 @@ bones/7/parent = 6
 bones/7/rest = Transform3D(1, 1.02523e-08, 5.3025e-10, -1.02523e-08, 1, 3.17991e-05, -5.29924e-10, -3.17991e-05, 1, 4.28102e-12, 0.486328, 3.57628e-07)
 bones/7/enabled = true
 bones/7/position = Vector3(4.28102e-12, 0.486328, 3.57628e-07)
-bones/7/rotation = Quaternion(0.227098, 0.00688791, 0.0232224, 0.973571)
+bones/7/rotation = Quaternion(0.224965, -0.0335408, 0.115236, 0.966947)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/name = "tail.02"
 bones/8/parent = 7
 bones/8/rest = Transform3D(1, 9.59455e-08, 7.24177e-09, -9.61628e-08, 0.999146, 0.0413184, -3.27127e-09, -0.0413184, 0.999146, -2.66454e-15, 0.434696, 7.45058e-08)
 bones/8/enabled = true
 bones/8/position = Vector3(-2.66454e-15, 0.434696, 7.45058e-08)
-bones/8/rotation = Quaternion(0.210456, -0.0124811, 0.0395786, 0.976722)
+bones/8/rotation = Quaternion(0.211644, 0.00194458, 0.171841, 0.962119)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/name = "tail.03"
 bones/9/parent = 8
 bones/9/rest = Transform3D(1, -4.56802e-08, -2.40765e-07, 4.2463e-08, 0.999911, -0.0133454, 2.41353e-07, 0.0133454, 0.999911, -1.73195e-14, 0.486828, -2.08616e-07)
 bones/9/enabled = true
 bones/9/position = Vector3(-1.73195e-14, 0.486828, -2.08616e-07)
-bones/9/rotation = Quaternion(0.236361, -0.0130695, 0.0393052, 0.970782)
+bones/9/rotation = Quaternion(0.23587, 0.0347627, 0.125571, 0.96301)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/name = "tail.end"
 bones/10/parent = 9
 bones/10/rest = Transform3D(1, -1.30846e-08, 2.37204e-07, 3.03633e-08, 0.997333, -0.0729901, -2.35616e-07, 0.0729901, 0.997333, 1.76748e-13, 0.447662, 6.25849e-07)
 bones/10/enabled = true
 bones/10/position = Vector3(1.76748e-13, 0.447662, 6.25849e-07)
-bones/10/rotation = Quaternion(0.265859, -0.0117414, 0.0414475, 0.963049)
+bones/10/rotation = Quaternion(0.250559, -0.153827, -0.146493, 0.944509)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/name = "spine.01"
 bones/11/parent = 1
@@ -887,21 +931,21 @@ bones/17/parent = 16
 bones/17/rest = Transform3D(0.999997, -0.00255279, -0.00018854, 0.00234049, 0.882035, 0.471177, -0.00103652, -0.471176, 0.882039, 1.16415e-10, 0.315251, 6.3863e-08)
 bones/17/enabled = true
 bones/17/position = Vector3(1.16415e-10, 0.315251, 6.3863e-08)
-bones/17/rotation = Quaternion(-0.164581, 0.00721599, 0.0229368, 0.986071)
+bones/17/rotation = Quaternion(-0.187138, -0.0190539, -0.0123458, 0.982071)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/name = "ear.L"
 bones/18/parent = 17
 bones/18/rest = Transform3D(0.691304, 0.278419, 0.666769, -0.104332, 0.951575, -0.289172, -0.714992, 0.130341, 0.686876, 0.284633, 1.03218, 0.00407205)
 bones/18/enabled = true
 bones/18/position = Vector3(0.284633, 1.03218, 0.00407205)
-bones/18/rotation = Quaternion(0.125141, 0.319264, -0.100535, 0.933972)
+bones/18/rotation = Quaternion(0.480894, 0.326332, 0.0298997, 0.813237)
 bones/18/scale = Vector3(1, 1, 1)
 bones/19/name = "ear.R"
 bones/19/parent = 17
 bones/19/rest = Transform3D(0.73052, -0.291991, -0.617318, 0.239935, 0.95609, -0.168297, 0.639353, -0.0251723, 0.768501, -0.298351, 0.973267, 0.0555923)
 bones/19/enabled = true
 bones/19/position = Vector3(-0.298351, 0.973267, 0.0555923)
-bones/19/rotation = Quaternion(0.0519065, -0.335493, 0.136036, 0.930723)
+bones/19/rotation = Quaternion(-0.350859, -0.175619, 0.206945, 0.896231)
 bones/19/scale = Vector3(1, 1, 1)
 bones/20/name = "mouth"
 bones/20/parent = 17
@@ -1019,11 +1063,20 @@ libraries = {
 }
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="."]
-transform = Transform3D(0.998893, -0.046534, 0.00693573, 0.0446818, 0.892122, -0.449602, 0.014734, 0.449408, 0.893206, -0.0178902, 2.23402, 1.12607)
+transform = Transform3D(0.998945, 0.0324442, -0.0324998, -0.0428873, 0.912147, -0.407638, 0.0164191, 0.408595, 0.912568, -0.0178902, 2.23402, 1.12607)
 bone_name = "head"
 bone_idx = 17
 use_external_skeleton = true
 external_skeleton = NodePath("../Rig/Skeleton3D")
 
 [node name="Device" parent="BoneAttachment3D" instance=ExtResource("3_jvmco")]
-transform = Transform3D(0.999975, -0.00305666, 0.00643822, -0.00121998, -0.963432, -0.267933, 0.00702183, 0.267909, -0.963413, 0.0245761, 0.518611, 1.30283)
+transform = Transform3D(0.999967, 0.0074324, 0.00316853, 0.00804858, -0.950686, -0.310036, 0.000707958, 0.310042, -0.950716, 0.0275533, 0.575688, 1.27857)
+
+[node name="Device" parent="." instance=ExtResource("3_jvmco")]
+transform = Transform3D(0.999975, -0.00305666, 0.00643821, -0.00350465, -0.99748, 0.0707527, 0.00620578, -0.0707818, -0.997469, -0.0483616, 1.92314, 2.44929)
+visible = false
+
+[node name="Dropped" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dau17")
+}

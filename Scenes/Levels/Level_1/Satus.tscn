@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c2akku8du1xku"]
+[gd_scene load_steps=27 format=3 uid="uid://c2akku8du1xku"]
 
 [ext_resource type="PackedScene" uid="uid://0adle82x7bu3" path="res://Scenes/Actors/Audax/Audax.tscn" id="1_6apj6"]
 [ext_resource type="Script" path="res://Scenes/Levels/Level_1/Satus.gd" id="1_64to1"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bp4qfj0wq1jf3" path="res://Assets/3D Models/TreatedAssets/Ship.tscn" id="7_yllq7"]
 [ext_resource type="PackedScene" uid="uid://ullu4fvwt3ef" path="res://Assets/3D Models/TreatedAssets/Boulder.tscn" id="8_sswv1"]
 [ext_resource type="PackedScene" uid="uid://bnuhen58egjhl" path="res://Assets/3D Models/TreatedAssets/LightShroom.tscn" id="9_sck1f"]
+[ext_resource type="PackedScene" uid="uid://bu453fj5ijfr" path="res://Scenes/Elements/Tutorial/Tutorial.tscn" id="14_6uiqv"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_cg7qn"]
 rayleigh_color = Color(0.8, 0.321569, 0.996078, 1)
@@ -39,6 +40,13 @@ _data = {
 }
 point_count = 6
 
+[sub_resource type="Curve3D" id="Curve3D_1amqa"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 4.596, 0, 4.692, 0.427, 0, 0.244, -0.427, 0, -0.244, 2.311, 0, 4.365, 0.234, 0, 0.591, -0.234, 0, -0.591, 1.019, 0, 2.596, 0.032, 0, -0.144, -0.0317345, -0.0569894, 0.14397, -1.788, 0, -1.518),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_q32hj"]
 size = Vector3(18.7572, 4.58362, 14.0227)
 
@@ -57,13 +65,15 @@ size = Vector3(7.73206, 1, 5.49719)
 [sub_resource type="BoxShape3D" id="BoxShape3D_y156b"]
 size = Vector3(8.1499, 1, 5.47461)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_nbnaw"]
+size = Vector3(4.41211, 1, 3.81909)
+
 [node name="Satus" type="Node3D" node_paths=PackedStringArray("player", "cameras", "current_camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22072, -4.76837e-07, 0.0928936)
 script = ExtResource("1_64to1")
 player = NodePath("Audax")
 cameras = NodePath("Cameras")
-current_camera = NodePath("Cameras/PlayerCamera")
-metadata/_edit_group_ = true
+current_camera = NodePath("Cameras/Camera2")
 
 [node name="PlayerHUD" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_4trow")]
 process_mode = 3
@@ -74,20 +84,34 @@ environment = SubResource("Environment_rdui3")
 
 [node name="Audax" parent="." instance=ExtResource("1_6apj6")]
 process_mode = 3
-transform = Transform3D(-0.941033, 0, 0.338311, 0, 1, 0, -0.338311, 0, -0.941033, -2.20053, 1.4337, 3.31774)
+transform = Transform3D(-0.941033, 0, 0.338311, 0, 1, 0, -0.338311, 0, -0.941033, -2.20053, 1.4337, 4.02919)
+
+[node name="CatPath2" type="Path3D" parent="."]
+process_mode = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.564801, 0)
+curve = SubResource("Curve3D_rbfx2")
+
+[node name="Follow" type="PathFollow3D" parent="CatPath2"]
+transform = Transform3D(-0.37003, 0, 0.929011, 0, 0.999992, 0, -0.929012, 0, -0.370029, 5.03006, 4.76837e-07, 4.23814)
+script = ExtResource("4_6tvhu")
+
+[node name="TricksterAlien" parent="CatPath2/Follow" instance=ExtResource("5_2payb")]
+process_mode = 3
+transform = Transform3D(-0.3, 0, -2.62268e-08, 0, 0.3, 0, 2.62268e-08, 0, -0.3, 0, 0, 0)
 
 [node name="CatPath" type="Path3D" parent="."]
 process_mode = 3
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.668145, 0)
-curve = SubResource("Curve3D_rbfx2")
+transform = Transform3D(0.855717, 0, 0.517445, 0, 1, 0, -0.517445, 0, 0.855717, 52.1158, 0.668145, 49.2026)
+curve = SubResource("Curve3D_1amqa")
 
 [node name="Follow" type="PathFollow3D" parent="CatPath"]
-transform = Transform3D(-0.37003, 0, 0.929011, 0, 0.999992, 0, -0.929012, 0, -0.37003, 5.03006, 4.76837e-07, 4.23814)
+process_mode = 3
+transform = Transform3D(0.141656, 0, 0.989861, 0, 0.99999, 0, -0.989861, 0, 0.141656, 4.596, 0, 4.692)
 script = ExtResource("4_6tvhu")
 
 [node name="TricksterAlien" parent="CatPath/Follow" instance=ExtResource("5_2payb")]
 process_mode = 3
-transform = Transform3D(-0.3, 0, -2.62268e-08, 0, 0.3, 0, 2.62268e-08, 0, -0.3, 0, 0, 0)
+transform = Transform3D(-0.2994, 0, -0.0189626, 0, 0.3, 0, 0.0189626, 0, -0.2994, -0.0225792, 0, -0.267593)
 
 [node name="Landscape" parent="." instance=ExtResource("3_thq57")]
 
@@ -95,7 +119,7 @@ transform = Transform3D(-0.3, 0, -2.62268e-08, 0, 0.3, 0, 2.62268e-08, 0, -0.3, 
 transform = Transform3D(0.807002, 0.590549, 0, -0.590549, 0.807002, 0, 0, 0, 1, -3.62377, 3.579, -2.77005)
 
 [node name="Temple" parent="." instance=ExtResource("2_h2leq")]
-transform = Transform3D(0.687759, 0, 0.725939, 0, 1, 0, -0.725939, 0, 0.687759, 8.2826, 1.08948, 10.9165)
+transform = Transform3D(0.687759, 0, 0.725939, 0, 1, 0, -0.725939, 0, 0.687759, 8.2826, 0.683846, 10.9165)
 
 [node name="Cameras" type="Node3D" parent="."]
 
@@ -104,16 +128,18 @@ transform = Transform3D(-0.160094, 0.597877, -0.785438, 0.162502, 0.800808, 0.57
 
 [node name="Camera1" type="Camera3D" parent="Cameras"]
 transform = Transform3D(-0.0567608, 0.71181, -0.700074, 0.0232638, 0.701957, 0.711839, 0.998117, 0.0241182, -0.0564031, -3.37027, 7.08132, 7.78044)
+current = true
 
 [node name="Camera2" type="Camera3D" parent="Cameras"]
 transform = Transform3D(-0.552934, 0.664389, -0.502844, 0.0682369, 0.637571, 0.767364, 0.830426, 0.389989, -0.39787, -4.07431, 7.01167, -2.81687)
+current = true
 
 [node name="Camera3" type="Camera3D" parent="Cameras"]
 transform = Transform3D(-0.735387, 0.447009, -0.509302, -0.000345964, 0.751326, 0.659931, 0.677647, 0.485481, -0.552361, 10.4595, 6.2063, 8.63934)
 
 [node name="PlayerCamera" parent="Cameras" node_paths=PackedStringArray("player") instance=ExtResource("2_khgoc")]
+process_mode = 3
 transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -8, 4.793, 5.897)
-current = true
 player = NodePath("../../Audax")
 
 [node name="CameraTriggers" type="Node3D" parent="."]
@@ -154,7 +180,9 @@ shadow_opacity = 0.45
 shadow_blur = 2.0
 
 [node name="Fire" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.30502, 0)
+process_mode = 3
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, -0.30502, 0)
+visible = false
 
 [node name="Flame" parent="Fire" instance=ExtResource("6_hkr5x")]
 transform = Transform3D(4.1269, 0.564578, 0, -2.82289, 0.82538, 0, 0, 0, 5, -0.932872, 0.442357, -1.41028)
@@ -177,7 +205,6 @@ transform = Transform3D(-0.827217, -0.113167, -4.89852, -2.82289, 0.82538, 0, 4.
 [node name="FireSound" type="AudioStreamPlayer3D" parent="Fire"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.498367, 3.45046, 0.308323)
 stream = ExtResource("7_pjut2")
-autoplay = true
 
 [node name="Rocket" parent="." instance=ExtResource("7_yllq7")]
 transform = Transform3D(-0.458988, -0.395029, -0.79579, -0.212921, 0.91852, -0.333145, 0.862551, 0.0165308, -0.5057, -0.379885, 1.20617, -0.488088)
@@ -204,7 +231,34 @@ transform = Transform3D(0.159967, 0, -0.987122, 0, 1, 0, 0.987122, 0, 0.159967, 
 transform = Transform3D(0.607803, 0, -0.794083, 0, 1, 0, 0.794083, 0, 0.607803, 1.89868, -0.0694113, -4.50073)
 shape = SubResource("BoxShape3D_y156b")
 
+[node name="Room3" type="Area3D" parent="."]
+transform = Transform3D(0.159967, 0, -0.987122, 0, 1, 0, 0.987122, 0, 0.159967, 47.0103, 1.35484, 48.3005)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room3"]
+transform = Transform3D(0.607804, 0, -0.794083, 0, 1, 0, 0.794083, 0, 0.607804, 6.94724, -0.0694113, -7.70535)
+shape = SubResource("BoxShape3D_nbnaw")
+
 [node name="Timer" type="Timer" parent="."]
+
+[node name="HintCooldown" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="QuakeTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Tutorial" parent="." instance=ExtResource("14_6uiqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26296, 1.36867, 6.97443)
+tutorial = "res://Assets/Dialogue/TutorialMovement.json"
+
+[node name="Tutorial2" parent="." instance=ExtResource("14_6uiqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2915, 1.44102, 18.702)
+tutorial = "res://Assets/Dialogue/TutorialJump.json"
+
+[node name="Tutorial3" parent="." instance=ExtResource("14_6uiqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.9035, -1.16201, 52.2794)
+visible = false
+tutorial = "res://Assets/Dialogue/TutorialDevice.json"
 
 [connection signal="body_entered" from="CameraTriggers/Camera1Trigger" to="." method="_on_camera_1_trigger_body_entered"]
 [connection signal="body_entered" from="CameraTriggers/Camera2Trigger" to="." method="_on_camera_2_trigger_body_entered"]
@@ -212,4 +266,6 @@ shape = SubResource("BoxShape3D_y156b")
 [connection signal="body_entered" from="CameraTriggers/Camera4Trigger" to="." method="_on_camera_4_trigger_body_entered"]
 [connection signal="body_entered" from="Room1" to="." method="_on_room_1_body_entered"]
 [connection signal="body_entered" from="Room2" to="." method="_on_room_2_body_entered"]
+[connection signal="body_entered" from="Room3" to="." method="_on_room_3_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="QuakeTimer" to="." method="_on_quake_timer_timeout"]

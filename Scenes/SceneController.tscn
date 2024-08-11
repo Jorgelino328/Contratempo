@@ -22,3 +22,10 @@ process_mode = 3
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("3_dgaip")
 autoplay = true
+
+[node name="Timer" type="Timer" parent="."]
+process_mode = 3
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

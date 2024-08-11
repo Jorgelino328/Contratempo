@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://s1ugftu76qga"]
+[gd_scene load_steps=6 format=3 uid="uid://s1ugftu76qga"]
 
 [ext_resource type="Theme" uid="uid://c3u7pkv4gva6m" path="res://Scenes/UIs/UI_Settings/PurpleMana.tres" id="1_dxysw"]
 [ext_resource type="Script" path="res://Scenes/UIs/Dialogue_UI/Dialogue_UI.gd" id="2_r3yui"]
 [ext_resource type="FontFile" uid="uid://duayoy8x436d1" path="res://Assets/Fonts/Typodermic Fonts/angerpoise lampshade.otf" id="3_ycipa"]
+[ext_resource type="Texture2D" uid="uid://vu4bnpwn2bxn" path="res://Assets/Dialogue/Tutorial.png" id="4_38vyj"]
 [ext_resource type="AudioStream" uid="uid://bhlno0v7v505j" path="res://Assets/Audio/dialogue.wav" id="5_rb1fu"]
 
 [node name="Dialogue_UI" type="Control"]
@@ -77,9 +78,15 @@ bbcode_enabled = true
 text = "The Quick Brown Fox Jumps Over the Lazy Dog
 But i don't care"
 
-[node name="Portrait" type="Sprite2D" parent="VBoxContainer/Panel"]
-position = Vector2(108, 117)
-scale = Vector2(0.225, 0.225)
+[node name="Portrait" type="TextureRect" parent="VBoxContainer/Panel"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 22.0
+offset_right = 199.0
+offset_bottom = 206.0
+texture = ExtResource("4_38vyj")
+expand_mode = 2
+stretch_mode = 5
 
 [node name="Timer" type="Timer" parent="."]
 

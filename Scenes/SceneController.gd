@@ -1,8 +1,11 @@
 extends Node
 @onready var dialogue_UI := load("res://Scenes/UIs/Dialogue_UI/Dialogue_UI.tscn")
 @onready var current_level := $Main_Menu
+
 var previous_camera : Camera3D
 var reload := false
+
+signal dialogue_stopped_lvl() 
 
 func _ready():
 	connect_signals()
@@ -27,17 +30,27 @@ func connect_signals():
 func _on_dialogue(json_path):
 	var dialogue_inst = dialogue_UI.instantiate()
 	dialogue_inst.dialoguePath = json_path
+	dialogue_inst.dialogue_stop.connect(_on_dialogue_stop)
 	dialogue_inst.caaat.connect(_on_caaat)
 	dialogue_inst.cat_over.connect(_on_cat_over)
 	add_child(dialogue_inst)
+	get_tree().paused = true
 	
+	
+func _on_dialogue_stop():
+	$Timer.start()
 	
 func _on_caaat(run):
 	previous_camera = current_level.current_camera
 	current_level.get_node("Cameras").get_node("CatCam").make_current()
 	current_level.current_camera = current_level.get_node("Cameras").get_node("CatCam")
 	if run:
-		current_level.get_node("CatPath").get_node("Follow").run = true
+		if(current_level.get_node("CatPath2").get_child_count() > 0):
+			current_level.get_node("CatPath2").get_node("Follow").run = true
+		else:
+			current_level.get_node("CatPath").get_node("Follow").drop = true
+			current_level.get_node("CatPath").get_node("Follow").run = true
+			
 func _on_cat_over():
 	current_level.current_camera = previous_camera
 	previous_camera.make_current()
@@ -85,4 +98,7 @@ func change_level(next_level):
 	current_level = next_level
 	connect_signals()
 	
+func _on_timer_timeout():
+	get_tree().paused = false
+	emit_signal("dialogue_stopped_lvl")
 	

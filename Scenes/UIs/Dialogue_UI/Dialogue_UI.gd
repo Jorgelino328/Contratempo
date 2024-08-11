@@ -8,13 +8,13 @@ var cat = false
 
 signal caaat(run)
 signal cat_over()
+signal dialogue_stop()
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	$Timer.wait_time = textSpeed
 	dialogue = getDialogue()
 	assert(dialogue, "Dialogue not found")
-	get_tree().paused = true
 	nextPhrase()
 		
 func _process(delta):
@@ -37,7 +37,7 @@ func getDialogue():
 	
 func nextPhrase():
 	if phraseNum >= len(dialogue):
-		get_tree().paused = false
+		emit_signal("dialogue_stop")
 		queue_free()
 		return
 		

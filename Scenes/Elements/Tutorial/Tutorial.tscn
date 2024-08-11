@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://bu453fj5ijfr"]
+
+[ext_resource type="Script" path="res://Scenes/Elements/Tutorial/Tutorial.gd" id="1_hlrqg"]
+[ext_resource type="Shader" uid="uid://bjvmsyqg8t374" path="res://Assets/Shaders/Tutorialtres.tres" id="2_mwfjs"]
+[ext_resource type="Texture2D" uid="uid://vu4bnpwn2bxn" path="res://Assets/Dialogue/Tutorial.png" id="3_03kk8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7nu3r"]
+render_priority = 0
+shader = ExtResource("2_mwfjs")
+shader_parameter/ColorParameter = Color(1, 1, 0, 1)
+shader_parameter/MainText = ExtResource("3_03kk8")
+
+[sub_resource type="QuadMesh" id="QuadMesh_7ksh4"]
+material = SubResource("ShaderMaterial_7nu3r")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cio8i"]
+
+[node name="Tutorial" type="Node3D"]
+script = ExtResource("1_hlrqg")
+
+[node name="FlameShort" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.00248, 0, 0, 0, 1.00248, 0, 0, 0, 1.00248, 0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_7ksh4")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_cio8i")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 1, 0, 1)
+light_energy = 5.0
+omni_range = 50.0
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
