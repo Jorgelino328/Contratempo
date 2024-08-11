@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c2akku8du1xku"]
+[gd_scene load_steps=24 format=3 uid="uid://c2akku8du1xku"]
 
 [ext_resource type="PackedScene" uid="uid://0adle82x7bu3" path="res://Scenes/Actors/Audax/Audax.tscn" id="1_6apj6"]
 [ext_resource type="Script" path="res://Scenes/Levels/Level_1/Satus.gd" id="1_64to1"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://c5m6ohe5umt0s" path="res://Maps/Temple/Temple.tscn" id="2_h2leq"]
 [ext_resource type="PackedScene" uid="uid://crry3jt1c10hy" path="res://Scenes/Elements/PlayerCamera/player_camera.tscn" id="2_khgoc"]
 [ext_resource type="PackedScene" uid="uid://b8cki0dpiti4u" path="res://Maps/Temple/Basin.tscn" id="3_thq57"]
+[ext_resource type="Script" path="res://Scenes/Levels/Level_1/Follow.gd" id="4_6tvhu"]
+[ext_resource type="PackedScene" uid="uid://barswpi53gy12" path="res://Scenes/Actors/SpaceCat/trickster_alien.tscn" id="5_2payb"]
 [ext_resource type="PackedScene" uid="uid://b5hw6xbx7eqw4" path="res://Scenes/Elements/Flame/Flame.tscn" id="6_hkr5x"]
 [ext_resource type="AudioStream" uid="uid://ssmh8jjo5dft" path="res://Assets/Audio/fire-loop.mp3" id="7_pjut2"]
 [ext_resource type="PackedScene" uid="uid://bp4qfj0wq1jf3" path="res://Assets/3D Models/TreatedAssets/Ship.tscn" id="7_yllq7"]
@@ -29,6 +31,13 @@ sdfgi_enabled = true
 sdfgi_use_occlusion = true
 volumetric_fog_enabled = true
 volumetric_fog_albedo = Color(1, 0.411765, 0.192157, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_rbfx2"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 5.03006, 4.76837e-07, 4.23814, 0.21, 0, -0.55, -0.21, 0, 0.55, 2.95755, 4.76837e-07, 5.06363, -0.097, 0, -0.277, 0.097, 0, 0.277, 3.06293, 4.76837e-07, 6.50385, -0.589, 0, -0.26, 0.589, 0, 0.26, 4.16944, 4.76837e-07, 7.71575, -1.213, 0, -0.371, 1.213, 0, 0.371, 9.19408, -5.4121e-05, 7.79456, -0.006, 0, -0.006, 0.00632572, -0.0139012, 0.0058651, 12.453, 0, 10.833),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q32hj"]
 size = Vector3(18.7572, 4.58362, 14.0227)
@@ -54,15 +63,31 @@ script = ExtResource("1_64to1")
 player = NodePath("Audax")
 cameras = NodePath("Cameras")
 current_camera = NodePath("Cameras/PlayerCamera")
+metadata/_edit_group_ = true
 
 [node name="PlayerHUD" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_4trow")]
+process_mode = 3
 player = NodePath("../Audax")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rdui3")
 
 [node name="Audax" parent="." instance=ExtResource("1_6apj6")]
-transform = Transform3D(-0.941033, 0, 0.338311, 0, 1, 0, -0.338311, 0, -0.941033, 20.4999, 1.4337, 18.6678)
+process_mode = 3
+transform = Transform3D(-0.941033, 0, 0.338311, 0, 1, 0, -0.338311, 0, -0.941033, -2.20053, 1.4337, 3.31774)
+
+[node name="CatPath" type="Path3D" parent="."]
+process_mode = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.668145, 0)
+curve = SubResource("Curve3D_rbfx2")
+
+[node name="Follow" type="PathFollow3D" parent="CatPath"]
+transform = Transform3D(-0.37003, 0, 0.929011, 0, 0.999992, 0, -0.929012, 0, -0.37003, 5.03006, 4.76837e-07, 4.23814)
+script = ExtResource("4_6tvhu")
+
+[node name="TricksterAlien" parent="CatPath/Follow" instance=ExtResource("5_2payb")]
+process_mode = 3
+transform = Transform3D(-0.3, 0, -2.62268e-08, 0, 0.3, 0, 2.62268e-08, 0, -0.3, 0, 0, 0)
 
 [node name="Landscape" parent="." instance=ExtResource("3_thq57")]
 
@@ -73,6 +98,9 @@ transform = Transform3D(0.807002, 0.590549, 0, -0.590549, 0.807002, 0, 0, 0, 1, 
 transform = Transform3D(0.687759, 0, 0.725939, 0, 1, 0, -0.725939, 0, 0.687759, 8.2826, 1.08948, 10.9165)
 
 [node name="Cameras" type="Node3D" parent="."]
+
+[node name="CatCam" type="Camera3D" parent="Cameras"]
+transform = Transform3D(-0.160094, 0.597877, -0.785438, 0.162502, 0.800808, 0.576454, 0.973634, -0.0353479, -0.225361, 2.07499, 2.48521, 4.40924)
 
 [node name="Camera1" type="Camera3D" parent="Cameras"]
 transform = Transform3D(-0.0567608, 0.71181, -0.700074, 0.0232638, 0.701957, 0.711839, 0.998117, 0.0241182, -0.0564031, -3.37027, 7.08132, 7.78044)

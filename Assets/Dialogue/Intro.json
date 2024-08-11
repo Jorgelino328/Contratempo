@@ -1,0 +1,77 @@
+[
+	{
+		"Name": "Audax",
+		"Emotion": "Sad",
+		"Text": "...Ufa"
+	},
+	{
+		"Name": "Audax",
+		"Emotion": "Happy",
+		"Text": "Ainda bem que a cápsula de fuga funcionou!"
+	},
+	{
+		"Name": "Audax",
+		"Emotion": "Sad",
+		"Text": "Mas minha nave não aterrisou tão bem quanto eu..."
+	},
+	{
+		"Name": "Audax",
+		"Emotion": "Sad",
+		"Text": "..."
+	},
+	{
+		"Name": "Audax",
+		"Emotion": "Angry",
+		"Text": "AAH! Não adianta chorar pelo Lactis derramado, [b]Audax[/b]! É hora de botar a mão na massa e consertar a nave!"
+	},
+	{
+		"Name": "Audax",
+		"Emotion": "Suspicious",
+		"Text": "Hmm... Deixa eu ver..., O capacitor de fluxo ainda está intacto... O motor de plasma ainda está funcional... Mas onde está o conversor quantum? E o painel central?"
+	},
+	{
+		"Name": "Audax",
+		"Emotion": "Sad",
+		"Text": "Pelo visto isso vai ser mais difícil do que eu pensei..."
+	},
+	{
+		"Name": "Audax",
+		"Emotion": "Happy",
+		"Text": "As peças que estão faltando devem ter caído em outras partes do planeta!"
+	},
+	{
+		"Name": "Audax",
+		"Emotion": "Happy",
+		"Text": "Mas não tem problema! É só eu usar o meu localizador e..."
+	},
+	{
+		"Name": "Criatura Estranha",
+		"Emotion": "Device",
+		"Text": "..."
+	},
+	{
+		"Name": "Audax",
+		"Emotion": "Surprised",
+		"Text": "AH! Isso é o...?"
+	},
+	{
+		"Name": "Audax",
+		"Emotion": "Happy",
+		"Text": "Erm... Vem cá bichano... Dá o localizador pra mim, por favor!"
+	},
+	{
+		"Name": "Criatura Estranha",
+		"Emotion": "Device",
+		"Text": "*Corre*"
+	},
+	{
+		"Name": "Audax",
+		"Emotion": "Surprised",
+		"Text": "GAH!"
+	},
+	{
+		"Name": "Audax",
+		"Emotion": "Angry",
+		"Text": "Vem cá seu bicho desgraçado!"
+	}
+]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://73soo2fqsd7n"]
+
+[ext_resource type="PackedScene" uid="uid://cnl6uv1ivypok" path="res://Assets/3D Models/RawAssets/Device/Device.glb" id="1_0ucc2"]
+[ext_resource type="Texture2D" uid="uid://boj7luignmi8n" path="res://Assets/3D Models/RawAssets/Device/Device_Texture.png" id="2_byqcs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ahg1"]
+albedo_color = Color(1, 0, 0, 1)
+albedo_texture = ExtResource("2_byqcs")
+
+[node name="Device" instance=ExtResource("1_0ucc2")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_8ahg1")

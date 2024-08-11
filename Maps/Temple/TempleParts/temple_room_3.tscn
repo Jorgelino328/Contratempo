@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ir5xnvkp35h5" path="res://Maps/Temple/TempleParts/rubble.tscn" id="2_ppw8p"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_okote"]
-size = Vector3(1.28735, 2.12555, 5.66099)
+size = Vector3(2.76135, 2.12555, 5.66099)
 
 [node name="TempleRoom3" type="Node3D"]
 script = ExtResource("1_x4tol")
@@ -47,7 +47,7 @@ transform = Transform3D(2.95781, 0, 0, 0, -1.28547e-07, -2, 0, 2.94082, -8.74228
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26754, 0.466577, 75.0374)
 
 [node name="Box" type="CollisionShape3D" parent="HideMiddle"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.376373, 0.439056, -0.254715)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.11337, 0.439056, -0.254715)
 shape = SubResource("BoxShape3D_okote")
 
 [connection signal="body_entered" from="HideMiddle" to="." method="_on_hide_middle_body_entered"]

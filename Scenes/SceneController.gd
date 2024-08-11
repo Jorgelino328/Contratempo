@@ -1,7 +1,7 @@
 extends Node
-#@onready var music1 := load("res://Assets/Audio/Minstrels-Song.mp3")
-#@onready var music2 := load("res://Assets/Audio/15-Damiano-Baldoni-Witch.mp3")
+@onready var dialogue_UI := load("res://Scenes/UIs/Dialogue_UI/Dialogue_UI.tscn")
 @onready var current_level := $Main_Menu
+var previous_camera : Camera3D
 var reload := false
 
 func _ready():
@@ -10,24 +10,37 @@ func _ready():
 
 func connect_signals():
 	if(current_level == $Game_Over || current_level == $EndGame):
-		#$Audio/BackgroundMusic.stream = music1
-		#$Audio/BackgroundMusic.play()
 		current_level.menu.connect(_on_menu)
 		current_level.quit.connect(_on_quit)
 	elif(current_level == $Main_Menu):
-		#$Audio/BackgroundMusic.stream = music1
-		#$Audio/BackgroundMusic.play()
 		current_level.new_game.connect(_on_main_menu_new_game)
 		current_level.settings.connect(_on_main_menu_settings)
 		current_level.quit.connect(_on_quit)
 	elif(current_level == $Settings):
 		current_level.back_menu.connect(_on_settings_back_menu)
 	else:
-		#$Audio/BackgroundMusic.stream = music2
-		#$Audio/BackgroundMusic.play()
 		current_level.next_level.connect(_on_next_level)
 		current_level.change_song.connect(_on_change_song)
 		current_level.change_weather.connect(_on_change_weather)
+		current_level.dialogue.connect(_on_dialogue)
+
+func _on_dialogue(json_path):
+	var dialogue_inst = dialogue_UI.instantiate()
+	dialogue_inst.dialoguePath = json_path
+	dialogue_inst.caaat.connect(_on_caaat)
+	dialogue_inst.cat_over.connect(_on_cat_over)
+	add_child(dialogue_inst)
+	
+	
+func _on_caaat(run):
+	previous_camera = current_level.current_camera
+	current_level.get_node("Cameras").get_node("CatCam").make_current()
+	current_level.current_camera = current_level.get_node("Cameras").get_node("CatCam")
+	if run:
+		current_level.get_node("CatPath").get_node("Follow").run = true
+func _on_cat_over():
+	current_level.current_camera = previous_camera
+	previous_camera.make_current()
 
 func _on_change_song(new_song):
 	$Audio/BackgroundMusic.stream = new_song

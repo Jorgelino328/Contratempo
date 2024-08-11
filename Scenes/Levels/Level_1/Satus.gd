@@ -2,18 +2,23 @@ extends Level
 
 @onready var start_song = load("res://Assets/Audio/Satus.ogg")
 @onready var run_song = load("res://Assets/Audio/Run.ogg")
-
+@onready var intro = "res://Assets/Dialogue/Intro.json"
 @onready var device = $Temple/Device
 
 var playing = false
 var has_shaked = false
 var outside = true
 
+signal dialogue(json)
+
 func _process(delta):
 	super._process(delta)
 	if(!playing && !has_shaked):
 		emit_signal("change_song",start_song)
+		emit_signal("dialogue",intro)
+		
 		playing = true
+		
 		
 	if(!device && !has_shaked):
 		has_shaked = true
@@ -74,14 +79,11 @@ func _on_camera_4_trigger_body_entered(body):
 		current_camera = $Cameras/PlayerCamera
 		player.set_camera_type(1)
 
-
 func _on_room_1_body_entered(body):
 	$Temple.room = 1
 
-
 func _on_room_2_body_entered(body):
 	$Temple.room = 2
-
 
 func _on_timer_timeout():
 	if ($Fire.get_child(0)):

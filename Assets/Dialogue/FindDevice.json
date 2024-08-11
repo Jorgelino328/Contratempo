@@ -1,0 +1,42 @@
+[
+	{
+		"Name": "Audax",
+		"Emotion": "Angry",
+		"Text": "Aí está voce!"
+	},
+	{
+		"Name": "Criatura Estranha",
+		"Emotion": "Device",
+		"Text": "..."
+	},
+	{
+		"Name": "Audax",
+		"Emotion": "Angry",
+		"Text": "Passa pra cá!"
+	},
+	{
+		"Name": "Criatura Estranha",
+		"Emotion": "Happy",
+		"Text": "*corre*"
+	},
+	{
+		"Name": "Audax",
+		"Emotion": "Angry",
+		"Text": "AAH! VOLTA AQUI SEU..."
+	},
+	{
+		"Name": "Audax",
+		"Emotion": "Suspicious",
+		"Text": "...Espera, parece que ele deixou o localizador pra trás!"
+	},
+	{
+		"Name": "Audax",
+		"Emotion": "Happy",
+		"Text": "Ufa! Até que enfim posso voltar pra minha nave e..."
+	},
+	{
+		"Name": "Audax",
+		"Emotion": "Suspicious",
+		"Text": "Huh? O que é isso no chão?"
+	}
+]

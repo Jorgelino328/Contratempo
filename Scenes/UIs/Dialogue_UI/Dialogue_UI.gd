@@ -4,21 +4,25 @@ extends Control
 var dialogue
 var phraseNum = 0 
 var finished = false
+var cat = false
 
+signal caaat(run)
+signal cat_over()
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	$Timer.wait_time = textSpeed
 	dialogue = getDialogue()
 	assert(dialogue, "Dialogue not found")
+	get_tree().paused = true
 	nextPhrase()
 		
 func _process(delta):
-	if Input.is_action_just_pressed("ui_accept"): #&& get_tree().paused :
+	if Input.is_action_just_pressed("ui_accept"):
 		if finished:
 			nextPhrase()
 		else:
 			$VBoxContainer/Panel/Text.visible_characters = len($VBoxContainer/Panel/Text.text)
-		#get_tree().paused = false
 
 func getDialogue():
 	var f = FileAccess.open(dialoguePath,FileAccess.READ)
@@ -33,20 +37,32 @@ func getDialogue():
 	
 func nextPhrase():
 	if phraseNum >= len(dialogue):
+		get_tree().paused = false
 		queue_free()
 		return
 		
 	finished = false
 	
 	$VBoxContainer/Panel/Name.bbcode_text = dialogue[phraseNum]["Name"]
-	$VBoxContainer/Panel/Text.bbcode_text = dialogue[phraseNum]["Text"]
 	
+	$VBoxContainer/Panel/Text.bbcode_text = dialogue[phraseNum]["Text"]
+	if(dialogue[phraseNum]["Name"] == "Criatura Estranha"):
+		if(!cat):
+			cat = true
+			if (dialogue[phraseNum]["Text"]  == "*Corre*"):
+				emit_signal("caaat", true)
+			else:
+				emit_signal("caaat", false)
+	else:
+		if(cat):
+			cat = false
+			emit_signal("cat_over")
+			
 	$VBoxContainer/Panel/Text.visible_characters = 0
 
 	var f = FileAccess.open(dialoguePath,FileAccess.READ)
 	var img = "res://Assets/Dialogue/" + dialogue[phraseNum]["Name"] + dialogue[phraseNum]["Emotion"] + ".png" 
 	if f.file_exists(img):
-		print()
 		$VBoxContainer/Panel/Portrait.texture =  load(img)
 	else:
 		$VBoxContainer/Panel/Portrait.texture =  null

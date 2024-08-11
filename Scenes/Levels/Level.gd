@@ -21,14 +21,14 @@ func pause():
 	get_tree().paused = true
 	
 func _process(delta):
-	#if Input.is_action_just_released("esc"):
-		#if(!paused):
-			#pause()
-		#elif(paused):
-			#get_tree().paused = false
-			#paused = false
-			#$CanvasLayer/Settings.queue_free()
-			#
+	if Input.is_action_just_released("esc"):
+		if(!paused):
+			pause()
+		elif(paused):
+			get_tree().paused = false
+			paused = false
+			$CanvasLayer/Settings.queue_free()
+			
 	if(player.hp <= 0):
 		emit_signal("next_level",game_over)
 		

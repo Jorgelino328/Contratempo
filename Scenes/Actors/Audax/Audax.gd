@@ -34,9 +34,10 @@ func _process(delta):
 			get_parent().use_clear()
 			
 func _physics_process(delta):
-	handle_movement(delta)
-	update_animation()
-	move_and_slide()
+	update_animation()	
+	if(!get_tree().paused):
+		handle_movement(delta)
+		move_and_slide()
 	if on_platform:
 		global_transform.origin += on_platform.global_transform.basis.z * (2*on_platform.speed * on_platform.direction * delta)
 		
@@ -76,7 +77,11 @@ func handle_movement(delta):
 		rotation.y = lerp_angle(rotation.y, atan2(velocity.x, velocity.z), rotation_speed * delta)
 
 func update_animation():
-	if(velocity == Vector3.ZERO):
+	if(get_tree().paused):
+		animTree["parameters/conditions/idle"] = true
+		animTree["parameters/conditions/walking"] = false
+		animTree["parameters/conditions/running"] = false
+	elif(velocity == Vector3.ZERO):
 		can_run = false
 		animTree["parameters/conditions/idle"] = true
 		animTree["parameters/conditions/walking"] = false
