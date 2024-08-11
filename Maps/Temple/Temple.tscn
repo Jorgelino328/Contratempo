@@ -12,6 +12,7 @@
 
 [node name="TempleRoom2" parent="." instance=ExtResource("2_5ciqx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0162319, 0.0309987, 24.0665)
+final_pos = Vector3(0, 0, 0)
 
 [node name="TempleRoom3" parent="." instance=ExtResource("4_2h8l6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -10.086)

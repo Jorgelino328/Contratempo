@@ -1,11 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwv7j8fi7g6ou"]
+[gd_scene load_steps=10 format=3 uid="uid://bwv7j8fi7g6ou"]
 
 [ext_resource type="Script" path="res://Maps/Temple/TempleParts/temple_room_2.gd" id="1_md4k6"]
 [ext_resource type="PackedScene" uid="uid://bp8m2bb83u650" path="res://Maps/Temple/TempleParts/Wall_1.tscn" id="2_j7yut"]
 [ext_resource type="PackedScene" uid="uid://dqpqj1to1co5f" path="res://Maps/Temple/TempleParts/Wall_2.tscn" id="3_0ym2a"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_jh1tx"]
-size = Vector3(2.51831, 1, 1.99095)
+[ext_resource type="PackedScene" uid="uid://dmsdbggih7ypf" path="res://Scenes/Elements/Moving Platform/Moving Platform.tscn" id="4_sdsfd"]
+[ext_resource type="PackedScene" uid="uid://bho7btve38rh0" path="res://Scenes/Elements/Water/Water.tscn" id="5_jrpxy"]
+[ext_resource type="Script" path="res://Scenes/Elements/Water/Water.gd" id="6_gb8jf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wjtyp"]
 size = Vector3(1.297, 1.873, 8.45754)
@@ -77,18 +77,18 @@ transform = Transform3D(2.84617, 0, 0, 0, 0.0471507, 2.82855, 0, -3.92527, 0.015
 [node name="wall_without_crack" parent="Ground" instance=ExtResource("2_j7yut")]
 transform = Transform3D(2.71292, 0, 0, 0, -1.36723e-07, -4.63942, 0, 3.12785, -2.02796e-07, 5.74883, -2.47603, 30.6988)
 
-[node name="BrokenPlatform" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.999464, 0.032754, 0, -0.032754, 0.999464, 3, -3.56946, 25.1751)
+[node name="MovingPlatform" parent="." node_paths=PackedStringArray("water") instance=ExtResource("4_sdsfd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 24.5)
+start_position = Vector3(3, 0, 22.5)
+end_position = Vector3(3, 0, 27.5)
+water = NodePath("../Water")
 
-[node name="wall_without_crack" parent="BrokenPlatform" instance=ExtResource("2_j7yut")]
-transform = Transform3D(0.8, 0, 0, 0, -3.49691e-08, -0.8, 0, 0.8, -3.49691e-08, 0, 0, 0)
-
-[node name="Area3D" type="Area3D" parent="BrokenPlatform"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125557, 0.656502, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BrokenPlatform/Area3D"]
-transform = Transform3D(1.07978, 0, 0, 0, 1.07978, 0, 0, 0, 1.07978, -1.02803, 0, 0.858765)
-shape = SubResource("BoxShape3D_jh1tx")
+[node name="Water" parent="." instance=ExtResource("5_jrpxy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.546, -4.129, 25.88)
+script = ExtResource("6_gb8jf")
+start_position = Vector3(1.546, -4.129, 25.88)
+end_position = Vector3(1.546, -0.877, 25.88)
+speed = 0.1
 
 [node name="HideLeft" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.48572, 0.466577, 19.4574)
@@ -111,8 +111,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.48572, 0.466577, 33.4296)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.148468, 0.436584, -0.099823)
 shape = SubResource("BoxShape3D_1nc3b")
 
-[connection signal="body_entered" from="BrokenPlatform/Area3D" to="BrokenPlatform" method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="BrokenPlatform/Area3D" to="BrokenPlatform" method="_on_area_3d_body_exited"]
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.999701, -1.39657e-09, 0.0244323, 0.0181579, 0.669079, 0.74297, -0.0163471, 0.743192, -0.668879, 0, 5.83879, 17.3555)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.000279259, 1, 0, -1, 0.000279259, 0, 14.6532, 25.5515)
+
 [connection signal="body_entered" from="HideLeft" to="." method="_on_hide_left_body_entered"]
 [connection signal="body_exited" from="HideLeft" to="." method="_on_hide_left_body_exited"]
 [connection signal="body_entered" from="HideMiddle" to="." method="_on_hide_middle_body_entered"]
