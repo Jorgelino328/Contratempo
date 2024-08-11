@@ -63,14 +63,6 @@ environment = SubResource("Environment_rdui3")
 
 [node name="Audax" parent="." instance=ExtResource("1_6apj6")]
 transform = Transform3D(-0.941033, 0, 0.338311, 0, 1, 0, -0.338311, 0, -0.941033, -0.772768, 1.98745, 3.98535)
-hp = null
-charges = null
-has_device = null
-walk_speed = null
-running_speed = null
-fall_acceleration = null
-jump_impulse = null
-rotation_speed = null
 
 [node name="Landscape" parent="." instance=ExtResource("3_thq57")]
 
