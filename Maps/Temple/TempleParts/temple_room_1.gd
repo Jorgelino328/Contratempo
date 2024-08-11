@@ -1,6 +1,13 @@
 extends Node3D
 var state = 1
+var broken_ramp = false
 
+func _process(delta):
+	if (state == 2 && !broken_ramp):
+		$Ramp.visible = true
+		$Ground/FirstWall.queue_free()
+		broken_ramp = true		
+		
 func _on_spikes_body_entered(body):
 	if body is Player:
 		body.hp -= 3

@@ -62,7 +62,7 @@ player = NodePath("../Audax")
 environment = SubResource("Environment_rdui3")
 
 [node name="Audax" parent="." instance=ExtResource("1_6apj6")]
-transform = Transform3D(-0.941033, 0, 0.338311, 0, 1, 0, -0.338311, 0, -0.941033, -0.772768, 1.98745, 3.98535)
+transform = Transform3D(-0.941033, 0, 0.338311, 0, 1, 0, -0.338311, 0, -0.941033, 20.4999, 1.4337, 18.6678)
 
 [node name="Landscape" parent="." instance=ExtResource("3_thq57")]
 
@@ -70,7 +70,7 @@ transform = Transform3D(-0.941033, 0, 0.338311, 0, 1, 0, -0.338311, 0, -0.941033
 transform = Transform3D(0.807002, 0.590549, 0, -0.590549, 0.807002, 0, 0, 0, 1, -3.62377, 3.579, -2.77005)
 
 [node name="Temple" parent="." instance=ExtResource("2_h2leq")]
-transform = Transform3D(0.687759, 0, 0.725939, 0, 1, 0, -0.725939, 0, 0.687759, 8.2826, 0.695793, 10.9165)
+transform = Transform3D(0.687759, 0, 0.725939, 0, 1, 0, -0.725939, 0, 0.687759, 8.2826, 1.08948, 10.9165)
 
 [node name="Cameras" type="Node3D" parent="."]
 

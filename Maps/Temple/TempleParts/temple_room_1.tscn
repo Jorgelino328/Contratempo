@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://v53kuf55i0dl"]
+[gd_scene load_steps=14 format=3 uid="uid://v53kuf55i0dl"]
 
 [ext_resource type="Script" path="res://Maps/Temple/TempleParts/temple_room_1.gd" id="1_2g6k4"]
 [ext_resource type="PackedScene" uid="uid://bp8m2bb83u650" path="res://Maps/Temple/TempleParts/Wall_1.tscn" id="1_nb2b6"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://di6ra155j5ugw" path="res://Maps/Temple/TempleParts/Pillar.tscn" id="3_0ggqr"]
 [ext_resource type="PackedScene" uid="uid://cw630sg4ru6iq" path="res://Scenes/Elements/Spikes/spike_pile_3.tscn" id="4_pkku7"]
 [ext_resource type="Script" path="res://Maps/Temple/TempleParts/Spikes.gd" id="5_8r50f"]
+[ext_resource type="PackedScene" uid="uid://cdclb2x47jsrj" path="res://Maps/Temple/TempleParts/ramp.tscn" id="5_do8o8"]
 [ext_resource type="PackedScene" uid="uid://tm4dh8mihnwo" path="res://Scenes/Elements/Spikes/spike_pile_2.tscn" id="5_rc1a1"]
 [ext_resource type="PackedScene" uid="uid://bho7btve38rh0" path="res://Scenes/Elements/Water/Water.tscn" id="8_60dh6"]
 [ext_resource type="Script" path="res://Scenes/Elements/Water/Water.gd" id="9_yqgpp"]
@@ -28,7 +29,7 @@ script = ExtResource("1_2g6k4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.137657, 0, 36.6288)
 
 [node name="wall_without_crack" parent="Walls" instance=ExtResource("1_nb2b6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.3166)
+transform = Transform3D(1, 0, 0, 0, 1.28526, 0, 0, 0, 1, 0, -0.651712, 12.3166)
 
 [node name="wall_without_crack13" parent="Walls" instance=ExtResource("1_nb2b6")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.50694, 0, 36.7413)
@@ -37,13 +38,13 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.5069
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.51069, 0, 30.262)
 
 [node name="wall_without_crack2" parent="Walls" instance=ExtResource("1_nb2b6")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.50113, 0, 12.112)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 2.12952, 0, -1, 0, -4.37114e-08, 6.50113, -3.01228, 12.112)
 
 [node name="wall_without_crack4" parent="Walls" instance=ExtResource("1_nb2b6")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.50938, 0, 15.748)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 2.12952, 0, -1, 0, -4.37114e-08, 6.50938, -3.01228, 15.748)
 
 [node name="wall_without_crack7" parent="Walls" instance=ExtResource("1_nb2b6")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.51754, 0, 19.3421)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 2.12952, 0, -1, 0, -4.37114e-08, 6.51754, -3.01228, 19.3421)
 
 [node name="wall_without_crack10" parent="Walls" instance=ExtResource("1_nb2b6")]
 transform = Transform3D(-3.49154e-08, 0, 1, 0, 1, 0, -0.798772, 0, -4.37114e-08, 6.53405, 0, 27.2631)
@@ -55,18 +56,18 @@ transform = Transform3D(-5.35521e-08, 0, 1, 0, 2.1032, 0, -1.22513, 0, -4.37114e
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.51796, 0, 36.7313)
 
 [node name="wall_with_crack" parent="Walls" instance=ExtResource("2_ad58o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.46341, 0, 12.1253)
+transform = Transform3D(1, 0, 0, 0, 1.28526, 0, 0, 0, 1, 6.46341, -0.651712, 12.1253)
 
 [node name="WallLeft" type="Node3D" parent="Walls"]
 
 [node name="wall_left_1" parent="Walls/WallLeft" instance=ExtResource("1_nb2b6")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.87604, 0, 12.1346)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 2.10544, 0, -1, 0, -4.37114e-08, -2.87604, -2.99351, 12.1346)
 
 [node name="wall_left_2" parent="Walls/WallLeft" instance=ExtResource("1_nb2b6")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.86803, 0, 15.6624)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 2.10544, 0, -1, 0, -4.37114e-08, -2.86803, -2.99351, 15.6624)
 
 [node name="wall_left_3" parent="Walls/WallLeft" instance=ExtResource("1_nb2b6")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.86001, 0, 19.1951)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 2.10544, 0, -1, 0, -4.37114e-08, -2.86001, -2.99351, 19.1951)
 
 [node name="WallMiddle" type="Node3D" parent="Walls"]
 
@@ -87,17 +88,21 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.858
 [node name="Pillars" type="Node3D" parent="."]
 
 [node name="pillar_with_crack" parent="Pillars" instance=ExtResource("3_0ggqr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.15972, 0, 11.4183)
+transform = Transform3D(1, 0, 0, 0, 1.1059, 0, 0, 0, 1, 3.15972, -0.322612, 11.4183)
 
 [node name="pillar_with_crack2" parent="Pillars" instance=ExtResource("3_0ggqr")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 2.94883, 2.19698, 11.4183)
 
 [node name="pillar_with_crack3" parent="Pillars" instance=ExtResource("3_0ggqr")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.159719, 0, 11.4183)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1.1059, 0, 1, 0, -4.37114e-08, 0.159719, -0.322612, 11.4183)
+
+[node name="Ramp" parent="." instance=ExtResource("5_do8o8")]
+transform = Transform3D(-0.00438912, 0, -3.62316, 0, 2.81857, 0, 2.14944, 0, -0.00739842, -2.9073, -1.88753, 18.7222)
+visible = false
 
 [node name="Ground" type="Node3D" parent="."]
 
-[node name="wall_with_crack" parent="Ground" instance=ExtResource("2_ad58o")]
+[node name="FirstWall" parent="Ground" instance=ExtResource("2_ad58o")]
 transform = Transform3D(-1.22054e-07, 3.48165, -1.74863e-07, 0, -1.52188e-07, -4.0004, -2.79228, -1.52188e-07, 7.64351e-15, -2.55242, -2.13179, 13.1868)
 
 [node name="wall_without_crack2" parent="Ground" instance=ExtResource("1_nb2b6")]
@@ -123,6 +128,26 @@ transform = Transform3D(0.840802, 0, -0.541341, 0, 1, 0, 0.541341, 0, 0.840802, 
 transform = Transform3D(-0.935708, 0, 0.352772, 0, 1, 0, -0.352772, 0, -0.935708, 7.28721, -5.65537, 42.5752)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Spikes"]
+transform = Transform3D(0.998556, 0, -0.05373, 0, 1, 0, 0.05373, 0, 0.998556, 4.14415, -4.41596, 41.8903)
+shape = SubResource("BoxShape3D_i7da4")
+
+[node name="Spikes2" type="Area3D" parent="Spikes"]
+transform = Transform3D(0.84217, 0, -0.0337701, 0, 0.6, 0, 0.0351501, 0, 0.809108, 2.08129, -1.99079, 3.05857)
+script = ExtResource("5_8r50f")
+start_position = Vector3(-1.814, -1.5, -0.266)
+end_position = Vector3(-1.814, 0, -0.266)
+speed = 0.1
+
+[node name="Pile3" parent="Spikes/Spikes2" instance=ExtResource("4_pkku7")]
+transform = Transform3D(0.999702, 0, 0.0244322, 0, 1, 0, -0.0244322, 0, 0.999702, 3.59025, -5.85305, 50.0502)
+
+[node name="Pile2" parent="Spikes/Spikes2" instance=ExtResource("5_rc1a1")]
+transform = Transform3D(0.840802, 0, -0.541341, 0, 1, 0, 0.541341, 0, 0.840802, -0.722944, -5.65537, 40.9875)
+
+[node name="Pile4" parent="Spikes/Spikes2" instance=ExtResource("5_rc1a1")]
+transform = Transform3D(-0.935708, 0, 0.352772, 0, 1, 0, -0.352772, 0, -0.935708, 7.28721, -5.65537, 42.5752)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Spikes/Spikes2"]
 transform = Transform3D(0.998556, 0, -0.05373, 0, 1, 0, 0.05373, 0, 0.998556, 4.14415, -4.41596, 41.8903)
 shape = SubResource("BoxShape3D_i7da4")
 
@@ -155,6 +180,7 @@ end_position = Vector3(2, -0.8, 24.5)
 speed = 0.1
 
 [connection signal="body_entered" from="Spikes" to="." method="_on_spikes_body_entered"]
+[connection signal="body_entered" from="Spikes/Spikes2" to="." method="_on_spikes_body_entered"]
 [connection signal="body_entered" from="HideLeft" to="." method="_on_hide_left_body_entered"]
 [connection signal="body_exited" from="HideLeft" to="." method="_on_hide_left_body_exited"]
 [connection signal="body_entered" from="HideMiddle" to="." method="_on_hide_middle_body_entered"]

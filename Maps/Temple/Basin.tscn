@@ -28,9 +28,9 @@ ao_texture_channel = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.05799, 0)
 
 [node name="Floor" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.68084, 2.04148, 4.68585)
+transform = Transform3D(0.86482, 0.00406089, -0.502066, -0.000571613, 0.999975, 0.00710354, 0.502082, -0.00585629, 0.8648, 5.05968, 2.04148, 3.81956)
 use_collision = true
-size = Vector3(38.6477, 1, 33.2606)
+size = Vector3(38.0503, 1, 29.0667)
 material = SubResource("StandardMaterial3D_t7guw")
 
 [node name="CraterWall" type="CSGPolygon3D" parent="."]
