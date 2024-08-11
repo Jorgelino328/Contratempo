@@ -11,7 +11,7 @@ var paused = false
 signal next_level(level)
 signal change_song(new_song)
 
-	
+
 func pause():
 	var settings_instance = settings.instantiate()
 	$CanvasLayer.add_child(settings_instance)
@@ -29,4 +29,6 @@ func _process(delta):
 			#
 	if(player.hp <= 0):
 		emit_signal("next_level",game_over)
-	
+		
+func use_rain():
+	pass

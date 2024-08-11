@@ -4,24 +4,22 @@ extends Node3D
 var state = 1
 
 func _process(delta):
-	if (Input.is_action_just_pressed("ui_accept") && state == 1):
-		state = 2
-		print(state)
-	elif (Input.is_action_just_pressed("ui_accept") && state == 2):
-		state = 1
-		print(state)
 	match state:
 		1:
-			pass
+			if(!$MovingPlatform.floating):
+				$MovingPlatform.floating = true
+				$MovingPlatform.position = Vector3(3,0,24.5)
 		2:
 			if($MovingPlatform.floating):
 				$MovingPlatform.floating = false
 				$MovingPlatform.position = Vector3(3,0,24.5)
-			if(!$Water.rising):
-				$Water.rising = true
-			
-			
 
+func raise_or_lower_water():
+	if($Water.rising):
+		$Water.draining = true
+	else:
+		$Water.rising = true
+		
 func _on_hide_right_body_entered(body):
 	if(body is Player):
 		$Walls/WallRight.visible = false

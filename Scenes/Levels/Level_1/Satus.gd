@@ -4,6 +4,7 @@ extends Level
 
 var playing = false
 var has_shaked = false
+
 func _process(delta):
 	super._process(delta)
 	
@@ -16,12 +17,17 @@ func _process(delta):
 		begin_earthquake()
 		
 func begin_earthquake():
+	$Temple.change_state(2)
 	$Cameras/PlayerCamera/Timer.start()
 	$Cameras/PlayerCamera/EarthquakeSound.play()
 	
 func stop_earthquake():
 	$Cameras/PlayerCamera/Timer.stop()
 	$Cameras/PlayerCamera/EarthquakeSound.stop()
+	
+func use_rain():
+	super.use_rain()
+	$Temple.use_rain()
 	
 func _on_camera_1_trigger_body_entered(body):
 	if(body is Player):

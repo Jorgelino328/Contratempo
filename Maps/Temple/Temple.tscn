@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://c5m6ohe5umt0s"]
+[gd_scene load_steps=7 format=3 uid="uid://c5m6ohe5umt0s"]
 
+[ext_resource type="Script" path="res://Maps/Temple/Temple.gd" id="1_eqhv6"]
 [ext_resource type="PackedScene" uid="uid://v53kuf55i0dl" path="res://Maps/Temple/TempleParts/temple_room_1.tscn" id="1_qx6aq"]
 [ext_resource type="PackedScene" uid="uid://ducwyn8ehu7eo" path="res://Maps/Temple/TempleParts/temple_room_2.tscn" id="2_5ciqx"]
 [ext_resource type="PackedScene" uid="uid://bbiukpicianv6" path="res://Maps/Temple/TempleParts/temple_room_3.tscn" id="4_2h8l6"]
@@ -7,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c0lkj32og1j47" path="res://Assets/3D Models/TreatedAssets/device.tscn" id="6_ygy31"]
 
 [node name="Temple" type="Node3D"]
+script = ExtResource("1_eqhv6")
 
 [node name="TempleRoom1" parent="." instance=ExtResource("1_qx6aq")]
 

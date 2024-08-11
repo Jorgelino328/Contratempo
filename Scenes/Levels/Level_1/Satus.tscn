@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://c2akku8du1xku"]
 
 [ext_resource type="PackedScene" uid="uid://0adle82x7bu3" path="res://Scenes/Actors/Audax/Audax.tscn" id="1_6apj6"]
-[ext_resource type="Script" path="res://Scenes/Levels/Level_1/Satus.gd" id="1_t6rts"]
+[ext_resource type="Script" path="res://Scenes/Levels/Level_1/Satus.gd" id="1_64to1"]
 [ext_resource type="PackedScene" uid="uid://dm5yftn60gmxe" path="res://Scenes/UIs/Player_HUD/PlayerHUD.tscn" id="2_4trow"]
 [ext_resource type="PackedScene" uid="uid://c5m6ohe5umt0s" path="res://Maps/Temple/Temple.tscn" id="2_h2leq"]
 [ext_resource type="PackedScene" uid="uid://crry3jt1c10hy" path="res://Scenes/Elements/PlayerCamera/player_camera.tscn" id="2_khgoc"]
@@ -44,7 +44,7 @@ size = Vector3(5.41299, 3.74023, 8.198)
 
 [node name="Satus" type="Node3D" node_paths=PackedStringArray("player", "cameras", "current_camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22072, -4.76837e-07, 0.0928936)
-script = ExtResource("1_t6rts")
+script = ExtResource("1_64to1")
 player = NodePath("Audax")
 cameras = NodePath("Cameras")
 current_camera = NodePath("Cameras/PlayerCamera")

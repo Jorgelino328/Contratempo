@@ -1,4 +1,5 @@
 extends Node3D
+var state = 1
 
 func _on_spikes_body_entered(body):
 	if body is Player:

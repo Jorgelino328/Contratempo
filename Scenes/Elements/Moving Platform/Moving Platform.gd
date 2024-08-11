@@ -23,7 +23,8 @@ func _process(delta):
 			direction = 1
 
 		transform.origin.z = transform.origin.z + (speed * direction * delta)
-
+	else:
+		$Area3D/CollisionShape3D.disabled = true
 func _on_area_3d_body_entered(body):
 	if body is Player:
 		body.on_platform = self

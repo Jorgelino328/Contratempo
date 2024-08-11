@@ -24,6 +24,11 @@ var camera_type = BACKVIEW
 var can_run = false
 var on_platform : Node3D = null
 
+func _process(delta):
+	if(has_device):
+		if Input.is_action_just_pressed("water"):
+			get_parent().use_rain()
+			
 func _physics_process(delta):
 	handle_movement(delta)
 	update_animation()
