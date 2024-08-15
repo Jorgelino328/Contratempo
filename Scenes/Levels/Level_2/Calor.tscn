@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://b3et8hwpg6m0r"]
+
+[ext_resource type="PackedScene" uid="uid://dm5yftn60gmxe" path="res://Scenes/UIs/Player_HUD/PlayerHUD.tscn" id="1_4y6cg"]
+[ext_resource type="Script" path="res://Scenes/Levels/Level_2/Calor.gd" id="1_57aiy"]
+[ext_resource type="PackedScene" uid="uid://0adle82x7bu3" path="res://Scenes/Actors/Audax/Audax.tscn" id="2_hju2b"]
+[ext_resource type="PackedScene" uid="uid://fhevq74nky1l" path="res://Maps/FireRiver/FireRiver.tscn" id="3_rt1rw"]
+[ext_resource type="PackedScene" uid="uid://73soo2fqsd7n" path="res://Assets/3D Models/TreatedAssets/locator.tscn" id="4_bafe1"]
+[ext_resource type="Script" path="res://Scenes/Levels/Level_2/PlayerCamera.gd" id="6_0fx5o"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_rwm4c"]
+rayleigh_color = Color(0.8, 0.321569, 0.996078, 1)
+ground_color = Color(0.294118, 0.196078, 0.0980392, 1)
+
+[sub_resource type="Sky" id="Sky_khvr2"]
+sky_material = SubResource("PhysicalSkyMaterial_rwm4c")
+
+[sub_resource type="Environment" id="Environment_cno7m"]
+background_mode = 2
+sky = SubResource("Sky_khvr2")
+tonemap_mode = 2
+tonemap_exposure = 0.7
+tonemap_white = 1.04
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+volumetric_fog_enabled = true
+volumetric_fog_albedo = Color(1, 0.411765, 0.192157, 1)
+
+[node name="Calor" type="Node3D" node_paths=PackedStringArray("player", "cameras", "current_camera")]
+script = ExtResource("1_57aiy")
+player = NodePath("Audax")
+cameras = NodePath("Cameras")
+current_camera = NodePath("Cameras/PlayerCamera")
+
+[node name="PlayerHUD" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_4y6cg")]
+process_mode = 3
+player = NodePath("../Audax")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cno7m")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-1, 8.74227e-08, 8.05463e-14, 2.61532e-08, 0.299157, 0.954204, 8.34191e-08, 0.954204, -0.299157, 0, 66.8725, -11.6694)
+light_color = Color(0.811765, 0.631373, 0.964706, 1)
+light_energy = 5.0
+shadow_enabled = true
+shadow_opacity = 0.45
+shadow_blur = 2.0
+
+[node name="Audax" parent="." instance=ExtResource("2_hju2b")]
+transform = Transform3D(0.559251, 0, 0.828999, 0, 1, 0, -0.828999, 0, 0.559251, -38.6444, 6.988, -23.1528)
+has_device = true
+
+[node name="RedDesert" parent="." instance=ExtResource("3_rt1rw")]
+
+[node name="Device" parent="." instance=ExtResource("4_bafe1")]
+transform = Transform3D(-0.999783, 0.0208553, 0, -0.0208553, -0.999783, 0, 0, 0, 1, 22.7445, 0.718628, -21.7736)
+
+[node name="Cameras" type="Node3D" parent="."]
+
+[node name="PlayerCamera" type="Camera3D" parent="Cameras" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -40.4398, 10.6423, -18.484)
+script = ExtResource("6_0fx5o")
+player = NodePath("../../Audax")

@@ -19,12 +19,12 @@
 rayleigh_color = Color(0.8, 0.321569, 0.996078, 1)
 ground_color = Color(0.294118, 0.196078, 0.0980392, 1)
 
-[sub_resource type="Sky" id="Sky_khvr2"]
+[sub_resource type="Sky" id="Sky_uemb4"]
 sky_material = SubResource("PhysicalSkyMaterial_cg7qn")
 
 [sub_resource type="Environment" id="Environment_rdui3"]
 background_mode = 2
-sky = SubResource("Sky_khvr2")
+sky = SubResource("Sky_uemb4")
 tonemap_mode = 2
 tonemap_exposure = 0.7
 tonemap_white = 1.04

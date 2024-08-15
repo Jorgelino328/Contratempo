@@ -185,7 +185,6 @@ void light() {
 
 }
 "
-graph_offset = Vector2(-602.877, -104.55)
 flags/unshaded = true
 nodes/vertex/0/position = Vector2(540, 180)
 nodes/vertex/2/node = SubResource("VisualShaderNodeBillboard_xivdo")

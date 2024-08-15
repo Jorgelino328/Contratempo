@@ -22,6 +22,7 @@ func connect_signals():
 	elif(current_level == $Settings):
 		current_level.back_menu.connect(_on_settings_back_menu)
 	else:
+		current_level.connect_signals()
 		current_level.next_level.connect(_on_next_level)
 		current_level.change_song.connect(_on_change_song)
 		current_level.change_weather.connect(_on_change_weather)
