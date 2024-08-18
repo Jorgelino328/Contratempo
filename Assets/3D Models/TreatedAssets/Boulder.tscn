@@ -6,7 +6,6 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jlvyx"]
 resource_name = "`"
-albedo_color = Color(1, 1, 1, 1)
 metallic = 0.4
 roughness = 0.272166
 
@@ -52,7 +51,7 @@ normal_enabled = true
 normal_texture = ExtResource("3_s7lpt")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2bt2h"]
-size = Vector3(1.26776, 1.35889, 1.36151)
+size = Vector3(1.54765, 1.07341, 1.40015)
 
 [node name="Boulder" type="StaticBody3D"]
 
@@ -65,5 +64,5 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_rbswu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.133881, 0.179443, 0.0448914)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00263873, 0.0845328, -0.0786661)
 shape = SubResource("BoxShape3D_2bt2h")
