@@ -1,0 +1,11 @@
+Model Information:
+* title:	Autumn Leaf Pile (WIP: Sorting Issue)
+* source:	https://sketchfab.com/3d-models/autumn-leaf-pile-wip-sorting-issue-fc474d775d2347cb9b2eca0c5a719c43
+* author:	Ethan McGuirk (https://sketchfab.com/EthanMcG)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Autumn Leaf Pile (WIP: Sorting Issue)" (https://sketchfab.com/3d-models/autumn-leaf-pile-wip-sorting-issue-fc474d775d2347cb9b2eca0c5a719c43) by Ethan McGuirk (https://sketchfab.com/EthanMcG) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

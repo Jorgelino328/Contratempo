@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://m57t5myng4dh"]
+
+[ext_resource type="PackedScene" uid="uid://b2pgr2wcstc5v" path="res://Assets/3D Models/RawAssets/Leafs/scene.gltf" id="1_yb04o"]
+[ext_resource type="ArrayMesh" uid="uid://bhkvfty8bg5st" path="res://Assets/Shaders/leaf.tres" id="2_ir5gv"]
+
+[node name="LeafPile" instance=ExtResource("1_yb04o")]
+
+[node name="pPlane2_lambert2_0" parent="Sketchfab_model/SM_AutumnLeafPile_fbx/RootNode/pPlane2" index="0"]
+mesh = ExtResource("2_ir5gv")
+
+[node name="pPlane3_lambert2_0" parent="Sketchfab_model/SM_AutumnLeafPile_fbx/RootNode/pPlane3" index="0"]
+mesh = ExtResource("2_ir5gv")
+
+[node name="pPlane4_lambert2_0" parent="Sketchfab_model/SM_AutumnLeafPile_fbx/RootNode/pPlane4" index="0"]
+mesh = ExtResource("2_ir5gv")
+
+[node name="pPlane5_lambert2_0" parent="Sketchfab_model/SM_AutumnLeafPile_fbx/RootNode/pPlane5" index="0"]
+mesh = ExtResource("2_ir5gv")
+
+[node name="pPlane6_lambert2_0" parent="Sketchfab_model/SM_AutumnLeafPile_fbx/RootNode/pPlane6" index="0"]
+mesh = ExtResource("2_ir5gv")
+
+[node name="pPlane8_lambert2_0" parent="Sketchfab_model/SM_AutumnLeafPile_fbx/RootNode/pPlane8" index="0"]
+mesh = ExtResource("2_ir5gv")
+
+[node name="pPlane9_lambert2_0" parent="Sketchfab_model/SM_AutumnLeafPile_fbx/RootNode/pPlane9" index="0"]
+mesh = ExtResource("2_ir5gv")
+
+[node name="pPlane10_lambert2_0" parent="Sketchfab_model/SM_AutumnLeafPile_fbx/RootNode/pPlane10" index="0"]
+mesh = ExtResource("2_ir5gv")
+
+[node name="pPlane11_lambert2_0" parent="Sketchfab_model/SM_AutumnLeafPile_fbx/RootNode/pPlane11" index="0"]
+mesh = ExtResource("2_ir5gv")
+
+[node name="pPlane12_lambert2_0" parent="Sketchfab_model/SM_AutumnLeafPile_fbx/RootNode/pPlane12" index="0"]
+mesh = ExtResource("2_ir5gv")
+
+[node name="pPlane13_lambert2_0" parent="Sketchfab_model/SM_AutumnLeafPile_fbx/RootNode/pPlane13" index="0"]
+mesh = ExtResource("2_ir5gv")
+
+[node name="pPlane14_lambert2_0" parent="Sketchfab_model/SM_AutumnLeafPile_fbx/RootNode/pPlane14" index="0"]
+mesh = ExtResource("2_ir5gv")
+
+[node name="pPlane15_lambert2_0" parent="Sketchfab_model/SM_AutumnLeafPile_fbx/RootNode/pPlane15" index="0"]
+mesh = ExtResource("2_ir5gv")
