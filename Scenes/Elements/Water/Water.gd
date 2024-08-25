@@ -5,6 +5,7 @@ extends Node3D
 @export var speed : float = 1.0
 var rising = false
 var draining = false
+var done = false
 
 func _ready():
 	transform.origin = start_position

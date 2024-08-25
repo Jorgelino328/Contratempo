@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://m57t5myng4dh"]
+[gd_scene load_steps=5 format=3 uid="uid://m57t5myng4dh"]
 
 [ext_resource type="PackedScene" uid="uid://b2pgr2wcstc5v" path="res://Assets/3D Models/RawAssets/Leafs/scene.gltf" id="1_yb04o"]
+[ext_resource type="Script" path="res://Assets/3D Models/TreatedAssets/leaf_pile.gd" id="2_3vswg"]
 [ext_resource type="ArrayMesh" uid="uid://bhkvfty8bg5st" path="res://Assets/Shaders/leaf.tres" id="2_ir5gv"]
+[ext_resource type="PackedScene" uid="uid://b5hw6xbx7eqw4" path="res://Scenes/Elements/Flame/Flame.tscn" id="4_mt81l"]
 
 [node name="LeafPile" instance=ExtResource("1_yb04o")]
+script = ExtResource("2_3vswg")
 
 [node name="pPlane2_lambert2_0" parent="Sketchfab_model/SM_AutumnLeafPile_fbx/RootNode/pPlane2" index="0"]
 mesh = ExtResource("2_ir5gv")
@@ -43,3 +46,6 @@ mesh = ExtResource("2_ir5gv")
 
 [node name="pPlane15_lambert2_0" parent="Sketchfab_model/SM_AutumnLeafPile_fbx/RootNode/pPlane15" index="0"]
 mesh = ExtResource("2_ir5gv")
+
+[node name="Flame" parent="." index="1" instance=ExtResource("4_mt81l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.113014, 0.207599, -0.112558)

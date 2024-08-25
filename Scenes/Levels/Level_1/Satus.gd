@@ -16,7 +16,7 @@ var outside = true
 var has_device = false
 var earthquake = false
 
-signal dialogue(json)
+
 
 func _process(delta):
 	super._process(delta)

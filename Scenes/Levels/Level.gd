@@ -13,6 +13,7 @@ var paused = false
 signal next_level(level)
 signal change_song(new_song)
 signal change_weather(new_weather)
+signal dialogue(json)
 
 func connect_signals():
 	var sceneController = get_parent()

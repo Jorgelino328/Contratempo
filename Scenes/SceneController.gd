@@ -75,7 +75,8 @@ func _on_next_level(level):
 	change_level(next_level)
 
 func _on_main_menu_new_game():
-	var next_level = load("res://Scenes/Levels/Level_1/Satus.tscn").instantiate()
+	#var next_level = load("res://Scenes/Levels/Level_1/Satus.tscn").instantiate()
+	var next_level = load("res://Scenes/Levels/Level_2/Calor.tscn").instantiate()
 	change_level(next_level)
 	
 func _on_settings_back_menu():

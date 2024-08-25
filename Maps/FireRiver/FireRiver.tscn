@@ -1,7 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://fhevq74nky1l"]
+[gd_scene load_steps=26 format=3 uid="uid://fhevq74nky1l"]
 
+[ext_resource type="Script" path="res://Maps/FireRiver/FireRiver.gd" id="1_7qrwr"]
 [ext_resource type="PackedScene" uid="uid://b5hw6xbx7eqw4" path="res://Scenes/Elements/Flame/Flame.tscn" id="2_aa8qx"]
 [ext_resource type="Texture2D" uid="uid://bskvqhols7w7a" path="res://Assets/3D Models/RawAssets/rockground-texture/textures/BaseColorGround.png" id="2_epce2"]
+[ext_resource type="Script" path="res://Scenes/Elements/Water/Water.gd" id="3_5qouk"]
 [ext_resource type="PackedScene" uid="uid://d3kyt4i6nhsc4" path="res://Maps/FireRiver/rocks.tscn" id="3_oeu7r"]
 [ext_resource type="PackedScene" uid="uid://bho7btve38rh0" path="res://Scenes/Elements/Water/Water.tscn" id="4_n1slb"]
 [ext_resource type="PackedScene" uid="uid://bktlrfwkcdkwu" path="res://Assets/3D Models/TreatedAssets/FireFlower.tscn" id="6_hcopp"]
@@ -10,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://ds0u4p10tkv5" path="res://Assets/Sprites/Voronoi01.png" id="7_b1bb1"]
 [ext_resource type="Texture2D" uid="uid://bl7yndd1w847" path="res://Assets/Sprites/Flame01.png" id="8_xpv2o"]
 [ext_resource type="PackedScene" uid="uid://m57t5myng4dh" path="res://Assets/3D Models/TreatedAssets/leaf_pile.tscn" id="10_0xkkv"]
+[ext_resource type="Script" path="res://Maps/FireRiver/Leaves.gd" id="12_86iyw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_whnfb"]
 albedo_color = Color(1, 0, 0, 1)
@@ -91,6 +94,7 @@ turbulence_noise_strength = 0.5
 turbulence_noise_scale = 1.0
 
 [node name="RedDesert" type="Node3D"]
+script = ExtResource("1_7qrwr")
 
 [node name="Bridge" type="CSGBox3D" parent="."]
 transform = Transform3D(0.680802, 0.0959039, 0.726162, -0.0396978, 0.994765, -0.0941601, -0.731391, 0.0352774, 0.681045, 15.0947, 3.96371, -23.8073)
@@ -104,7 +108,7 @@ material = SubResource("StandardMaterial3D_whnfb")
 metadata/_edit_lock_ = true
 
 [node name="HighWallLeft" type="CSGPolygon3D" parent="."]
-transform = Transform3D(0.746454, -0.660063, 0.0843896, 0.0808091, -0.0359642, -0.996079, 0.660511, 0.750348, 0.0264934, 48.4574, -4.17508, 28.1186)
+transform = Transform3D(0.750075, -0.661016, 0.0211031, 0.0333474, 0.00593319, -0.999425, 0.660511, 0.750348, 0.0264934, 48.4574, -4.17508, 28.1186)
 use_collision = true
 polygon = PackedVector2Array(-42.4734, 4.50898, -49.3328, 18.9534, -20.7513, 43.4267, 0.705719, 20.4131, -3.56288, -34.0896, -42.3874, -32.8078)
 depth = 12.0
@@ -114,6 +118,13 @@ material = SubResource("StandardMaterial3D_a1ra0")
 transform = Transform3D(-0.464575, 0.884883, -0.0339578, 0.0492299, -0.0124796, -0.998709, -0.884165, -0.465648, -0.0377649, -43.735, -3.77508, -54.0062)
 use_collision = true
 polygon = PackedVector2Array(-30.7673, 47.1858, 2.56969, 37.7744, -23.4315, -55.7168, -106.838, -53.5291, -106.48, -15.535, -50.1072, -4.16966, -48.5753, 17.6109)
+depth = 12.0
+material = SubResource("StandardMaterial3D_a1ra0")
+
+[node name="HighWallRight2" type="CSGPolygon3D" parent="."]
+transform = Transform3D(-0.460235, 0.882061, -0.100766, 0.0910126, -0.0660266, -0.993658, -0.88312, -0.466488, -0.0498908, -43.5613, -0.221989, -54.1106)
+use_collision = true
+polygon = PackedVector2Array(-60.9543, -24.3946, -48.3049, -16.8886, -38.9365, -22.0053, -19.5795, -42.8782, -12.6886, -17.857, -34.6994, -16.601, -48.9701, -10.2074, -51.2793, 12.9647, -25.9795, 15.1992, -17.597, 22, -6.56718, 20.9909, 8.38809, 23.6383, -22.205, -56.0424, -28.072, -58.9079, -72.5284, -55.7483, -83.3055, -37.3725)
 depth = 12.0
 material = SubResource("StandardMaterial3D_a1ra0")
 
@@ -130,7 +141,11 @@ transform = Transform3D(-0.525422, 0.739938, 0.420027, -0.615881, 0.00985152, -0
 shape = SubResource("CapsuleShape3D_bqujw")
 
 [node name="River" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.33486, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999938, 0.011135, 0, -0.011135, 0.999938, -0.454, -5, -0.209)
+script = ExtResource("3_5qouk")
+start_position = Vector3(-0.454, -5, -0.209)
+end_position = Vector3(-0.454, -2, -0.209)
+speed = 0.5
 
 [node name="MainRiver" parent="River" instance=ExtResource("4_n1slb")]
 transform = Transform3D(3.6772, 0.0248312, 3.38637, -0.15413, 1.19942, 0.014676, -3.38444, -0.0276436, 3.67862, -8.496, 5, 16.164)
@@ -140,7 +155,12 @@ skeleton = NodePath("../..")
 transform = Transform3D(3.6796, 0, 3.38534, 0, 1.2, 0, -3.38534, 0, 3.6796, 18.8354, 5, -27.1475)
 skeleton = NodePath("../..")
 
+[node name="Puzzle" parent="River" instance=ExtResource("4_n1slb")]
+transform = Transform3D(5.63867, 0.0848345, 11.8736, 0.18517, 1.25445, -1.04967, -12.3813, 0.0573962, 5.39173, -35.2787, 10.3259, -11.4052)
+skeleton = NodePath("../..")
+
 [node name="LeftSide" type="Node3D" parent="River"]
+visible = false
 
 [node name="Water3" parent="River/LeftSide" instance=ExtResource("4_n1slb")]
 transform = Transform3D(4.02131, 0, 2.97138, 0, 1.2, 0, -2.97138, 0, 4.02131, 21.1259, 4.98071, 7.41875)
@@ -151,6 +171,7 @@ transform = Transform3D(1.02194, -1.55739, -2.21145, 1.57253, 2.82129, -0.047086
 skeleton = NodePath("../../..")
 
 [node name="RightSide" type="Node3D" parent="River"]
+visible = false
 
 [node name="Water4" parent="River/RightSide" instance=ExtResource("4_n1slb")]
 transform = Transform3D(0.624808, 2.65013, -2.62745, -0.937542, 0.310913, 0.00540299, 0.92158, 3.69461, 1.87677, 13.4426, 0.387564, -17.0722)
@@ -188,435 +209,469 @@ transform = Transform3D(0.133785, 0, -0.148667, 0, 0.2, 0, 0.148667, 0, 0.133785
 [node name="FireFlower" parent="Pillar2" instance=ExtResource("6_hcopp")]
 transform = Transform3D(0.00660213, 1.66774e-18, 0.00751081, 0, 0.01, -2.22045e-18, -0.00751081, 1.46597e-18, 0.00660213, 0.00331044, 2.73979, 0.0365195)
 
-[node name="LeafRow" type="Node3D" parent="."]
+[node name="Leaves" type="Node3D" parent="."]
+script = ExtResource("12_86iyw")
 
-[node name="LeafSquare" type="Node3D" parent="LeafRow"]
+[node name="LeafRow" type="Node3D" parent="Leaves"]
+script = ExtResource("12_86iyw")
+
+[node name="LeafSquare" type="Node3D" parent="Leaves/LeafRow"]
 transform = Transform3D(0.639955, 0.0409073, -0.767323, -0.0291827, 0.999156, 0.0289281, 0.767858, 0.00387984, 0.640608, -44.2261, 1.05012, 6.44882)
+script = ExtResource("12_86iyw")
 
-[node name="LeafPile3" parent="LeafRow/LeafSquare" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile3" parent="Leaves/LeafRow/LeafSquare" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(9.03029, -0.152619, 4.29311, 0.0960201, 9.99833, 0.153466, -4.29474, -0.0973635, 9.03027, -19.0866, 7.53663, -56.943)
 
-[node name="LeafPile6" parent="LeafRow/LeafSquare" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile6" parent="Leaves/LeafRow/LeafSquare" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(9.03029, -0.152619, 4.29311, 0.0960201, 9.99833, 0.153466, -4.29474, -0.0973635, 9.03027, -13.2438, 7.3038, -54.4603)
 
-[node name="LeafPile7" parent="LeafRow/LeafSquare" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile7" parent="Leaves/LeafRow/LeafSquare" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(9.03029, -0.152619, 4.29311, 0.0960201, 9.99833, 0.153466, -4.29474, -0.0973635, 9.03027, -14.8842, 7.36888, -58.6048)
 
-[node name="LeafPile8" parent="LeafRow/LeafSquare" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile8" parent="Leaves/LeafRow/LeafSquare" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(9.03029, -0.152619, 4.29311, 0.0960201, 9.99833, 0.153466, -4.29474, -0.0973635, 9.03027, -17.6737, 7.33133, -52.5838)
 
-[node name="LeafDuo2" type="Node3D" parent="LeafRow"]
+[node name="LeafDuo2" type="Node3D" parent="Leaves/LeafRow"]
 transform = Transform3D(0.639955, 0.0409073, -0.767323, -0.0291827, 0.999156, 0.0289281, 0.767858, 0.00387984, 0.640608, -42.2626, 1.14342, 1.99916)
+script = ExtResource("12_86iyw")
 
-[node name="LeafPile3" parent="LeafRow/LeafDuo2" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile3" parent="Leaves/LeafRow/LeafDuo2" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(9.03029, -0.152619, 4.29311, 0.0960201, 9.99833, 0.153466, -4.29474, -0.0973635, 9.03027, -19.0866, 7.53663, -56.943)
 
-[node name="LeafPile7" parent="LeafRow/LeafDuo2" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile7" parent="Leaves/LeafRow/LeafDuo2" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(9.03029, -0.152619, 4.29311, 0.0960201, 9.99833, 0.153466, -4.29474, -0.0973635, 9.03027, -14.8842, 7.36888, -58.6048)
 
-[node name="LeafSquare2" type="Node3D" parent="LeafRow"]
+[node name="LeafSquare2" type="Node3D" parent="Leaves/LeafRow"]
 transform = Transform3D(0.624807, 0, -0.780779, 0, 1, 0, 0.780779, 0, 0.624807, -35.4569, 0, -4.00703)
+script = ExtResource("12_86iyw")
 
-[node name="LeafPile3" parent="LeafRow/LeafSquare2" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile3" parent="Leaves/LeafRow/LeafSquare2" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(9.02949, 0, 4.29756, 0, 10, 0, -4.29756, 0, 9.02949, -23.1544, 7.54541, -56.1875)
 
-[node name="LeafPile6" parent="LeafRow/LeafSquare2" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile6" parent="Leaves/LeafRow/LeafSquare2" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(9.02949, 0, 4.29756, 0, 10, 0, -4.29756, 0, 9.02949, -17.315, 7.19928, -53.7098)
 
-[node name="LeafPile7" parent="LeafRow/LeafSquare2" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile7" parent="Leaves/LeafRow/LeafSquare2" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(9.02949, 0, 4.29756, 0, 10, 0, -4.29756, 0, 9.02949, -18.9555, 7.32975, -57.8527)
 
-[node name="LeafPile8" parent="LeafRow/LeafSquare2" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile8" parent="Leaves/LeafRow/LeafSquare2" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(9.02949, 0, 4.29756, 0, 10, 0, -4.29756, 0, 9.02949, -21.7435, 7.27614, -51.8311)
 
-[node name="LeafDuo" type="Node3D" parent="LeafRow"]
+[node name="LeafDuo" type="Node3D" parent="Leaves/LeafRow"]
 transform = Transform3D(0.654151, 0.0137702, -0.756239, -0.00900865, 0.999905, 0.0104146, 0.75631, 0, 0.654213, -45.7151, 1.76361, -18.7306)
+script = ExtResource("12_86iyw")
 
-[node name="LeafPile6" parent="LeafRow/LeafDuo" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile6" parent="Leaves/LeafRow/LeafDuo" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(9.02958, -0.0535, 4.29705, 0.036015, 9.99992, 0.0488221, -4.29725, -0.0286078, 9.02958, -15.6943, 6.80317, -45.555)
 
-[node name="LeafPile7" parent="LeafRow/LeafDuo" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile7" parent="Leaves/LeafRow/LeafDuo" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(9.55838, -0.03459, 2.93892, 0.0266324, 10, 0.0310785, -2.93901, -0.0218782, 9.55835, -16.6732, 6.99652, -50.4639)
 
-[node name="LeafSquare4" type="Node3D" parent="LeafRow"]
+[node name="LeafSquare4" type="Node3D" parent="Leaves/LeafRow"]
 transform = Transform3D(0.607259, 0.013745, -0.794386, -0.00900865, 0.999905, 0.0104146, 0.794453, 0.000832016, 0.607325, -41.5588, 0.909355, -12.4423)
+script = ExtResource("12_86iyw")
 
-[node name="LeafPile3" parent="LeafRow/LeafSquare4" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile3" parent="Leaves/LeafRow/LeafSquare4" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(9.02955, -0.0534998, 4.29704, 0.0360147, 9.99982, 0.0488218, -4.29726, -0.0286081, 9.02956, -22.7296, 7.47223, -51.8863)
 
-[node name="LeafPile6" parent="LeafRow/LeafSquare4" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile6" parent="Leaves/LeafRow/LeafSquare4" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(9.02955, -0.0534998, 4.29704, 0.0360147, 9.99982, 0.0488218, -4.29726, -0.0286081, 9.02956, -16.8886, 7.16448, -49.4073)
 
-[node name="LeafPile7" parent="LeafRow/LeafSquare4" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile7" parent="Leaves/LeafRow/LeafSquare4" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(9.02955, -0.0534998, 4.29704, 0.0360147, 9.99982, 0.0488218, -4.29726, -0.0286081, 9.02956, -18.5295, 7.2743, -53.5507)
 
-[node name="LeafPile8" parent="LeafRow/LeafSquare4" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile8" parent="Leaves/LeafRow/LeafSquare4" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(9.02955, -0.0534998, 4.29704, 0.0360147, 9.99982, 0.0488218, -4.29726, -0.0286081, 9.02956, -21.3175, 7.22302, -47.5291)
 
-[node name="LeafRow2" type="Node3D" parent="."]
-transform = Transform3D(0.999364, -0.035667, 0, 0.035667, 0.999364, 0, 0, 0, 1, -13.4711, 0, 12.2039)
+[node name="LeafRow2" type="Node3D" parent="Leaves"]
+transform = Transform3D(0.998389, 0.0567026, -0.00214882, -0.0567372, 0.99812, -0.0231812, 0.000830349, 0.0232658, 0.999729, -13.4711, -0.0683041, 12.2039)
+script = ExtResource("12_86iyw")
 
-[node name="LeafSquare" type="Node3D" parent="LeafRow2"]
+[node name="LeafSquare" type="Node3D" parent="Leaves/LeafRow2"]
 transform = Transform3D(0.66835, 0.0410242, -0.742715, -0.0291827, 0.999156, 0.0289281, 0.743274, 0.0023403, 0.668983, -40.9543, 1.71363, -13.3975)
+script = ExtResource("12_86iyw")
 
-[node name="LeafPile3" parent="LeafRow2/LeafSquare" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile3" parent="Leaves/LeafRow2/LeafSquare" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(9.45458, -0.110189, 3.2556, 0.0783548, 9.9991, 0.11088, -3.25652, -0.0793223, 9.45457, -7.85747, 7.41826, -41.5269)
 
-[node name="LeafPile6" parent="LeafRow2/LeafSquare" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile6" parent="Leaves/LeafRow2/LeafSquare" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(9.45458, -0.110189, 3.2556, 0.0783548, 9.9991, 0.11088, -3.25652, -0.0793223, 9.45457, -2.32998, 7.15778, -38.4066)
 
-[node name="LeafPile7" parent="LeafRow2/LeafSquare" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile7" parent="Leaves/LeafRow2/LeafSquare" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(9.45458, -0.110189, 3.2556, 0.0783548, 9.9991, 0.11088, -3.25652, -0.0793223, 9.45457, -3.49597, 7.24128, -42.7085)
 
-[node name="LeafPile8" parent="LeafRow2/LeafSquare" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile8" parent="Leaves/LeafRow2/LeafSquare" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(9.45458, -0.110189, 3.2556, 0.0783548, 9.9991, 0.11088, -3.25652, -0.0793223, 9.45457, -6.94207, 7.19467, -37.0377)
 
-[node name="LeafSquare5" type="Node3D" parent="LeafRow2"]
+[node name="LeafSquare5" type="Node3D" parent="Leaves/LeafRow2"]
 transform = Transform3D(0.60058, 0.0406608, -0.79853, -0.0291827, 0.999156, 0.0289281, 0.799032, 0.0059296, 0.60126, -49.206, 1.71363, -7.87603)
+script = ExtResource("12_86iyw")
 
-[node name="LeafPile3" parent="LeafRow2/LeafSquare5" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile3" parent="Leaves/LeafRow2/LeafSquare5" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(9.45458, -0.110189, 3.2556, 0.0783548, 9.9991, 0.11088, -3.25652, -0.0793223, 9.45457, -7.85747, 7.41826, -41.5269)
 
-[node name="LeafPile6" parent="LeafRow2/LeafSquare5" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile6" parent="Leaves/LeafRow2/LeafSquare5" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(9.45458, -0.110189, 3.2556, 0.0783548, 9.9991, 0.11088, -3.25652, -0.0793223, 9.45457, -2.32998, 7.15778, -38.4066)
 
-[node name="LeafPile7" parent="LeafRow2/LeafSquare5" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile7" parent="Leaves/LeafRow2/LeafSquare5" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(9.45458, -0.110189, 3.2556, 0.0783548, 9.9991, 0.11088, -3.25652, -0.0793223, 9.45457, -3.49597, 7.24128, -42.7085)
 
-[node name="LeafPile8" parent="LeafRow2/LeafSquare5" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile8" parent="Leaves/LeafRow2/LeafSquare5" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(9.45458, -0.110189, 3.2556, 0.0783548, 9.9991, 0.11088, -3.25652, -0.0793223, 9.45457, -6.94207, 7.19467, -37.0377)
 
-[node name="LeafSquare2" type="Node3D" parent="LeafRow2"]
+[node name="LeafSquare2" type="Node3D" parent="Leaves/LeafRow2"]
 transform = Transform3D(0.654213, 0, -0.75631, 0, 1, 0, 0.75631, 0, 0.654213, -37.7338, 0, -4.4673)
+script = ExtResource("12_86iyw")
 
-[node name="LeafPile3" parent="LeafRow2/LeafSquare2" instance=ExtResource("10_0xkkv")]
-transform = Transform3D(9.0295, 0, 4.29756, 0, 10, 0, -4.29756, 0, 9.0295, -11.2918, 7.54541, -55.6521)
+[node name="LeafPile6" parent="Leaves/LeafRow2/LeafSquare2" instance=ExtResource("10_0xkkv")]
+transform = Transform3D(9.0295, -1.64033e-07, 4.29756, 5.96046e-08, 10, -1.78814e-07, -4.29756, -1.03221e-07, 9.0295, -4.97322, 7.23149, -51.567)
 
-[node name="LeafPile6" parent="LeafRow2/LeafSquare2" instance=ExtResource("10_0xkkv")]
-transform = Transform3D(9.0295, 0, 4.29756, 0, 10, 0, -4.29756, 0, 9.0295, -5.45234, 7.19928, -53.1744)
+[node name="LeafPile7" parent="Leaves/LeafRow2/LeafSquare2" instance=ExtResource("10_0xkkv")]
+transform = Transform3D(9.0295, -7.45058e-08, 4.29756, -9.68575e-08, 10, -1.49012e-07, -4.29756, -2.98023e-08, 9.0295, -7.18754, 5.91519, -57.236)
 
-[node name="LeafPile7" parent="LeafRow2/LeafSquare2" instance=ExtResource("10_0xkkv")]
-transform = Transform3D(9.0295, 0, 4.29756, 0, 10, 0, -4.29756, 0, 9.0295, -7.09283, 7.32975, -57.3174)
+[node name="LeafPile8" parent="Leaves/LeafRow2/LeafSquare2" instance=ExtResource("10_0xkkv")]
+transform = Transform3D(9.0295, -2.15174e-07, 4.29756, 5.96046e-08, 10, -2.38419e-07, -4.29756, -1.47458e-07, 9.0295, -10.0764, 7.26985, -52.706)
 
-[node name="LeafPile8" parent="LeafRow2/LeafSquare2" instance=ExtResource("10_0xkkv")]
-transform = Transform3D(9.0295, 0, 4.29756, 0, 10, 0, -4.29756, 0, 9.0295, -9.88083, 7.27614, -51.2957)
-
-[node name="LeafSquare3" type="Node3D" parent="LeafRow2"]
+[node name="LeafSquare3" type="Node3D" parent="Leaves/LeafRow2"]
 transform = Transform3D(0.654151, 0.0137702, -0.756239, -0.00900865, 0.999905, 0.0104146, 0.75631, 0, 0.654213, -42.9505, 0.909355, -11.8709)
+script = ExtResource("12_86iyw")
 
-[node name="LeafPile3" parent="LeafRow2/LeafSquare3" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile3" parent="Leaves/LeafRow2/LeafSquare3" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(9.02958, -0.0535, 4.29706, 0.0360151, 9.99991, 0.0488222, -4.29725, -0.0286079, 9.02957, -10.5658, 7.57815, -51.5265)
 
-[node name="LeafPile6" parent="LeafRow2/LeafSquare3" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile6" parent="Leaves/LeafRow2/LeafSquare3" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(9.02958, -0.0535, 4.29705, 0.0360151, 9.99991, 0.0488222, -4.29725, -0.0286078, 9.02956, -4.7247, 7.27033, -49.0476)
 
-[node name="LeafPile7" parent="LeafRow2/LeafSquare3" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile7" parent="Leaves/LeafRow2/LeafSquare3" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(9.02958, -0.0535, 4.29706, 0.0360151, 9.99991, 0.0488222, -4.29725, -0.0286079, 9.02957, -6.36566, 7.38018, -53.1909)
 
-[node name="LeafPile8" parent="LeafRow2/LeafSquare3" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile8" parent="Leaves/LeafRow2/LeafSquare3" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(9.02958, -0.0535, 4.29706, 0.0360151, 9.99991, 0.0488222, -4.29725, -0.0286079, 9.02957, -9.15364, 7.32888, -47.1693)
 
-[node name="LeafRow3" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.999839, 0.0179236, 0, -0.0179236, 0.999839, -27.5044, 0.873135, 25.3137)
+[node name="LeafRow3" type="Node3D" parent="Leaves"]
+transform = Transform3D(0.997274, 0.0687164, 0.0268867, -0.0681114, 0.997417, -0.022808, -0.0283845, 0.0209146, 0.999378, -27.5044, 1.08978, 25.3137)
+script = ExtResource("12_86iyw")
 
-[node name="LeafSquare" type="Node3D" parent="LeafRow3"]
+[node name="LeafSquare" type="Node3D" parent="Leaves/LeafRow3"]
 transform = Transform3D(0.926397, 0.0453029, -0.373812, -0.0365761, 0.998869, 0.03041, 0.374766, -0.0144991, 0.927006, -12.1473, 0.438403, 5.36384)
+script = ExtResource("12_86iyw")
 
-[node name="LeafPile3" parent="LeafRow3/LeafSquare" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile3" parent="Leaves/LeafRow3/LeafSquare" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -8.74918, 7.54541, -46.8179)
 
-[node name="LeafPile6" parent="LeafRow3/LeafSquare" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile6" parent="Leaves/LeafRow3/LeafSquare" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.54138, 7.19928, -42.0711)
 
-[node name="LeafPile7" parent="LeafRow3/LeafSquare" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile7" parent="Leaves/LeafRow3/LeafSquare" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.24216, 7.32975, -46.517)
 
-[node name="LeafPile8" parent="LeafRow3/LeafSquare" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile8" parent="Leaves/LeafRow3/LeafSquare" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -9.34737, 7.27614, -42.278)
 
-[node name="LeafSquare2" type="Node3D" parent="LeafRow3"]
+[node name="LeafSquare2" type="Node3D" parent="Leaves/LeafRow3"]
 transform = Transform3D(0.895767, 0.00741615, -0.444461, -0.00726247, 0.999972, 0.00204845, 0.444464, 0.00139294, 0.895796, -24.3132, -0.0689538, 0.139864)
+script = ExtResource("12_86iyw")
 
-[node name="LeafPile3" parent="LeafRow3/LeafSquare2" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile3" parent="Leaves/LeafRow3/LeafSquare2" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -8.74918, 7.54541, -46.8179)
 
-[node name="LeafPile6" parent="LeafRow3/LeafSquare2" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile6" parent="Leaves/LeafRow3/LeafSquare2" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.54138, 7.19928, -42.0711)
 
-[node name="LeafPile7" parent="LeafRow3/LeafSquare2" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile7" parent="Leaves/LeafRow3/LeafSquare2" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.24216, 7.32975, -46.517)
 
-[node name="LeafPile8" parent="LeafRow3/LeafSquare2" instance=ExtResource("10_0xkkv")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -9.34737, 7.27614, -42.278)
+[node name="LeafPile8" parent="Leaves/LeafRow3/LeafSquare2" instance=ExtResource("10_0xkkv")]
+transform = Transform3D(10, -3.72529e-08, 7.15256e-07, 0, 10, 0, -2.38419e-07, 2.23517e-07, 10, -8.49014, 7.29646, -43.433)
 
-[node name="LeafSquare5" type="Node3D" parent="LeafRow3"]
-transform = Transform3D(0.78264, 0.0281855, -0.621837, -0.0185674, 0.999587, 0.0219386, 0.622196, -0.00562413, 0.78284, -32.6414, 1.6103, -18.7484)
+[node name="LeafSquare5" type="Node3D" parent="Leaves/LeafRow3"]
+transform = Transform3D(0.78264, 0.0281855, -0.621837, -0.0185674, 0.999587, 0.0219386, 0.622196, -0.00562414, 0.78284, -32.6189, 1.28133, -18.7409)
+script = ExtResource("12_86iyw")
 
-[node name="LeafPile3" parent="LeafRow3/LeafSquare5" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile3" parent="Leaves/LeafRow3/LeafSquare5" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -8.74918, 7.54541, -46.8179)
 
-[node name="LeafPile6" parent="LeafRow3/LeafSquare5" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile6" parent="Leaves/LeafRow3/LeafSquare5" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, -1.49012e-08, 0, -1.49012e-08, 10, 3.72529e-08, 4.76837e-07, 1.49012e-08, 10, -4.54138, 7.19928, -42.0711)
 
-[node name="LeafPile7" parent="LeafRow3/LeafSquare5" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile7" parent="Leaves/LeafRow3/LeafSquare5" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.24216, 7.32975, -46.517)
 
-[node name="LeafPile8" parent="LeafRow3/LeafSquare5" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile8" parent="Leaves/LeafRow3/LeafSquare5" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -9.34737, 7.27614, -42.278)
 
-[node name="LeafRow4" type="Node3D" parent="."]
-transform = Transform3D(0.694207, -0.012901, 0.71966, -1.89112e-09, 0.999839, 0.0179236, -0.719776, -0.0124426, 0.694095, -18.655, 0.873135, 19.3353)
+[node name="LeafRow4" type="Node3D" parent="Leaves"]
+transform = Transform3D(0.693654, 0.0627102, 0.717574, -0.0335733, 0.997935, -0.0547574, -0.719526, 0.0138914, 0.694326, -18.655, 1.07606, 19.3353)
+script = ExtResource("12_86iyw")
 
-[node name="LeafSquare" type="Node3D" parent="LeafRow4"]
+[node name="LeafSquare" type="Node3D" parent="Leaves/LeafRow4"]
 transform = Transform3D(0.709598, 0.0410909, -0.703408, -0.0291827, 0.999156, 0.0289281, 0.704002, -7.52055e-10, 0.710198, -32.674, 0.604843, 2.98588)
+script = ExtResource("12_86iyw")
 
-[node name="LeafPile3" parent="LeafRow4/LeafSquare" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile3" parent="Leaves/LeafRow4/LeafSquare" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -8.74918, 7.54541, -46.8179)
 
-[node name="LeafPile6" parent="LeafRow4/LeafSquare" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile6" parent="Leaves/LeafRow4/LeafSquare" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.54138, 7.19928, -42.0711)
 
-[node name="LeafPile7" parent="LeafRow4/LeafSquare" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile7" parent="Leaves/LeafRow4/LeafSquare" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.24216, 7.32975, -46.517)
 
-[node name="LeafPile8" parent="LeafRow4/LeafSquare" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile8" parent="Leaves/LeafRow4/LeafSquare" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -9.34737, 7.27614, -42.278)
 
-[node name="LeafSquare5" type="Node3D" parent="LeafRow4"]
+[node name="LeafSquare5" type="Node3D" parent="Leaves/LeafRow4"]
 transform = Transform3D(0.69607, 0.0414242, -0.716779, -0.0294223, 0.99914, 0.0291702, 0.717371, 0.000784786, 0.69669, -27.4396, 0.10026, 9.62243)
+script = ExtResource("12_86iyw")
 
-[node name="LeafPile3" parent="LeafRow4/LeafSquare5" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile3" parent="Leaves/LeafRow4/LeafSquare5" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -8.74918, 7.54541, -46.8179)
 
-[node name="LeafPile6" parent="LeafRow4/LeafSquare5" instance=ExtResource("10_0xkkv")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.54138, 7.19928, -42.0711)
-
-[node name="LeafPile7" parent="LeafRow4/LeafSquare5" instance=ExtResource("10_0xkkv")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.24216, 7.32975, -46.517)
-
-[node name="LeafPile8" parent="LeafRow4/LeafSquare5" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile8" parent="Leaves/LeafRow4/LeafSquare5" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -9.34737, 7.27614, -42.278)
 
-[node name="LeafSquare6" type="Node3D" parent="LeafRow4"]
+[node name="LeafSquare6" type="Node3D" parent="Leaves/LeafRow4"]
 transform = Transform3D(0.539013, 0.020169, -0.842055, -0.0408148, 0.99916, -0.00219427, 0.841308, 0.0355512, 0.539384, -29.8157, -0.833055, -7.47373)
+script = ExtResource("12_86iyw")
 
-[node name="LeafPile3" parent="LeafRow4/LeafSquare6" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile3" parent="Leaves/LeafRow4/LeafSquare6" instance=ExtResource("10_0xkkv")]
+transform = Transform3D(10, -2.90573e-07, 9.53674e-07, 2.83122e-07, 10, 0, -8.34465e-07, 1.49012e-08, 10, -8.58871, 4.44144, -46.9194)
+
+[node name="LeafPile6" parent="Leaves/LeafRow4/LeafSquare6" instance=ExtResource("10_0xkkv")]
+transform = Transform3D(10, -4.51691e-07, 9.53674e-07, 4.12576e-07, 10, -5.21541e-08, -1.07288e-06, -2.79397e-08, 10, -4.89158, 7.07506, -40.71)
+
+[node name="LeafPile7" parent="Leaves/LeafRow4/LeafSquare6" instance=ExtResource("10_0xkkv")]
+transform = Transform3D(10, -4.13507e-07, 1.07288e-06, 4.02331e-07, 10, 0, -9.53674e-07, 0, 10, -3.79021, 4.65316, -45.0021)
+
+[node name="LeafPile8" parent="Leaves/LeafRow4/LeafSquare6" instance=ExtResource("10_0xkkv")]
+transform = Transform3D(10, -1.69501e-07, 3.57628e-07, 2.04425e-07, 10, -2.98023e-08, -8.34465e-07, -1.86265e-08, 10, -9.11442, 7.27345, -41.1154)
+
+[node name="LeafSquare2" type="Node3D" parent="Leaves/LeafRow4"]
+transform = Transform3D(0.654213, 0, -0.75631, -2.91038e-10, 1, 0, 0.75631, 0, 0.654213, -41.8719, -0.21891, -6.53204)
+script = ExtResource("12_86iyw")
+
+[node name="LeafPile3" parent="Leaves/LeafRow4/LeafSquare2" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -8.74918, 7.54541, -46.8179)
 
-[node name="LeafPile6" parent="LeafRow4/LeafSquare6" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile6" parent="Leaves/LeafRow4/LeafSquare2" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.54138, 7.19928, -42.0711)
 
-[node name="LeafPile7" parent="LeafRow4/LeafSquare6" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile7" parent="Leaves/LeafRow4/LeafSquare2" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.24216, 7.32975, -46.517)
 
-[node name="LeafPile8" parent="LeafRow4/LeafSquare6" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile8" parent="Leaves/LeafRow4/LeafSquare2" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -9.34737, 7.27614, -42.278)
 
-[node name="LeafSquare2" type="Node3D" parent="LeafRow4"]
-transform = Transform3D(0.654213, 0, -0.75631, 0, 1, 0, 0.75631, 0, 0.654213, -41.8697, 0, -6.53418)
-
-[node name="LeafPile3" parent="LeafRow4/LeafSquare2" instance=ExtResource("10_0xkkv")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -8.74918, 7.54541, -46.8179)
-
-[node name="LeafPile6" parent="LeafRow4/LeafSquare2" instance=ExtResource("10_0xkkv")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.54138, 7.19928, -42.0711)
-
-[node name="LeafPile7" parent="LeafRow4/LeafSquare2" instance=ExtResource("10_0xkkv")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.24216, 7.32975, -46.517)
-
-[node name="LeafPile8" parent="LeafRow4/LeafSquare2" instance=ExtResource("10_0xkkv")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -9.34737, 7.27614, -42.278)
-
-[node name="LeafSquare3" type="Node3D" parent="LeafRow4"]
+[node name="LeafSquare3" type="Node3D" parent="Leaves/LeafRow4"]
 transform = Transform3D(0.654213, -1.86265e-09, -0.75631, -3.31784e-09, 1, -2.79397e-09, 0.75631, 2.79397e-09, 0.654213, -47.5172, 0.142477, -14.482)
+script = ExtResource("12_86iyw")
 
-[node name="LeafPile3" parent="LeafRow4/LeafSquare3" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile3" parent="Leaves/LeafRow4/LeafSquare3" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -8.74918, 7.54541, -46.8179)
 
-[node name="LeafPile6" parent="LeafRow4/LeafSquare3" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile6" parent="Leaves/LeafRow4/LeafSquare3" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.54138, 7.19928, -42.0711)
 
-[node name="LeafPile7" parent="LeafRow4/LeafSquare3" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile7" parent="Leaves/LeafRow4/LeafSquare3" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.24216, 7.32975, -46.517)
 
-[node name="LeafPile8" parent="LeafRow4/LeafSquare3" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile8" parent="Leaves/LeafRow4/LeafSquare3" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -9.34737, 7.27614, -42.278)
 
-[node name="LeafSquare4" type="Node3D" parent="LeafRow4"]
+[node name="LeafSquare4" type="Node3D" parent="Leaves/LeafRow4"]
 transform = Transform3D(0.654213, -5.58794e-09, -0.75631, -9.83709e-09, 0.999999, -9.31323e-09, 0.75631, 1.86265e-09, 0.654213, -52.7472, 0.671983, -21.6446)
+script = ExtResource("12_86iyw")
 
-[node name="LeafPile3" parent="LeafRow4/LeafSquare4" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile3" parent="Leaves/LeafRow4/LeafSquare4" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -8.74918, 7.54541, -46.8179)
 
-[node name="LeafPile6" parent="LeafRow4/LeafSquare4" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile4" parent="Leaves/LeafRow4/LeafSquare4" instance=ExtResource("10_0xkkv")]
+transform = Transform3D(10, -0.0015473, -0.00176436, 0.00155272, 9.99997, 0.0280014, 0.0017603, -0.0280018, 9.99997, -11.7689, 7.55868, -47.843)
+
+[node name="LeafPile6" parent="Leaves/LeafRow4/LeafSquare4" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.54138, 7.19928, -42.0711)
 
-[node name="LeafPile7" parent="LeafRow4/LeafSquare4" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile7" parent="Leaves/LeafRow4/LeafSquare4" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.24216, 7.32975, -46.517)
 
-[node name="LeafPile8" parent="LeafRow4/LeafSquare4" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile8" parent="Leaves/LeafRow4/LeafSquare4" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -9.34737, 7.27614, -42.278)
 
-[node name="LeafSquare7" type="Node3D" parent="LeafRow4"]
-transform = Transform3D(0.654213, -1.30385e-08, -0.75631, -2.00816e-08, 0.999997, -1.95578e-08, 0.75631, 0, 0.654213, -48.4934, 0.310606, -1.48571)
+[node name="LeafSquare7" type="Node3D" parent="Leaves/LeafRow4"]
+transform = Transform3D(0.654213, -1.21072e-08, -0.75631, -2.03145e-08, 0.999997, -1.95578e-08, 0.75631, 0, 0.654213, -48.5003, -0.391948, -1.47883)
+script = ExtResource("12_86iyw")
 
-[node name="LeafPile3" parent="LeafRow4/LeafSquare7" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile3" parent="Leaves/LeafRow4/LeafSquare7" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -8.74918, 7.54541, -46.8179)
 
-[node name="LeafPile6" parent="LeafRow4/LeafSquare7" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile6" parent="Leaves/LeafRow4/LeafSquare7" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.54138, 7.19928, -42.0711)
 
-[node name="LeafPile7" parent="LeafRow4/LeafSquare7" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile7" parent="Leaves/LeafRow4/LeafSquare7" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.24216, 7.32975, -46.517)
 
-[node name="LeafPile8" parent="LeafRow4/LeafSquare7" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile8" parent="Leaves/LeafRow4/LeafSquare7" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -9.34737, 7.27614, -42.278)
 
-[node name="LeafRow5" type="Node3D" parent="."]
-transform = Transform3D(0.56139, -0.0148327, 0.827418, -1.84693e-09, 0.999839, 0.0179236, -0.827551, -0.0100621, 0.5613, -1.54268, -0.315876, 28.8283)
+[node name="LeafRow5" type="Node3D" parent="Leaves"]
+transform = Transform3D(0.561624, 0.0530949, 0.825687, -0.0156474, 0.998442, -0.0535605, -0.827244, 0.017161, 0.56158, -1.54268, -1.16254, 28.8283)
+script = ExtResource("12_86iyw")
 
-[node name="LeafSquare" type="Node3D" parent="LeafRow5"]
-transform = Transform3D(0.709598, 0.0410909, -0.703408, -0.0291827, 0.999156, 0.0289281, 0.704002, -7.52055e-10, 0.710198, -32.674, 0.604843, 2.98588)
+[node name="LeafSquare" type="Node3D" parent="Leaves/LeafRow5"]
+transform = Transform3D(0.709599, 0.0410909, -0.703409, -0.0291827, 0.999157, 0.0289281, 0.704002, -2.79397e-09, 0.710198, -32.712, -1.08145, 2.98143)
+script = ExtResource("12_86iyw")
 
-[node name="LeafPile3" parent="LeafRow5/LeafSquare" instance=ExtResource("10_0xkkv")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -8.74918, 7.54541, -46.8179)
+[node name="LeafPile3" parent="Leaves/LeafRow5/LeafSquare" instance=ExtResource("10_0xkkv")]
+transform = Transform3D(10, -1.11759e-08, 1.19209e-07, 5.96046e-08, 10, -1.49012e-08, -1.19209e-07, -1.49012e-08, 10, -8.74918, 7.54541, -46.8179)
 
-[node name="LeafPile6" parent="LeafRow5/LeafSquare" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile6" parent="Leaves/LeafRow5/LeafSquare" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.54138, 7.19928, -42.0711)
 
-[node name="LeafPile7" parent="LeafRow5/LeafSquare" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile7" parent="Leaves/LeafRow5/LeafSquare" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.24216, 7.32975, -46.517)
 
-[node name="LeafPile8" parent="LeafRow5/LeafSquare" instance=ExtResource("10_0xkkv")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -9.34737, 7.27614, -42.278)
+[node name="LeafPile8" parent="Leaves/LeafRow5/LeafSquare" instance=ExtResource("10_0xkkv")]
+transform = Transform3D(10, -1.11759e-08, 1.19209e-07, 5.96046e-08, 10, -1.49012e-08, -1.19209e-07, -1.49012e-08, 10, -9.34737, 7.27614, -42.278)
 
-[node name="LeafSquare2" type="Node3D" parent="LeafRow5"]
+[node name="LeafSquare2" type="Node3D" parent="Leaves/LeafRow5"]
 transform = Transform3D(0.654213, 0, -0.75631, 0, 1, 0, 0.75631, 0, 0.654213, -41.8697, 0, -6.53418)
+script = ExtResource("12_86iyw")
 
-[node name="LeafPile3" parent="LeafRow5/LeafSquare2" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile3" parent="Leaves/LeafRow5/LeafSquare2" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -8.74918, 7.54541, -46.8179)
 
-[node name="LeafPile6" parent="LeafRow5/LeafSquare2" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile6" parent="Leaves/LeafRow5/LeafSquare2" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.54138, 7.19928, -42.0711)
 
-[node name="LeafPile7" parent="LeafRow5/LeafSquare2" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile7" parent="Leaves/LeafRow5/LeafSquare2" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.24216, 7.32975, -46.517)
 
-[node name="LeafPile8" parent="LeafRow5/LeafSquare2" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile8" parent="Leaves/LeafRow5/LeafSquare2" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -9.34737, 7.27614, -42.278)
 
-[node name="LeafSquare3" type="Node3D" parent="LeafRow5"]
+[node name="LeafSquare3" type="Node3D" parent="Leaves/LeafRow5"]
 transform = Transform3D(0.654151, 0.0137702, -0.756239, -0.00900865, 0.999905, 0.0104146, 0.75631, 0, 0.654213, -47.84, 0.909355, -14.0141)
+script = ExtResource("12_86iyw")
 
-[node name="LeafPile3" parent="LeafRow5/LeafSquare3" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile3" parent="Leaves/LeafRow5/LeafSquare3" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -8.74918, 7.54541, -46.8179)
 
-[node name="LeafPile6" parent="LeafRow5/LeafSquare3" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile6" parent="Leaves/LeafRow5/LeafSquare3" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.54138, 7.19928, -42.0711)
 
-[node name="LeafPile7" parent="LeafRow5/LeafSquare3" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile7" parent="Leaves/LeafRow5/LeafSquare3" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.24216, 7.32975, -46.517)
 
-[node name="LeafPile8" parent="LeafRow5/LeafSquare3" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile8" parent="Leaves/LeafRow5/LeafSquare3" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -9.34737, 7.27614, -42.278)
 
-[node name="LeafSquare4" type="Node3D" parent="LeafRow5"]
+[node name="LeafSquare4" type="Node3D" parent="Leaves/LeafRow5"]
 transform = Transform3D(0.653877, 0.0320562, -0.755922, -0.0209716, 0.999486, 0.0242444, 0.75631, -4.65617e-10, 0.654213, -53.1604, 1.79428, -20.9564)
+script = ExtResource("12_86iyw")
 
-[node name="LeafPile3" parent="LeafRow5/LeafSquare4" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile3" parent="Leaves/LeafRow5/LeafSquare4" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -8.74918, 7.54541, -46.8179)
 
-[node name="LeafPile4" parent="LeafRow5/LeafSquare4" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile4" parent="Leaves/LeafRow5/LeafSquare4" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, -7.45058e-09, -1.19209e-07, 7.45058e-09, 10, -2.98023e-08, 2.38419e-07, 5.96046e-08, 10, -12.4177, 7.5337, -47.2485)
 
-[node name="LeafPile6" parent="LeafRow5/LeafSquare4" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile6" parent="Leaves/LeafRow5/LeafSquare4" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.54138, 7.19928, -42.0711)
 
-[node name="LeafPile7" parent="LeafRow5/LeafSquare4" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile7" parent="Leaves/LeafRow5/LeafSquare4" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.24216, 7.32975, -46.517)
 
-[node name="LeafPile8" parent="LeafRow5/LeafSquare4" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile8" parent="Leaves/LeafRow5/LeafSquare4" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -9.34737, 7.27614, -42.278)
 
-[node name="LeafRow7" type="Node3D" parent="."]
-transform = Transform3D(-0.85126, -0.00940526, 0.524659, -7.11114e-10, 0.999839, 0.0179236, -0.524743, 0.0152577, -0.851123, -34.5976, -0.315876, -26.4059)
+[node name="LeafRow7" type="Node3D" parent="Leaves"]
+transform = Transform3D(-0.842789, 0.0680007, 0.533929, 0.0933654, 0.995418, 0.0205987, -0.530082, 0.067211, -0.845277, -34.5976, 4.04632, -26.4059)
+script = ExtResource("12_86iyw")
 
-[node name="LeafSquare3" type="Node3D" parent="LeafRow7"]
+[node name="LeafSquare3" type="Node3D" parent="Leaves/LeafRow7"]
 transform = Transform3D(0.654151, 0.0137702, -0.756239, -0.00900865, 0.999906, 0.0104146, 0.75631, 2.32831e-09, 0.654213, -49.061, 0.0327983, -13.2771)
+script = ExtResource("12_86iyw")
 
-[node name="LeafPile3" parent="LeafRow7/LeafSquare3" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile3" parent="Leaves/LeafRow7/LeafSquare3" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -8.74918, 7.54541, -46.8179)
 
-[node name="LeafPile6" parent="LeafRow7/LeafSquare3" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile6" parent="Leaves/LeafRow7/LeafSquare3" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.54138, 7.19928, -42.0711)
 
-[node name="LeafPile7" parent="LeafRow7/LeafSquare3" instance=ExtResource("10_0xkkv")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.24216, 7.32975, -46.517)
+[node name="LeafPile7" parent="Leaves/LeafRow7/LeafSquare3" instance=ExtResource("10_0xkkv")]
+transform = Transform3D(10, 5.96046e-08, -2.38419e-07, 0, 10, -5.21541e-08, 0, -6.70552e-08, 10, -4.23397, 7.53409, -46.5104)
 
-[node name="LeafPile8" parent="LeafRow7/LeafSquare3" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile8" parent="Leaves/LeafRow7/LeafSquare3" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -9.34737, 7.27614, -42.278)
 
-[node name="LeafSquare4" type="Node3D" parent="LeafRow7"]
+[node name="LeafSquare4" type="Node3D" parent="Leaves/LeafRow7"]
 transform = Transform3D(0.586285, 0.0334801, -0.809414, -0.0219307, 0.999436, 0.0254549, 0.80981, 0.00282713, 0.586687, -56.4058, 0.688661, -23.023)
+script = ExtResource("12_86iyw")
 
-[node name="LeafPile3" parent="LeafRow7/LeafSquare4" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile3" parent="Leaves/LeafRow7/LeafSquare4" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -8.74918, 7.54541, -46.8179)
 
-[node name="LeafPile6" parent="LeafRow7/LeafSquare4" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile6" parent="Leaves/LeafRow7/LeafSquare4" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, -2.79397e-09, 1.19209e-07, -3.72529e-09, 10, 0, 0, -1.95578e-08, 10, -4.54138, 7.19928, -42.0711)
 
-[node name="LeafPile7" parent="LeafRow7/LeafSquare4" instance=ExtResource("10_0xkkv")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.24216, 7.32975, -46.517)
+[node name="LeafPile7" parent="Leaves/LeafRow7/LeafSquare4" instance=ExtResource("10_0xkkv")]
+transform = Transform3D(10, 1.19209e-07, 0, 0, 10, -4.84288e-08, 0, 5.7742e-08, 10, -4.23498, 7.577, -46.507)
 
-[node name="LeafPile8" parent="LeafRow7/LeafSquare4" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile8" parent="Leaves/LeafRow7/LeafSquare4" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -9.34737, 7.27614, -42.278)
 
-[node name="LeafRow6" type="Node3D" parent="."]
-transform = Transform3D(-0.00603288, -0.0295569, 0.999545, 0.00792641, 0.99953, 0.0296043, -0.99995, 0.00810143, -0.00579582, 4.8441, -0.555961, 30.3511)
+[node name="LeafRow6" type="Node3D" parent="Leaves"]
+transform = Transform3D(-0.00373791, -0.00935559, 0.999949, 0.0633247, 0.997947, 0.00957357, -0.997986, 0.0633573, -0.00313785, 4.8441, -1.32818, 30.3511)
+script = ExtResource("12_86iyw")
 
-[node name="LeafSquare" type="Node3D" parent="LeafRow6"]
+[node name="LeafSquare" type="Node3D" parent="Leaves/LeafRow6"]
 transform = Transform3D(0.709598, 0.0410909, -0.703408, -0.0291827, 0.999156, 0.0289281, 0.704002, 0, 0.710198, -30.8966, 0.626454, 1.78036)
+script = ExtResource("12_86iyw")
 
-[node name="LeafPile3" parent="LeafRow6/LeafSquare" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile3" parent="Leaves/LeafRow6/LeafSquare" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -8.74918, 7.54541, -46.8179)
 
-[node name="LeafPile7" parent="LeafRow6/LeafSquare" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile7" parent="Leaves/LeafRow6/LeafSquare" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.24216, 7.32975, -46.517)
 
-[node name="LeafPile8" parent="LeafRow6/LeafSquare" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile8" parent="Leaves/LeafRow6/LeafSquare" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -9.34737, 7.27614, -42.278)
 
-[node name="LeafSquare2" type="Node3D" parent="LeafRow6"]
+[node name="LeafSquare2" type="Node3D" parent="Leaves/LeafRow6"]
 transform = Transform3D(0.654213, -1.07684e-09, -0.75631, -2.83762e-09, 1, -5.82077e-10, 0.75631, 1.52795e-10, 0.654213, -40.0923, 0.0216109, -7.7397)
+script = ExtResource("12_86iyw")
 
-[node name="LeafPile3" parent="LeafRow6/LeafSquare2" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile3" parent="Leaves/LeafRow6/LeafSquare2" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -8.74918, 7.54541, -46.8179)
 
-[node name="LeafPile6" parent="LeafRow6/LeafSquare2" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile6" parent="Leaves/LeafRow6/LeafSquare2" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.54138, 7.19928, -42.0711)
 
-[node name="LeafPile7" parent="LeafRow6/LeafSquare2" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile7" parent="Leaves/LeafRow6/LeafSquare2" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.24216, 7.32975, -46.517)
 
-[node name="LeafPile8" parent="LeafRow6/LeafSquare2" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile8" parent="Leaves/LeafRow6/LeafSquare2" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -9.34737, 7.27614, -42.278)
 
-[node name="LeafSquare3" type="Node3D" parent="LeafRow6"]
+[node name="LeafSquare3" type="Node3D" parent="Leaves/LeafRow6"]
 transform = Transform3D(0.654151, 0.0137702, -0.756239, -0.00900865, 0.999905, 0.0104146, 0.75631, 1.86265e-09, 0.654213, -46.0626, 0.930966, -15.2196)
+script = ExtResource("12_86iyw")
 
-[node name="LeafPile3" parent="LeafRow6/LeafSquare3" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile3" parent="Leaves/LeafRow6/LeafSquare3" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -8.74918, 7.54541, -46.8179)
 
-[node name="LeafPile6" parent="LeafRow6/LeafSquare3" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile6" parent="Leaves/LeafRow6/LeafSquare3" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.54138, 7.19928, -42.0711)
 
-[node name="LeafPile7" parent="LeafRow6/LeafSquare3" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile7" parent="Leaves/LeafRow6/LeafSquare3" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4.24216, 7.32975, -46.517)
 
-[node name="LeafPile8" parent="LeafRow6/LeafSquare3" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile8" parent="Leaves/LeafRow6/LeafSquare3" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -9.34737, 7.27614, -42.278)
 
-[node name="LeafPile8" parent="LeafRow6" instance=ExtResource("10_0xkkv")]
+[node name="LeafPile8" parent="Leaves/LeafRow6" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(6.54151, 0.137702, -7.56239, -0.0900867, 9.99905, 0.104146, 7.5631, 1.32306e-07, 6.54213, -8.86109, 7.74268, -49.324)
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="."]
 
 [editable path="Pillar1/Flame1"]
