@@ -1,4 +1,5 @@
 extends Level
+@onready var start_song = load("res://Assets/Audio/Calor.ogg")
 var intro_dialogue = "res://Assets/Dialogue/Intro2.json"
 var plant_dialogue = "res://Assets/Dialogue/Planta.json"
 var device_dialogue = "res://Assets/Dialogue/Capacitor.json"
@@ -44,6 +45,7 @@ func _on_device_pickup(body):
 
 
 func _on_timer_timeout():
+	emit_signal("change_song",start_song)
 	emit_signal("dialogue",intro_dialogue)
 
 func _on_device_area_see_body_entered(body):
