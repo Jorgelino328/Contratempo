@@ -17,6 +17,13 @@ theme = ExtResource("1_ty1e1")
 script = ExtResource("1_k4wg7")
 metadata/_edit_vertical_guides_ = [407.0, 474.0, 745.0, 577.0]
 
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -592.0
+offset_top = -331.0
+offset_right = 602.0
+offset_bottom = 356.0
+color = Color(0.101961, 0.101961, 0.101961, 1)
+
 [node name="Options" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 8

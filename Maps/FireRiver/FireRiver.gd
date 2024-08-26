@@ -3,6 +3,12 @@ extends Node3D
 signal lightUp()
 signal lightDown()
 
+func _process(delta):
+	if $Lever.on == true:
+		activate_pillars(3)
+		$River.start_position.y = -10
+		$River/FullRiver.visible = true
+
 func raise_water():
 	if(!$River.rising):
 		$River.rising = true
@@ -22,13 +28,12 @@ func activate_pillars(n):
 		2:
 			$Pillar1.lit = false
 			$Pillar2.lit = true
+		3:
+			$Pillar1.lit = false
+			$Pillar2.lit = false
 
 func light_fire():
 	emit_signal("lightUp")
 	
 func put_out_fire():
 	emit_signal("lightDown")
-
-
-func _on_area_3d_area_entered(area):
-	pass # Replace with function body.

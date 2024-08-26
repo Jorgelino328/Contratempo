@@ -15,6 +15,10 @@ func connect_signals():
 	if(current_level == $Game_Over || current_level == $EndGame):
 		current_level.menu.connect(_on_menu)
 		current_level.quit.connect(_on_quit)
+	elif(current_level == $Next_Level):
+		current_level.next_level.connect(_on_next_level)
+		current_level.menu.connect(_on_menu)
+		current_level.quit.connect(_on_quit)
 	elif(current_level == $Main_Menu):
 		current_level.new_game.connect(_on_main_menu_new_game)
 		current_level.settings.connect(_on_main_menu_settings)
@@ -24,6 +28,7 @@ func connect_signals():
 	else:
 		current_level.connect_signals()
 		current_level.next_level.connect(_on_next_level)
+		current_level.level_screen.connect(level_screen)
 		current_level.change_song.connect(_on_change_song)
 		current_level.change_weather.connect(_on_change_weather)
 		current_level.dialogue.connect(_on_dialogue)
@@ -36,7 +41,6 @@ func _on_dialogue(json_path):
 	dialogue_inst.cat_over.connect(_on_cat_over)
 	add_child(dialogue_inst)
 	get_tree().paused = true
-	
 	
 func _on_dialogue_stop():
 	$Timer.start()
@@ -75,8 +79,8 @@ func _on_next_level(level):
 	change_level(next_level)
 
 func _on_main_menu_new_game():
-	#var next_level = load("res://Scenes/Levels/Level_1/Satus.tscn").instantiate()
-	var next_level = load("res://Scenes/Levels/Level_2/Calor.tscn").instantiate()
+	var next_level = load("res://Scenes/Levels/Level_1/Satus.tscn").instantiate()
+	#var next_level = load("res://Scenes/Levels/Level_2/Calor.tscn").instantiate()
 	change_level(next_level)
 	
 func _on_settings_back_menu():
@@ -98,6 +102,14 @@ func change_level(next_level):
 	add_child(next_level)
 	current_level.queue_free()
 	current_level = next_level
+	connect_signals()
+	
+func level_screen(next_level):
+	var lvl_screen = load("res://Scenes/UIs/Next_Level/Next_Level.tscn").instantiate()
+	add_child(lvl_screen)
+	current_level.queue_free()
+	current_level = lvl_screen
+	current_level.level = next_level
 	connect_signals()
 	
 func _on_timer_timeout():

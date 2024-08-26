@@ -2,6 +2,7 @@ extends Level
 
 @onready var start_song = load("res://Assets/Audio/Satus.ogg")
 @onready var run_song = load("res://Assets/Audio/Run.ogg")
+@onready var level = load("res://Scenes/Levels/Level_2/Calor.tscn")
 @onready var intro = "res://Assets/Dialogue/Intro.json"
 @onready var fire = "res://Assets/Dialogue/Fire.json"
 @onready var fire_hint = "res://Assets/Dialogue/FireRain.json"
@@ -15,8 +16,6 @@ var fire_started = false
 var outside = true
 var has_device = false
 var earthquake = false
-
-
 
 func _process(delta):
 	super._process(delta)
@@ -117,7 +116,8 @@ func _on_room_2_body_entered(body):
 func _on_timer_timeout():
 	if ($Fire.get_child_count() > 0):
 		$Fire.get_child(0).queue_free()
-
+	else:
+		emit_signal("level_screen",level)
 
 func _on_room_3_body_entered(body):
 	emit_signal("dialogue",find_device)

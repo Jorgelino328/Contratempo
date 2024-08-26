@@ -24,6 +24,7 @@ var camera_type = BACKVIEW
 var can_run = false
 var go = false
 var on_platform : Node3D = null
+var want_jump = false
 
 func _process(delta):
 	if(has_device):
@@ -45,7 +46,8 @@ func _physics_process(delta):
 func handle_movement(delta):
 	var input_dir = Input.get_vector("left", "right","forward","backwards")
 	var direction = get_direction(input_dir)
-	
+	if(Input.is_action_just_pressed("jump")):
+		want_jump = true
 	for action in ["forward", "backwards", "left", "right"]:
 		if Input.is_action_just_pressed(action):
 			if(action == last_action && !press_timer.is_stopped()):
@@ -63,9 +65,11 @@ func handle_movement(delta):
 		var long_jump_time = animTree["parameters/Long_Jump/time"]
 		if (jump_time != null && jump_time > 0.8 && jump_time < 0.9):
 			target_velocity.y = jump_impulse
+			want_jump = false
 		elif (long_jump_time != null && long_jump_time > 0 && long_jump_time < 0.1):
 			target_velocity.y = jump_impulse
-			target_velocity.z = walk_speed * direction.z 
+			target_velocity.z = walk_speed * direction.z
+			want_jump = false
 		elif (jump_time != null && jump_time < 0.8):
 			direction = Vector3.ZERO
 	
@@ -87,7 +91,7 @@ func update_animation():
 		animTree["parameters/conditions/idle"] = true
 		animTree["parameters/conditions/walking"] = false
 		animTree["parameters/conditions/running"] = false
-		if(Input.is_action_just_pressed("jump")):
+		if(want_jump):
 			animTree["parameters/conditions/jumping_still"] = true
 		else:
 			animTree["parameters/conditions/jumping_still"] = false
@@ -97,7 +101,7 @@ func update_animation():
 			current_speed = running_speed
 			animTree["parameters/conditions/running"] = true
 			animTree["parameters/conditions/walking"] = false
-			if(Input.is_action_just_pressed("jump")):
+			if(want_jump):
 				animTree["parameters/conditions/jumping_long"] = true
 			else:
 				animTree["parameters/conditions/jumping_long"] = false

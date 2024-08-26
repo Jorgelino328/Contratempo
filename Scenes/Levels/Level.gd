@@ -11,6 +11,7 @@ var dialogueUI = preload("res://Scenes/UIs/Dialogue_UI/Dialogue_UI.tscn")
 var paused = false
 
 signal next_level(level)
+signal level_screen(level)
 signal change_song(new_song)
 signal change_weather(new_weather)
 signal dialogue(json)
@@ -29,7 +30,7 @@ func pause():
 	get_tree().paused = true
 	
 func _process(delta):
-	if Input.is_action_just_released("esc"):
+	if Input.is_action_just_released("pause"):
 		if(!paused):
 			pause()
 		elif(paused):

@@ -48,4 +48,4 @@ mesh = ExtResource("2_ir5gv")
 mesh = ExtResource("2_ir5gv")
 
 [node name="Flame" parent="." index="1" instance=ExtResource("4_mt81l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.113014, 0.207599, -0.112558)
+transform = Transform3D(0.2, 0, 0, 0, -0.2, 1.74846e-08, 0, -1.74846e-08, -0.2, -0.0198926, 0.0415987, -0.00421613)

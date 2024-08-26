@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bo4x0ivakm5js"]
+[gd_scene load_steps=3 format=3 uid="uid://brq8yuwpnpd1j"]
 
-[ext_resource type="Theme" uid="uid://c3u7pkv4gva6m" path="res://Scenes/UIs/UI_Settings/PurpleMana.tres" id="1_uxino"]
-[ext_resource type="Script" path="res://Scenes/UIs/Game_Over/Game_Over.gd" id="2_hjdsr"]
+[ext_resource type="Theme" uid="uid://c3u7pkv4gva6m" path="res://Scenes/UIs/UI_Settings/PurpleMana.tres" id="1_e7gqv"]
+[ext_resource type="Script" path="res://Scenes/UIs/Next_Level/Next_Level.gd" id="2_66rfa"]
 
-[node name="Game_Over" type="Control"]
+[node name="Next_Level" type="Control"]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -18,8 +18,8 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
-theme = ExtResource("1_uxino")
-script = ExtResource("2_hjdsr")
+theme = ExtResource("1_e7gqv")
+script = ExtResource("2_66rfa")
 metadata/_edit_lock_ = true
 metadata/_edit_use_anchors_ = true
 
@@ -35,12 +35,21 @@ offset_left = 198.0
 offset_top = 64.0
 offset_right = 1133.0
 offset_bottom = 550.0
-theme = ExtResource("1_uxino")
+theme = ExtResource("1_e7gqv")
 theme_override_constants/shadow_offset_x = -2
 theme_override_constants/shadow_offset_y = 9
 theme_override_constants/shadow_outline_size = 22
-theme_override_font_sizes/font_size = 200
-text = "GameOver"
+theme_override_font_sizes/font_size = 150
+text = "Nível Completo"
+
+[node name="btn_lvl" type="Button" parent="."]
+layout_mode = 0
+offset_left = 409.0
+offset_top = 377.0
+offset_right = 745.0
+offset_bottom = 426.0
+text = "Next Level
+"
 
 [node name="btn_menu" type="Button" parent="."]
 layout_mode = 0
@@ -59,5 +68,6 @@ offset_right = 744.0
 offset_bottom = 553.0
 text = "Quit Game"
 
+[connection signal="pressed" from="btn_lvl" to="." method="_on_btn_lvl_pressed"]
 [connection signal="pressed" from="btn_menu" to="." method="_on_btn_menu_pressed"]
 [connection signal="pressed" from="btn_quit" to="." method="_on_btn_quit_pressed"]

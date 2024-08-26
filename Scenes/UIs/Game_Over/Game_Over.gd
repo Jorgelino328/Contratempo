@@ -8,4 +8,3 @@ func _on_btn_quit_pressed():
 
 func _on_btn_menu_pressed():
 	emit_signal("menu")
-
