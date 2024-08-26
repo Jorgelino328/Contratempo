@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://fhevq74nky1l"]
+[gd_scene load_steps=28 format=3 uid="uid://fhevq74nky1l"]
 
 [ext_resource type="Script" path="res://Maps/FireRiver/FireRiver.gd" id="1_7qrwr"]
 [ext_resource type="PackedScene" uid="uid://b5hw6xbx7eqw4" path="res://Scenes/Elements/Flame/Flame.tscn" id="2_aa8qx"]
@@ -6,10 +6,12 @@
 [ext_resource type="Script" path="res://Scenes/Elements/Water/Water.gd" id="3_5qouk"]
 [ext_resource type="PackedScene" uid="uid://d3kyt4i6nhsc4" path="res://Maps/FireRiver/rocks.tscn" id="3_oeu7r"]
 [ext_resource type="PackedScene" uid="uid://bho7btve38rh0" path="res://Scenes/Elements/Water/Water.tscn" id="4_n1slb"]
+[ext_resource type="PackedScene" uid="uid://b854e5aqfixb4" path="res://Scenes/Elements/TimedHitBox/timed_hit_box.tscn" id="5_awyb1"]
 [ext_resource type="PackedScene" uid="uid://bktlrfwkcdkwu" path="res://Assets/3D Models/TreatedAssets/FireFlower.tscn" id="6_hcopp"]
 [ext_resource type="Shader" uid="uid://bt7npf7hp6tov" path="res://Assets/Shaders/FireShader.tres" id="6_jw13o"]
 [ext_resource type="PackedScene" uid="uid://di6ra155j5ugw" path="res://Maps/Temple/TempleParts/Pillar.tscn" id="6_orvx6"]
 [ext_resource type="Texture2D" uid="uid://ds0u4p10tkv5" path="res://Assets/Sprites/Voronoi01.png" id="7_b1bb1"]
+[ext_resource type="Script" path="res://Maps/Temple/TempleParts/Pillar.gd" id="7_et63r"]
 [ext_resource type="Texture2D" uid="uid://bl7yndd1w847" path="res://Assets/Sprites/Flame01.png" id="8_xpv2o"]
 [ext_resource type="PackedScene" uid="uid://m57t5myng4dh" path="res://Assets/3D Models/TreatedAssets/leaf_pile.tscn" id="10_0xkkv"]
 [ext_resource type="Script" path="res://Maps/FireRiver/Leaves.gd" id="12_86iyw"]
@@ -160,7 +162,6 @@ transform = Transform3D(5.63867, 0.0848345, 11.8736, 0.18517, 1.25445, -1.04967,
 skeleton = NodePath("../..")
 
 [node name="LeftSide" type="Node3D" parent="River"]
-visible = false
 
 [node name="Water3" parent="River/LeftSide" instance=ExtResource("4_n1slb")]
 transform = Transform3D(4.02131, 0, 2.97138, 0, 1.2, 0, -2.97138, 0, 4.02131, 21.1259, 4.98071, 7.41875)
@@ -171,7 +172,6 @@ transform = Transform3D(1.02194, -1.55739, -2.21145, 1.57253, 2.82129, -0.047086
 skeleton = NodePath("../../..")
 
 [node name="RightSide" type="Node3D" parent="River"]
-visible = false
 
 [node name="Water4" parent="River/RightSide" instance=ExtResource("4_n1slb")]
 transform = Transform3D(0.624808, 2.65013, -2.62745, -0.937542, 0.310913, 0.00540299, 0.92158, 3.69461, 1.87677, 13.4426, 0.387564, -17.0722)
@@ -181,20 +181,27 @@ skeleton = NodePath("../../..")
 transform = Transform3D(4.05665, 0, 2.92295, 0, 1.2, 0, -2.92295, 0, 4.05665, -10.9296, 5, -35.5674)
 skeleton = NodePath("../../..")
 
+[node name="TimedHitBox" parent="River" instance=ExtResource("5_awyb1")]
+
 [node name="Rocks" parent="." instance=ExtResource("3_oeu7r")]
 
 [node name="Pillar1" parent="." instance=ExtResource("6_orvx6")]
-transform = Transform3D(3.38624, 0, -3.67877, 0, 5, 0, 3.67877, 0, 3.38624, 6.86709, -12.3188, -2.43687)
+transform = Transform3D(3.38624, 0, -3.67877, 0, 5, 0, 3.67877, 0, 3.38624, 6.867, -12.319, -2.437)
+script = ExtResource("7_et63r")
+start_position = Vector3(6.867, -12.319, -2.437)
+end_position = Vector3(6.867, -2.33, -2.437)
+speed = 1.0
+lit = false
 
-[node name="Flame1" parent="Pillar1" instance=ExtResource("2_aa8qx")]
+[node name="Flame" parent="Pillar1" instance=ExtResource("2_aa8qx")]
 transform = Transform3D(0.130343, 0, -0.151693, 0, 0.2, 0, 0.151693, 0, 0.130343, 0.0574136, 2.82217, -0.00690007)
 visible = false
 
-[node name="FlameLong" parent="Pillar1/Flame1" index="0"]
+[node name="FlameLong" parent="Pillar1/Flame" index="0"]
 material_override = SubResource("ShaderMaterial_vspxs")
 process_material = SubResource("ParticleProcessMaterial_esjsw")
 
-[node name="FlameShort" parent="Pillar1/Flame1" index="1"]
+[node name="FlameShort" parent="Pillar1/Flame" index="1"]
 process_material = SubResource("ParticleProcessMaterial_7n61n")
 
 [node name="FireFlower" parent="Pillar1" instance=ExtResource("6_hcopp")]
@@ -202,8 +209,12 @@ transform = Transform3D(0.01, 1.44757e-24, 6.51926e-09, 0, 0.01, -2.22045e-18, -
 
 [node name="Pillar2" parent="." instance=ExtResource("6_orvx6")]
 transform = Transform3D(3.30106, 0, -3.7554, 0, 5, 0, 3.7554, 0, 3.30106, -2.02576, -2.55772, -13.9728)
+script = ExtResource("7_et63r")
+start_position = Vector3(-2.026, -12.319, -13.973)
+end_position = Vector3(-2.026, -2.33, -13.973)
+speed = 1.0
 
-[node name="Flame2" parent="Pillar2" instance=ExtResource("2_aa8qx")]
+[node name="Flame" parent="Pillar2" instance=ExtResource("2_aa8qx")]
 transform = Transform3D(0.133785, 0, -0.148667, 0, 0.2, 0, 0.148667, 0, 0.133785, 0.0196035, 2.9286, 0.0344038)
 
 [node name="FireFlower" parent="Pillar2" instance=ExtResource("6_hcopp")]
@@ -672,6 +683,4 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -9.34737, 7.27614, -42.278
 [node name="LeafPile8" parent="Leaves/LeafRow6" instance=ExtResource("10_0xkkv")]
 transform = Transform3D(6.54151, 0.137702, -7.56239, -0.0900867, 9.99905, 0.104146, 7.5631, 1.32306e-07, 6.54213, -8.86109, 7.74268, -49.324)
 
-[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="."]
-
-[editable path="Pillar1/Flame1"]
+[editable path="Pillar1/Flame"]

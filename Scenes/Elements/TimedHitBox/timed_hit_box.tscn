@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://b854e5aqfixb4"]
+
+[ext_resource type="Script" path="res://Scenes/Elements/TimedHitBox/TimedHitBox.gd" id="1_1c3ig"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d4iga"]
+size = Vector3(9.22381, 4.33825, 13.2879)
+
+[node name="TimedHitBox" type="Area3D"]
+transform = Transform3D(0.416299, -0.190488, 0.88905, 0.0150011, 0.979114, 0.202761, -0.909104, -0.0710725, 0.410461, -29.8931, 11.2469, -58.6899)
+script = ExtResource("1_1c3ig")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.999998, 0.000382923, 0.00185972, -0.000147693, -0.960708, 0.277558, 0.00189319, -0.277558, -0.960706, -40.7391, -12.2445, 4.17157)
+shape = SubResource("BoxShape3D_d4iga")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

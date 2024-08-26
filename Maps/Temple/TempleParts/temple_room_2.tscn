@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ducwyn8ehu7eo"]
+[gd_scene load_steps=11 format=3 uid="uid://ducwyn8ehu7eo"]
 
 [ext_resource type="Script" path="res://Maps/Temple/TempleParts/temple_room_2.gd" id="1_cu6ck"]
 [ext_resource type="PackedScene" uid="uid://bp8m2bb83u650" path="res://Maps/Temple/TempleParts/Wall_1.tscn" id="1_gxmxk"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dmsdbggih7ypf" path="res://Scenes/Elements/Moving Platform/Moving Platform.tscn" id="3_sx1qi"]
 [ext_resource type="PackedScene" uid="uid://bho7btve38rh0" path="res://Scenes/Elements/Water/Water.tscn" id="4_rwvv6"]
 [ext_resource type="Script" path="res://Scenes/Elements/Water/Water.gd" id="5_4b6t5"]
+[ext_resource type="PackedScene" uid="uid://b854e5aqfixb4" path="res://Scenes/Elements/TimedHitBox/timed_hit_box.tscn" id="6_v3i3c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wjtyp"]
 size = Vector3(3.45505, 1.873, 8.45754)
@@ -85,6 +86,12 @@ start_position = Vector3(1.607, -3.96, 25.46)
 end_position = Vector3(1.607, -0.543, 25.46)
 speed = 0.1
 
+[node name="TimedHitBox" parent="Water" instance=ExtResource("6_v3i3c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49022, 11.3833, -2.58886)
+
+[node name="CollisionShape3D" parent="Water/TimedHitBox" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999998, -0.333273, -13.4372, 4.17157)
+
 [node name="MovingPlatform" parent="." node_paths=PackedStringArray("water") instance=ExtResource("3_sx1qi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 0, 24)
 start_position = Vector3(2.25, 0, 21.5)
@@ -119,3 +126,5 @@ shape = SubResource("BoxShape3D_1nc3b")
 [connection signal="body_exited" from="HideMiddle" to="." method="_on_hide_middle_body_exited"]
 [connection signal="body_entered" from="HideRight" to="." method="_on_hide_right_body_entered"]
 [connection signal="body_exited" from="HideRight" to="." method="_on_hide_right_body_exited"]
+
+[editable path="Water/TimedHitBox"]

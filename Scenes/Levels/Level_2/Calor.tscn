@@ -47,7 +47,7 @@ shadow_opacity = 0.45
 shadow_blur = 2.0
 
 [node name="Audax" parent="." instance=ExtResource("2_hju2b")]
-transform = Transform3D(0.559251, 0, 0.828999, 0, 1, 0, -0.828999, 0, 0.559251, -8.33351, 6.988, -23.1528)
+transform = Transform3D(1.1185, 0, 1.658, 0, 2, 0, -1.658, 0, 1.1185, 4.83943, 9.91611, -9.52948)
 has_device = true
 
 [node name="FireRiver" parent="." instance=ExtResource("3_rt1rw")]
